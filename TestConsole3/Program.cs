@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace TestConsole2
+namespace TestConsole3
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Robert polochon président !");
+            Console.WriteLine("Hello Tous!");
         }
     }
 }
