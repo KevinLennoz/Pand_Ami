@@ -6,7 +6,8 @@ namespace ProjetConsoleTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Salut la Team 2");
+            Console.WriteLine("Salut salut");
+            Console.WriteLine("Salut salut");
         }
     }
 }
