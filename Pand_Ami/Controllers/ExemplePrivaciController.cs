@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Pand_Ami.Controllers
 {
-    public class ExempleControllerPrivaci : Controller
+    public class ExemplePrivaciController : Controller
     {
-        private readonly ILogger<ExempleControllerPrivaci> _logger;
+        private readonly ILogger<ExemplePrivaciController> _logger;
 
-        public ExempleControllerPrivaci(ILogger<ExempleControllerPrivaci> logger)
+        public ExemplePrivaciController(ILogger<ExemplePrivaciController> logger)
         {
             _logger = logger;
         }
@@ -25,7 +25,7 @@ namespace Pand_Ami.Controllers
 
         public IActionResult Privaci()
         {
-            return View("TOTO");
+            return View("viewTOTO");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

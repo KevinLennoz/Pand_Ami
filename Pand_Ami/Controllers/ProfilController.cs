@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pand_Ami.Controllers
 {
-    public class ControllerProfil : Controller
+    public class ProfilController : Controller
     {
         // GET: HomeController1
         public ActionResult Index()
