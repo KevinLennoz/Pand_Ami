@@ -8,61 +8,21 @@ namespace Pand_Ami.Models
 {
     public class ActionDAO
     {
-
-        string stringConnect = "Data Source=FORM233\\SQLEXPRESS;Initial Catalog=bddPandami; Integrated Security=true";
-
-
-        SqlConnection cnx;
-        public SqlConnection Cnx
+        
+        public Action LireAction(int ID)
         {
-            get { return this.cnx; }
-        }
-        public ActionDAO()
-        {
-            this.cnx = new SqlConnection();
-        }
-
-        public bool OuvreConnection()
-        {
-            bool ouvertureOk = false;
-
-            this.cnx.ConnectionString = stringConnect;
-            // si ConfigurationManager.ConnectionStrings["baseLocale"] est null, alors, je retourne null, sinon je continue et je retourne la valeur de ConnectionString
-            // Récupération d'un app setting : ConfigurationManager.ConfigurationSettings.AppSettings["NumeroSalle"];
-            try
-            {
-                this.cnx.Open();
-                ouvertureOk = true;
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine("Erreur ouverture SQL : " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Erreur autre sur l'ouverture : " + e.Message);
-            }
-            return ouvertureOk;
-        }
-
-        public void FermetureBDD()
-        {
-            this.cnx.Close();
-        }
-
-        public Action LireAction()
-        {
-            string maRequete = "SELECT TOP (1) FROM client";
+            string maRequete = "SELECT * FROM action WHERE id_action = " + ID;
             SqlCommand cmd = new SqlCommand();
-            this.OuvreConnection();
-            cmd.Connection = this.cnx;
+            AccesBDD accesBDD = new AccesBDD();
+            accesBDD.OuvertureBDD();
+            cmd.Connection = accesBDD.Cnx;
             cmd.CommandText = maRequete;
             cmd.CommandType = System.Data.CommandType.Text;
             SqlDataReader resultat = cmd.ExecuteReader();
-            Action actReq = new Action();
-            // traitement resultat... voir méthode LireMaTable()
+            resultat.Read();
+            Action actReq = new Action(resultat);
             resultat.Close();
-            this.FermetureBDD();
+            accesBDD.FermetureBDD();
             return actReq;
 
         }
@@ -72,12 +32,13 @@ namespace Pand_Ami.Models
             string voie;
             string requeteSQL = "SELECT TOP (1) voie_action FROM Action";
             SqlCommand cmd = new SqlCommand();
-            this.OuvreConnection();
-            cmd.Connection = this.cnx;
+            AccesBDD accesBDD = new AccesBDD();
+            accesBDD.OuvertureBDD();
+            cmd.Connection = accesBDD.Cnx;
             cmd.CommandText = requeteSQL;
             cmd.CommandType = System.Data.CommandType.Text;
             voie = cmd.ExecuteScalar().ToString();
-            this.FermetureBDD();
+            accesBDD.FermetureBDD();
             return voie;
         }
 
