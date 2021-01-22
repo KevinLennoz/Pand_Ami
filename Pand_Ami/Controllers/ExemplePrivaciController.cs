@@ -20,7 +20,21 @@ namespace Pand_Ami.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            ActiviteDAO monActivite = new ActiviteDAO();
+            string nomActivite;
+            nomActivite = monActivite.ObtenirNomActivite();
+            ViewBag.uneActivite = nomActivite;
+            return View("viewTOTO");
+        }
+        public ActionResult ViewTOTO()
+        {
+            ActiviteDAO monActiviteDAO = new ActiviteDAO();
+            Activite monActivite = monActiviteDAO.IdToActivite(7);
+            ViewBag.id = monActivite.Id_activite;
+            ViewBag.domaine = monActivite.Id_domaine_activite;
+            ViewBag.nom = monActivite.Nom_activite;
+            ViewBag.idmat = monActivite.Id_materiel;
+            return View("viewTOTO");
         }
 
         public IActionResult Privaci()
