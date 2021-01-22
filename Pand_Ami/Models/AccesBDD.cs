@@ -23,7 +23,7 @@ namespace Pand_Ami.Models
         {
 
             bool etatConnexion = false;
-            this.Cnx.ConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=bddPandami;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+            this.Cnx.ConnectionString = "Data Source="+ Environment.MachineName +"\\SQLEXPRESS;Initial Catalog=bddPandami;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
 
             try
             {

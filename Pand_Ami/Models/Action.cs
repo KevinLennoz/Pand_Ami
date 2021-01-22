@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-/*       connectionString="Data Source=IG-PF2A4GNN\SQLEXPRESS;Initial Catalog=bddEQL;
- *       Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False"*/
 namespace Pand_Ami.Models
 {
     public class Action
