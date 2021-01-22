@@ -19,6 +19,9 @@ namespace Pand_Ami.Controllers
             Action ActionResult = myDAO.LireAction(3);
             ViewBag.result = ActionResult.ToString();
 
+            List<Action> maListe = myDAO.RecupererListeActions();
+            ViewBag.data = maListe;
+
             return View();
         }
 

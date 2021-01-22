@@ -13,3 +13,10 @@
 <h1> Mon truc a marché : @ViewBag.test</h1>
 
 <h2> Je tente d'appeler une ligne entière : @ViewBag.result</h2>
+
+<ul>
+    @foreach (var action in ViewBag.data)
+    {
+        <li>@action.ToString()</li>
+    }
+</ul>

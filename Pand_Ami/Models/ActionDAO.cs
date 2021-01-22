@@ -27,6 +27,30 @@ namespace Pand_Ami.Models
 
         }
 
+        public List<Action> RecupererListeActions()
+        {
+            List<Action> listeSortante = new List<Action>();
+            string maRequete = "SELECT * FROM action";
+            SqlCommand cmd = new SqlCommand();
+            AccesBDD accesBDD = new AccesBDD();
+            accesBDD.OuvertureBDD();
+            cmd.Connection = accesBDD.Cnx;
+            cmd.CommandText = maRequete;
+            SqlDataReader resultat = cmd.ExecuteReader();
+
+            if (!resultat.HasRows)
+            {
+                
+            }
+            while (resultat.Read())
+            {
+                Action actTemp = new Action(resultat);
+                listeSortante.Add(actTemp);
+            }
+            return listeSortante;
+
+            }
+
         public string GetPremierString()
         {
             string voie;
