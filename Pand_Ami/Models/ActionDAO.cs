@@ -8,7 +8,7 @@ namespace Pand_Ami.Models
 {
     public class ActionDAO
     {
-        
+
         public Action LireAction(int ID)
         {
             string maRequete = "SELECT * FROM action WHERE id_action = " + ID;
@@ -24,6 +24,35 @@ namespace Pand_Ami.Models
             resultat.Close();
             accesBDD.FermetureBDD();
             return actReq;
+
+        }
+
+        public Action LireAction_Test(int idAction)
+        {
+
+            AccesBDD BDDPandami = new AccesBDD();
+            BDDPandami.OuvertureBDD();
+
+            SqlCommand cmd = new SqlCommand("dbo.RecuperationAction", BDDPandami.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
+
+            SqlDataReader resultat = cmd.ExecuteReader();
+
+            Action actReq = new Action();
+            while (resultat.Read())
+            {
+                actReq.Id_action = (int)resultat["id_action"];
+                actReq.Id_util = (int)resultat["id_util"];
+                actReq.Id_gamme_heure_debut = (int)resultat["id_gamme_heure_debut"];
+                actReq.Id_gamme_minute_debut = (int)resultat["id_gamme_minute_debut"];
+            }
+
+            resultat.Close();
+            BDDPandami.FermetureBDD();
+
+            return actReq;
+
 
         }
 
