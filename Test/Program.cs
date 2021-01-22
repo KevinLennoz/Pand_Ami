@@ -1,5 +1,8 @@
 ﻿using System;
 using Pand_Ami.Models;
+using System.Collections;
+using System.Collections.Generic;
+
 
 namespace Test
 {
@@ -9,17 +12,12 @@ namespace Test
         {
             Console.WriteLine("Hello World!");
             UtilisateurDAO dao = new UtilisateurDAO();
-            Utilisateur utilisateur = dao.UtilisateurFromBdd(2);
-            Utilisateur util = new Utilisateur();
-            util.NomUtil = "toto";
-            util.IdDesinscription = null;
-
-            if (utilisateur.IdDesinscription == null)
+            List<Utilisateur> utilisateurs = dao.UtilisateursFromBdd();
+            for (int i = 0; i < utilisateurs.Count; i++)
             {
-                Console.WriteLine("L'id est null");
-
+                Console.WriteLine("nom de l'utilisateur n°" + i + " : " + utilisateurs[i].NomUtil);
+                Console.WriteLine("Date desinscription de l'utilisateur n°" + i + " : " + utilisateurs[i].DateDesinscription);
             }
-           
         }
     }
 }
