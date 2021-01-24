@@ -1,0 +1,48 @@
+﻿body {
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 1vh;
+    padding: 1vh;
+    background-color: #ffffff;
+}
+.bienvenue {
+    font-family:'Segoe UI';
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 1vh;
+    padding: 1vh;
+}
+
+h1 {
+    font-weight: 900;
+}
+
+h3 {
+    font-weight: 500;
+    font-style: italic;
+}
+
+.boutons {
+    display: flex;
+    flex-direction: column;
+    padding: 1vh;
+    margin: 3vh;
+}
+
+.lesBoutons {
+    border-radius: 10px;
+    font-size: x-large;
+    color:black;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    margin: 3vh;
+    padding: 3vh;
+    box-shadow: 1px 1px 5px rgb(126, 126, 126);
+    background-color: lightgrey;
+}

@@ -80,7 +80,6 @@ namespace Pand_Ami.Models
             IdVille = (int?)dr["id_ville"]; //2
             //test d'abord sur la nullité en BDD : si  null, on instancie l'objet avec null en attribut
 
-
             if (!dr.IsDBNull(1))
             {
                 IdGenre = (int)dr["id_genre"];
