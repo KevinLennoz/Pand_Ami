@@ -5,7 +5,14 @@ using System.Threading.Tasks;
 
 namespace Pand_Ami.Models
 {
-    public class EJoursSemaine
+    public enum EJoursSemaine
     {
+            lundi,
+            mardi,
+            mercredi,
+            jeudi,
+            vendredi,
+            samedi,
+            dimanche,
     }
 }

@@ -13,6 +13,11 @@ namespace Pand_Ami.Controllers
     public class ActionController : Controller
     {
         // GET: HomeController2
+
+        public IActionResult Action()
+        {
+            return View("posterDemande");
+        }
         public ActionResult listeActions()
         {
             ActionDAO myDAO = new ActionDAO();
