@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace Pand_Ami.Models
 {
-    public class EMinutes
+    public enum EMinutes
     {
+        pile = 0,
+        trente = 30
     }
 }
+
