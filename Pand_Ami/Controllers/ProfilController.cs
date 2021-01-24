@@ -10,6 +10,12 @@ namespace Pand_Ami.Controllers
     public class ProfilController : Controller
     {
         // GET: HomeController1
+
+        public IActionResult Profil()
+        {
+            return View("gererProfil");
+        }
+
         public ActionResult Index()
         {
             return View();

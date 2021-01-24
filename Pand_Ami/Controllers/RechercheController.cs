@@ -15,6 +15,11 @@ namespace Pand_Ami.Controllers
             return View();
         }
 
+        public IActionResult Recherche()
+        {
+            return View("rechercherAction");
+        }
+
         // GET: HomeController1/Details/5
         public ActionResult Details(int id)
         {

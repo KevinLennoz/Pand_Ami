@@ -59,7 +59,7 @@ namespace Pand_Ami.Models
         }
 
         //recuperer un utilisateur via un champ
-        /*
+        
         public Utilisateur UtilisateurFromBdd(dynamic champ)
         {
             AccesBDD bdd = new AccesBDD();
@@ -74,7 +74,7 @@ namespace Pand_Ami.Models
             bdd.FermetureBDD();
             return utilisateur;
         }
-        */
+        
 
 
     }
