@@ -9,8 +9,7 @@ namespace Pand_Ami.Controllers
 {
     public class RechercheController : Controller
     {
-        // GET: HomeController1
-        public ActionResult Index()
+        public ActionResult RechercherAction()
         {
             return View();
         }
