@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Pand_Ami.Models.Referentiels;
 
 namespace Pand_Ami.Models
 {
@@ -136,8 +137,9 @@ namespace Pand_Ami.Models
 
         public override string ToString()
         {
+            Ville ville = new Ville(Id_ville);
             string tot = "";
-            tot += "Action : " + Id_action + ", par utilisateur " + Id_util + " au " + Voie_action + " de la ville" + Id_ville;
+            tot += "Action : " + Id_action + ", par utilisateur " + Id_util + " au " + Voie_action + " de la ville" + ville.NomVille;
             tot += " le " + Date_action;
 
             return tot;

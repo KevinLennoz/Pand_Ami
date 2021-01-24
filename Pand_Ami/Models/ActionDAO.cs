@@ -75,9 +75,39 @@ namespace Pand_Ami.Models
                 Action actTemp = new Action(resultat);
                 listeSortante.Add(actTemp);
             }
+            resultat.Close();
+            accesBDD.FermetureBDD();
+
             return listeSortante;
 
             }
+
+        public List<Action> RecupererListeActionsParUtil(int idUtil)
+        {
+            List<Action> listeSortante = new List<Action>();
+            AccesBDD accesBDD = new AccesBDD();
+            accesBDD.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.RecuperationActionParUtil", accesBDD.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_util", idUtil));
+
+            SqlDataReader resultat = cmd.ExecuteReader();
+
+            if (!resultat.HasRows)
+            {
+
+            }
+            while (resultat.Read())
+            {
+                Action actTemp = new Action(resultat);
+                listeSortante.Add(actTemp);
+            }
+            resultat.Close();
+            accesBDD.FermetureBDD();
+
+            return listeSortante;
+
+        }
 
         public string GetPremierString()
         {
