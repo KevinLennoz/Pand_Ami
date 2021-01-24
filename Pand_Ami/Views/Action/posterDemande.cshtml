@@ -3,3 +3,71 @@
 *@
 @{
 }
+
+<h1> Nouvelle demande d'action </h1>
+
+<article>
+    <form method="POST" action="">
+        <p>Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
+        <table>
+            <tr>
+                <td><label>Type de service :</label></td>
+                <td>
+                    <select id="idService" name="service" , asp-items="new SelectList(ViewBag.Activite)">
+                        <option value="">Service demandé</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Matériel requis :</label></td>
+                <td>
+                    <select id="idMateriel" name="materiel">
+                        <option value="">Matériel requis</option>
+                        <option>Pas de matériel possible pour le moment</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Date de réalisation :</label></td>
+                <td><input type="date" name="date" /></td>
+            </tr>
+
+            <tr>
+                <td><label>Horaire de réalisation :</label></td>
+                <td>
+                    <select id="idHeureDebut" name="HeureDebut" , asp-items="new SelectList(ViewBag.heures)">
+                        <option value="">hh</option>
+                    </select>
+                    <select id="idMinuteDebut" name="MinuteDebut" , asp-items="new SelectList(ViewBag.minutes)">
+                        <option value="">mm</option>
+                    </select>
+                    <select id="idHeureFin" name="HeureFin" , asp-items="new SelectList(ViewBag.heures)">
+                        <option value="">hh</option>
+                    </select>
+                    <select id="idMinuteFin" name="MinuteFin" , asp-items="new SelectList(ViewBag.minutes)">
+                        <option value="">mm</option>
+                    </select>
+            </tr>
+            <tr>
+                <td><label>Ville et code postal :</label></td>
+                <td>
+                    <select id="idVille" name="Ville" , asp-items="new SelectList(ViewBag.villeLabel)">
+                        <option value="">Ville</option>
+                    </select>
+                    <select id="idCP" name="CodePostal" , asp-items="new SelectList(ViewBag.CP)">
+                        <option value="">Code Postal</option>
+                    </select>
+                </td>
+            <tr />
+            <tr>
+                <td><label>Adresse de réalisation :</label></td>
+                <td><input id="idAdresse" type="text" /></td>
+            </tr>
+        </table>
+
+        <input type="checkbox" id="Recurence" name="option" />
+        <label>Cochez si la demande est récurrente :</label>
+        <br />
+        <input type="button" value="valider" onclick="" />
+    </form>
+</article>

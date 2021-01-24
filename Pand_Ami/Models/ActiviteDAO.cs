@@ -49,5 +49,34 @@ namespace Pand_Ami.Models
 
             return monActivite;
         }
+
+
+        public List<Activite> RecupererListeActivites()
+        {
+            List<Activite> listeSortante = new List<Activite>();
+            string maRequete = "SELECT * FROM activite";
+            SqlCommand cmd = new SqlCommand();
+            AccesBDD accesBDD = new AccesBDD();
+            accesBDD.OuvertureBDD();
+            cmd.Connection = accesBDD.Cnx;
+            cmd.CommandText = maRequete;
+            SqlDataReader resultat = cmd.ExecuteReader();
+
+            if (!resultat.HasRows)
+            {
+
+            }
+            while (resultat.Read())
+            {
+                Activite actTemp = new Activite((int)resultat["id_activite"], (int)resultat["Id_domaine_activite"],
+                    (string)resultat["Nom_activite"]);
+                listeSortante.Add(actTemp);
+            }
+            resultat.Close();
+            accesBDD.FermetureBDD();
+
+            return listeSortante;
+
+        }
     }
 }
