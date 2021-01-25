@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Pand_Ami.Models;
 using Action = Pand_Ami.Models.Action;
 using Pand_Ami.Models.Referentiels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Pand_Ami.Controllers
 {
@@ -39,11 +40,11 @@ namespace Pand_Ami.Controllers
             /*creation de la liste d'activites*/
             ActiviteDAO myActiviteDAO = new ActiviteDAO();
             List<Activite> maListeActiv = myActiviteDAO.RecupererListeActivites();
-            List<string> listeLabelActivite = new List<string>();
+            List<SelectListItem> listeLabelActivite = new List<SelectListItem>();
             /*Extraction de la liste de libellés d'activite pour les afficher*/
             foreach (var item in maListeActiv)
             {
-                listeLabelActivite.Add(item.Nom_activite);
+                listeLabelActivite.Add(new SelectListItem(item.Nom_activite, item.Id_activite.ToString()));
             }
             ViewBag.Activite = listeLabelActivite;
 
@@ -98,8 +99,17 @@ namespace Pand_Ami.Controllers
             return View();
         }
 
-        // GET: HomeController2/Details/5
-        public ActionResult Details(int id)
+
+        [HttpPost]
+        public ActionResult posterDemande(int idService, DateTime dateRealisation)
+        {
+            // enregistrer les infos en base
+
+            return View();
+        }
+
+            // GET: HomeController2/Details/5
+            public ActionResult Details(int id)
         {
             return View();
         }
