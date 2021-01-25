@@ -22,6 +22,13 @@ namespace Pand_Ami.Models
 
         }
 
+        public Reponse(int? idUtil, int? idAction, DateTime? dateReponse)
+        {
+            this.idUtil = idUtil;
+            this.idAction = idAction;
+            this.dateReponse = dateReponse;
+        }
+
         public Reponse(int? idUtil, int? idAction, int? motifDesist, DateTime? dateReponse, DateTime? dateSelection, DateTime? dateDesistement, DateTime? dateRejet)
         {
             this.IdUtil = idUtil;

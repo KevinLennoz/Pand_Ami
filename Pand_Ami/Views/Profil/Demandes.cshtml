@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/demandes.css">
+</head>
+<body>
+    <div>
+        <h1 id="titre">Mes demandes d'action</h1>
+    </div>
+    <br />
+    <main id="boxes">
+        <div>
+            <h3>Choisissez une action</h3>
+            <select name="demandes" id="demandes">
+                <option value="id_action1">22/03: Courses</option>
+                <option value="id_action2">23/03: Jardinage</option>
+                <option value="id_action3">24/03: Courses</option>
+                <option value="id_action4">25/03: Transport</option>
+            </select>
+        </div>
+        <br />
+        <div id="maLigne">
+            <div id="colonne">
+                <h2 id="h2">Demande 1 infos </h2>
+                <br />
+                <br />
+                <table id="table1">
+                    <tr onclick="myFunction(this)">
+                        <td>Type :</td>
+                        <td>Courses</td>
+                    </tr>
+                    <tr onclick="myFunction(this)">
+                        <td>Date et heure :</td>
+                        <td>05/03 à 16H00</td>
+                    </tr>
+                    <tr onclick="myFunction(this)">
+                        <td>Postée le :</td>
+                        <td>28/02</td>
+                    </tr>
+                    <tr onclick="myFunction(this)">
+                        <td>Matériel demandé :</td>
+                        <td>voiture</td>
+                    </tr>
+                    <tr onclick="myFunction(this)">
+                        <td>Bénévole choisi</td>
+                        <td>Robert</td>
+                    </tr>
+                </table>
+                <br />
+                <input class="btnSelect" type="button" value="annuler" />
+                <script>
+                    function myFunction(x) {
+                        alert("Row index is: " + x.rowIndex);
+                    }
+                </script>
+            </div>
+
+
+            <div id="colonne">
+                <h2 id="h2">Reponses</h2>
+                <br />
+                <br />
+                <div id="sousColonne">
+                    <table id="table2">
+                        <tr class>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="description">
+                                <p>02/03</p>
+                                <p>Toto</p>
+                                <p>Mont-Rouge</p>
+                            </div>
+                        </tr>
+                    </table>
+                </div>
+                <input class="btnSelect" type="button" value="choisir bénévole" />
+                <br />
+                <script>
+                    function myFunction(x) {
+                        alert("Row index is: " + x.rowIndex);
+                    }
+                </script>
+            </div>
+        </div>
+    </main> <!--A supprimer-->
+</body>
+</html>
