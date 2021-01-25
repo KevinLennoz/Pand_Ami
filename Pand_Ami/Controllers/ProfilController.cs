@@ -15,6 +15,10 @@ namespace Pand_Ami.Controllers
         {
             return View("gererProfil");
         }
+        public IActionResult Demandes()
+        {
+            return View("Demandes");
+        }
 
         public ActionResult Index()
         {
