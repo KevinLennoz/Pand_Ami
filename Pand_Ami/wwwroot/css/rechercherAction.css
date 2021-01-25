@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 
-body {
+#rechAction body {
     margin: 0;
     padding: 0;
     display: grid;
@@ -15,9 +15,9 @@ body {
     grid-template-areas: "titre titre" "menu actions";
 }
 
-.actualiser,
-.postuler,
-.annuler {
+#rechAction .actualiser,
+#rechAction .postuler,
+#rechAction .annuler {
     border: 0px;
     border-radius: 10px;
     height: 35px;
@@ -25,15 +25,15 @@ body {
     cursor: pointer;
 }
 
-.actualiser:hover,
-.postuler:hover,
-.annuler {
+#rechAction .actualiser:hover,
+#rechAction .postuler:hover,
+#rechAction .annuler {
     cursor: pointer;
 }
 /*----------------------------------------------------------PARAMETRES GENERALISES----------------------------------------------------------*/
 
 /*----------------------------------------------------------TITRE----------------------------------------------------------*/
-.titre {
+#rechAction .titre {
     background-color: #1a2238;
     font-size: 45px;
     color: white;
@@ -44,63 +44,63 @@ body {
 /*----------------------------------------------------------TITRE----------------------------------------------------------*/
 
 /*----------------------------------------------------------MENU RECHERCHE----------------------------------------------------------*/
-.menu {
+#rechAction .menu {
     background-color: #1a2238;
     grid-area: menu;
     color: white;
     border-top: 1px solid white;
 }
 
-.menu #titreRecherche {
+#rechAction .menu #titreRecherche {
     margin: 20px 0 60px 0;
     font-size: 25px;
     font-weight: bold;
 }
 
-.formRecherche {
+#rechAction .formRecherche {
     display: flex;
     flex-direction: column;
     margin: 0 40px;
 }
 
-.catRecherche {
+#rechAction .catRecherche {
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
 }
 
-.catRecherche label {
+#rechAction .catRecherche label {
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.services,
-.departements {
+#rechAction .services,
+#rechAction .departements {
     text-align: left;
     border: 1px solid lightgrey;
     height: 85px;
     overflow-y: scroll;
 }
 
-.actualiser {
+#rechAction .actualiser {
     margin: 40px auto 0 auto;
     width: 120px;
     background-color: #9daaf2;
     color: #1a2238;
 }
 
-.actualiser:hover {
+#rechAction .actualiser:hover {
     box-shadow: 0 0 10px #9daaf2;
 }
 /*----------------------------------------------------------MENU RECHERCHE----------------------------------------------------------*/
 
 /*----------------------------------------------------------ACTIONS----------------------------------------------------------*/
-.actions {
+#rechAction .actions {
     display: flex;
     flex-direction: column;
 }
 
-.titreActions {
+#rechAction .titreActions {
     display: flex;
     flex-direction: row;
     height: 50px;
@@ -109,29 +109,29 @@ body {
     color: #1a2238;
 }
 
-.titreActions label {
+#rechAction .titreActions label {
     padding-top: 13px;
 }
 
-.titreActions label:nth-child(1) {
+#rechAction .titreActions label:nth-child(1) {
     flex: 3;
     border-right: 1px solid #9daaf2;
 }
 
-.titreActions label:nth-child(2) {
+#rechAction .titreActions label:nth-child(2) {
     flex: 1;
     border-right: 1px solid #9daaf2;
 }
 
-.titreActions label:nth-child(3) {
+#rechAction .titreActions label:nth-child(3) {
     flex: 1;
 }
 
-.listeActions {
+#rechAction .listeActions {
     overflow-y: scroll;
 }
 
-.demande {
+#rechAction .demande {
     display: flex;
     flex-direction: row;
     height: 60px;
@@ -141,7 +141,7 @@ body {
     justify-content: center;
 }
 
-.description {
+#rechAction .description {
     display: flex;
     flex-direction: row;
     flex: 3;
@@ -152,91 +152,89 @@ body {
     overflow: hidden;
 }
 
-.description:hover {
+#rechAction .description:hover {
     box-shadow: 0 0 10px blue;
     cursor: pointer;
 }
 
-.description p {
+#rechAction .description p {
     border-right: 1px solid lightblue;
     padding: 0 10px;
 }
 
-.description p:nth-child(2) {
+#rechAction .description p:nth-child(2) {
     padding-left: 20px;
 }
 
-.description p:nth-last-child(1) {
+#rechAction .description p:nth-last-child(1) {
     border-right: 0px;
 }
 
-.description img:nth-last-child(1) {
+#rechAction .description img:nth-last-child(1) {
     align-items: flex-end;
 }
 
-.friend {
+#rechAction .friend {
     border: 2px solid #00ff00;
     box-shadow: 0px 0px 10px #00ff00;
 }
 
-.demande img {
+#rechAction .demande img {
     width: 47px;
 }
 
-.compatibilite {
+#rechAction .compatibilite {
     flex: 1;
 }
 
 /*Personnalisation de la barre de progression*/
-.compatibilite progress[value] {
+#rechAction .compatibilite progress[value] {
     -webkit-appearance: none;
-    appearance: none;
     -moz-appearance: none;
-    appearance: none;
     border: none;
     width: 10vw;
     height: 30px;
 }
 
-.compatibilite progress[value]::-webkit-progress-bar {
+#rechAction .compatibilite progress[value]::-webkit-progress-bar {
     background-color: #eee;
     border-radius: 2px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
-.compatibilite progress[value]::-webkit-progress-value {
+#rechAction .compatibilite progress[value]::-webkit-progress-value {
     background-image: -webkit-linear-gradient(left, #9daaf2, #1a2238);
     border-radius: 2px;
 }
 
-.compatibilite progress[value]::-webkit-progress-value::before {
+#rechAction .compatibilite progress[value]::-webkit-progress-value::before {
     content: '80%';
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.choix {
+#rechAction .choix {
     flex: 1;
 }
 
-.postuler {
+#rechAction .postuler {
     min-width: 150px;
     background-color: green;
     color: white;
 }
 
-.postuler:hover {
+#rechAction .postuler:hover {
     box-shadow: 0 0 10px rgb(0, 255, 0);
 }
 
-.annuler {
+#rechAction .annuler {
     min-width: 150px;
     background-color: red;
     color: white;
 }
 
-.annuler:hover {
+#rechAction .annuler:hover {
     box-shadow: 0 0 10px rgb(248, 63, 63);
 }
 /*----------------------------------------------------------ACTIONS----------------------------------------------------------*/
