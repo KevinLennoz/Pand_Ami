@@ -7,13 +7,13 @@
 <h1> Nouvelle demande d'action </h1>
 
 <article>
-    <form method="POST" action="">
+    <form method="POST">
         <p>Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
         <table>
             <tr>
                 <td><label>Type de service :</label></td>
                 <td>
-                    <select id="idService" name="service" , asp-items="new SelectList(ViewBag.Activite)">
+                    <select id="idService" name="idService" asp-items="ViewBag.Activite">
                         <option value="">Service demandé</option>
                     </select>
                 </td>
@@ -21,7 +21,7 @@
             <tr>
                 <td><label>Matériel requis :</label></td>
                 <td>
-                    <select id="idMateriel" name="materiel">
+                    <select id="idMateriel" name="idMateriel">
                         <option value="">Matériel requis</option>
                         <option>Pas de matériel possible pour le moment</option>
                     </select>
@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <td><label>Date de réalisation :</label></td>
-                <td><input type="date" name="date" /></td>
+                <td><input type="date" name="dateRealisation" /></td>
             </tr>
 
             <tr>
@@ -68,6 +68,6 @@
         <input type="checkbox" id="Recurence" name="option" />
         <label>Cochez si la demande est récurrente :</label>
         <br />
-        <input type="button" value="valider" onclick="" />
+        <input type="submit" value="valider" />
     </form>
 </article>
