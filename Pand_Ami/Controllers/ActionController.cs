@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Pand_Ami.Models;
 using Action = Pand_Ami.Models.Action;
+using Pand_Ami.Models.Referentiels;
 
 namespace Pand_Ami.Controllers
 {
@@ -27,6 +28,70 @@ namespace Pand_Ami.Controllers
             //List<Action> maListe = myDAO.RecupererListeActions();
             //ViewBag.data = maListe;
             ViewBag.data = myDAO.RecupererListeActionsParUtil(1);
+
+
+
+            return View();
+        }
+
+        public ActionResult posterDemande()
+        {
+            /*creation de la liste d'activites*/
+            ActiviteDAO myActiviteDAO = new ActiviteDAO();
+            List<Activite> maListeActiv = myActiviteDAO.RecupererListeActivites();
+            List<string> listeLabelActivite = new List<string>();
+            /*Extraction de la liste de libellés d'activite pour les afficher*/
+            foreach (var item in maListeActiv)
+            {
+                listeLabelActivite.Add(item.Nom_activite);
+            }
+            ViewBag.Activite = listeLabelActivite;
+
+
+
+            /*Chargement des minutes et heures*/
+
+            List<Heure> listeHeures = new List<Heure>();
+            List<int> listeHeuresLabel = new List<int>();
+
+            for (int i = 1; i <= 24; i++)
+            {
+                if(i > 6 && i < 22)
+                {
+                    listeHeures.Add(new Heure(i));
+                    listeHeuresLabel.Add(i);
+                }
+            }
+
+            List<Minute> listeMinutes = new List<Minute>();
+            List<int> listeMinutesLabel = new List<int>();
+
+            for (int i = 1; i <= 2; i++)
+            {
+                listeMinutes.Add(new Minute(i));
+                listeMinutesLabel.Add(new Minute(i).ValeurMinute);
+            }
+
+            ViewBag.heures = listeHeuresLabel;
+            ViewBag.minutes = listeMinutesLabel;
+
+            //Chargement des villes et Adresses postales
+            List<Ville> listeVilles = new List<Ville>();
+            List<int> listeCP = new List<int>();
+            List<string> listeVilleLabel = new List<string>();
+
+            for (int i = 1; i <= 3; i++)
+            {
+                Ville temp = new Ville(i);
+                listeVilles.Add(temp);
+                listeCP.Add(temp.CodePostal);
+                listeVilleLabel.Add(temp.NomVille);
+            }
+
+            ViewBag.villeLabel = listeVilleLabel;
+            ViewBag.CP = listeCP;
+
+
 
 
 
