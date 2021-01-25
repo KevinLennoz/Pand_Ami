@@ -38,10 +38,11 @@ h3 {
 .lesBoutons {
     border-radius: 10px;
     font-size: x-large;
-    color:black;
+    color: black;
     font-weight: bold;
     font-family: 'Segoe UI';
-    margin: 3vh;
+    margin: 3vh auto;
+    width: 40vw;
     padding: 3vh;
     box-shadow: 1px 1px 5px rgb(126, 126, 126);
     background-color: lightgrey;

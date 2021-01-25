@@ -3,15 +3,22 @@
     box-sizing: border-box;
 }
 
-#rechAction body {
+body {
+
+}
+
+.bodyContainer{
+    width: 100%;
+}
+
+#rechAction {
     margin: 0;
     padding: 0;
     display: grid;
-    height: 100vh;
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1;
     grid-template-columns: 300px 1fr;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 50px auto;
     grid-template-areas: "titre titre" "menu actions";
 }
 
@@ -38,7 +45,6 @@
     font-size: 45px;
     color: white;
     font-weight: bold;
-    padding: 10px;
     grid-area: titre;
 }
 /*----------------------------------------------------------TITRE----------------------------------------------------------*/
@@ -52,7 +58,7 @@
 }
 
 #rechAction .menu #titreRecherche {
-    margin: 20px 0 60px 0;
+    margin: 10px 0 30px 0;
     font-size: 25px;
     font-weight: bold;
 }
@@ -83,7 +89,7 @@
 }
 
 #rechAction .actualiser {
-    margin: 40px auto 0 auto;
+    margin: -10px auto 34px auto;
     width: 120px;
     background-color: #9daaf2;
     color: #1a2238;
@@ -128,6 +134,7 @@
 }
 
 #rechAction .listeActions {
+    height: 642px;
     overflow-y: scroll;
 }
 
