@@ -10,25 +10,7 @@ namespace Pand_Ami.Models
     public class ActionDAO
     {
 
-        public Action LireAction(int ID)
-        {
-            string maRequete = "SELECT * FROM action WHERE id_action = " + ID;
-            SqlCommand cmd = new SqlCommand();
-            AccesBDD accesBDD = new AccesBDD();
-            accesBDD.OuvertureBDD();
-            cmd.Connection = accesBDD.Cnx;
-            cmd.CommandText = maRequete;
-            cmd.CommandType = System.Data.CommandType.Text;
-            SqlDataReader resultat = cmd.ExecuteReader();
-            resultat.Read();
-            Action actReq = new Action(resultat);
-            resultat.Close();
-            accesBDD.FermetureBDD();
-            return actReq;
-
-        }
-
-        public Action LireAction_Test(int idAction)
+        public Action LireAction(int idAction)
         {
 
             AccesBDD BDDPandami = new AccesBDD();
