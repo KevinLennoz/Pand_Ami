@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rechercher Action</title>
     <link rel="stylesheet" href="~/css/rechercherAction.css">
+
 </head>
 <body>
     <div id="rechAction">
@@ -13,7 +14,6 @@
         <div class="menu">
             <div id="titreRecherche">Recherche Avancée</div>
             <form class="formRecherche">
-
                 <div class="catRecherche">
                     <label>Types de Services :</label>
                     <div class="services">
@@ -23,7 +23,6 @@
                         <input type="checkbox" /> Divertissement</br>
                     </div>
                 </div>
-
                 <div class="catRecherche">
                     <label>A partir du :</label>
                     <input type="date" id="from" name="from" />
@@ -57,286 +56,38 @@
 
                 <input type="button" class="actualiser" value="Actualiser" />
 
+
+                <div class="actions">
+                    <div class="titreActions">
+                        <label>Actions</label>
+                        <label>Compatibilité</label>
+                        <label>Choix</label>
+                    </div>
+                    <div class="listeActions">
+
+
+                    </div>
+                </div>
             </form>
         </div>
-        <div class="actions">
-            <div class="titreActions">
-                <label>Actions</label>
-                <label>Compatibilité</label>
-                <label>Choix</label>
-            </div>
-            <div class="listeActions">
-                <div class="demande">
-                    <div class="description friend">
-                        <img src="~/img/~/img/favoris.svg">
-                        <img src="~/img/courses.svg" class="courses">
-                        <p>Linda</p>
-                        <p>Livraison de courses</p>
-                        <p>02/02/2020 de 16h30 à 17h30</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="98"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="annuler" type="button" value="Annuler" />
-                    </div>
+        @foreach (var actionAffichage in ViewBag.lesActionsAffichages)
+        {
+            <div class="demande">
+                <div class="description friend">
+                    <!-- ajouter les images avec un if -->
+                    <p>@actionAffichage.NomUtilisateur</p>
+                    <p>@actionAffichage.NomActivite</p>
+                    <p>@actionAffichage.DateAction.ToString("MM/dd/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
+                    <p>@actionAffichage.NomVille</p>
                 </div>
-                <div class="demande">
-
-                    <div class="description friend">
-                        <img src="~/img/favoris.svg">
-                        <img src="~/img/voiture.svg" class="voitures">
-                        <p>Roch</p>
-                        <p>Rendez-vous médical</p>
-                        <p>08/02/2020 de 10h00 à 12h00</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="95"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
+                <div class="compatibilite">
+                    <progress class="" max="100" value="98"></progress>
                 </div>
-                <div class="demande">
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Raphaël</p>
-                        <p>Jeux-vidéo</p>
-                        <p>10/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="90"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Floriane</p>
-                        <p>Promenade</p>
-                        <p>06/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="85"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="annuler" type="button" value="Annuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/courses.svg" class="courses">
-                        <p>Linda</p>
-                        <p>Livraison de courses</p>
-                        <p>02/02/2020 de 16h30 à 17h30</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="84"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/voiture.svg" class="voitures">
-                        <p>Roch</p>
-                        <p>Rendez-vous médical</p>
-                        <p>08/02/2020 de 10h00 à 12h00</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="80"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/outils.svg" class="outils">
-                        <p>Jean-edmon</p>
-                        <p>Entretien ménager</p>
-                        <p>04/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="75"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Floriane</p>
-                        <p>Promenade</p>
-                        <p>06/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="70"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/courses.svg" class="courses">
-                        <p>Linda</p>
-                        <p>Livraison de courses</p>
-                        <p>02/02/2020 de 16h30 à 17h30</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="65"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Raphaël</p>
-                        <p>Jeux-vidéo</p>
-                        <p>10/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="60"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/outils.svg" class="outils">
-                        <p>Jean-edmon</p>
-                        <p>Entretien ménager</p>
-                        <p>04/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="50"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Floriane</p>
-                        <p>Promenade</p>
-                        <p>06/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="40"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/voiture.svg" class="voitures">
-                        <p>Roch</p>
-                        <p>Rendez-vous médical</p>
-                        <p>08/02/2020 de 10h00 à 12h00</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="30"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Floriane</p>
-                        <p>Promenade</p>
-                        <p>06/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="20"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/outils.svg" class="outils">
-                        <p>Jean-edmon</p>
-                        <p>Entretien ménager</p>
-                        <p>04/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="10"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
+                <div class="choix">
+                    <input class="postuler" type="button" value="Postuler" />
                 </div>
             </div>
-        </div>
+        }
     </div>
 </body>
 </html>
