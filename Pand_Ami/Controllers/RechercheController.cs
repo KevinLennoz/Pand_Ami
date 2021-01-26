@@ -8,6 +8,7 @@ using Pand_Ami.Models;
 using Action = Pand_Ami.Models.Action;
 using Utilisateur = Pand_Ami.Models.Utilisateur;
 using Reponse = Pand_Ami.Models.Reponse;
+using Ville = Pand_Ami.Models.Referentiels.Ville;
 
 namespace Pand_Ami.Controllers
 {
@@ -16,10 +17,15 @@ namespace Pand_Ami.Controllers
 
         public ActionResult afficherActions()
         {
-            ActionDAO dao = new ActionDAO();
-            ViewBag.lesActionsAffichages = dao.ActionAffichagesFromBdd();
+            ActionDAO daoAction = new ActionDAO();
+            ViewBag.lesActionsAffichages = daoAction.ActionAffichagesFromBdd();
+            ActiviteDAO daoActivite = new ActiviteDAO();
+            ViewBag.listeActivites = daoActivite.RecupererListeActivites();
+            Ville ville = new Ville();
+            ViewBag.villes = ville.recupererVilles();
             return View("rechercherAction");
         }
+
         public ActionResult RechercherAction()
         {
             return View();

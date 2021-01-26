@@ -25,6 +25,26 @@ namespace Pand_Ami.Models
         {
         }
 
+        public Activite(SqlDataReader dr)
+        {
+            if(!dr.IsDBNull(dr.GetOrdinal("id_activite")))
+            {
+                Id_activite = (int)dr["id_activite"];
+            }
+            if(!dr.IsDBNull(dr.GetOrdinal("id_domaine_activite")))
+            {
+                Id_domaine_activite = (int)dr["id_domaine_activite"];
+            }
+            if (!dr.IsDBNull(dr.GetOrdinal("id_materiel")))
+            {
+                Id_materiel = (int)dr["id_materiel"];
+            }
+            if (!dr.IsDBNull(dr.GetOrdinal("nom_activite")))
+            {
+                Nom_activite = (string)dr["nom_activite"];
+            }
+        }
+
         public int Id_activite { get; set; }
         public int Id_domaine_activite { get; set; }
         public int Id_materiel { get; set; }
