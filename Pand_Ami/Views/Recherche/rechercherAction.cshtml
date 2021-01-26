@@ -3,13 +3,13 @@
     <div class="titre">RECHERCHE D'UNE ACTION</div>
     <div class="menu">
         <div id="titreRecherche">Recherche Avancée</div>
-        <form class="formRecherche">
+        <form class="formRecherche" method="post">
             <div class="catRecherche">
                 <label>Types de Services :</label>
                 <div class="services">
                     @foreach (var activite in ViewBag.listeActivites)
                     {
-                        <input type="checkbox" />@activite.Nom_activite<br />
+                        <input type="radio" name="radioActivite" value="@activite.Id_activite" />@activite.Nom_activite<br />
                     }
                 </div>
             </div>
@@ -26,10 +26,9 @@
             <div class="catRecherche">
                 <label> Villes :</label>
                 <div class="departements">
-                    @foreach (var ville in ViewBag.villes)
-                    {
-                        <input type="checkbox" name="cbVille" /> @ville.CodePostal @ville.NomVille<br />
-                    }
+                    <select id="lstVille" name="lstVille" , asp-items="ViewBag.villes">
+                        <option value="">Ville</option>
+                    </select>
                 </div>
             </div>
 
@@ -40,7 +39,7 @@
                 <output name="compValue" for="rangeComp"></output>
             </div>
 
-            <input type="button" class="actualiser" value="Actualiser" />
+            <input type="submit" class="actualiser" value="Actualiser" />
         </form>
     </div>
     <div class="actions">

@@ -110,5 +110,24 @@ namespace Pand_Ami.Models
 
             return listeSortante;
         }
+
+        public List<ReponseAffichage> RecupererReponsesAffichage(int idAction)
+        {
+            List<ReponseAffichage> reponsesAffichages = new List<ReponseAffichage>();
+            AccesBDD bdd = new AccesBDD();
+            bdd.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.afficherListeReponse", bdd.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ReponseAffichage reponse = new ReponseAffichage(dr);
+                reponsesAffichages.Add(reponse);
+            }
+            dr.Close();
+            bdd.FermetureBDD();
+            return reponsesAffichages;
+        }
     }
 }
