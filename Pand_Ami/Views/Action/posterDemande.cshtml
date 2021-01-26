@@ -5,12 +5,13 @@
 }
 
 <div id="bodyPosterDemande">
-    <h1> Nouvelle demande d'action </h1>
+    <h1 id="idH1"> Nouvelle demande d'action </h1>
 
-    <article>
-        <form method="POST">
-            <p>Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
-            <table>
+    <article id="idArticle">
+
+        <form method="POST" id="idForm">
+            <p id="idParagraphe1">Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
+            <table id="idTable">
                 <tr>
                     <td><label>Type de service :</label></td>
                     <td>
@@ -66,12 +67,12 @@
                     <td><input id="txtAdresse" name="txtAdresse" type="text" /></td>
                 </tr>
             </table>
-
-            <label>Cochez si la demande est récurrente :</label>
-            @Html.CheckBox("ckbRecurrence", false)
-
+            <div id="idRecur">
+                <label>Cochez si la demande est récurrente : </label>
+                @Html.CheckBox("ckbRecurrence", false)
+            </div>
             <br />
-            <input type="submit" value="valider" />
+            <input id="idSubmit" type="submit" value="valider" />
         </form>
     </article>
 </div>
