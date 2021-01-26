@@ -45,27 +45,27 @@ namespace Pand_Ami.Models
         public Reponse(SqlDataReader dr)
         {
             IdUtil = (int?)dr["id_utilisateur"]; //0
-            if(!dr.IsDBNull(1))
+            if(!dr.IsDBNull(dr.GetOrdinal("id_action")))
             {
                 idAction = (int)dr["id_action"];
             }
-            if (!dr.IsDBNull(2))
+            if (!dr.IsDBNull(dr.GetOrdinal("id_motif_desistement")))
             {
                 idMotifDesist = (int)dr["id_motif_desistement"];
             }
-            if (!dr.IsDBNull(3))
+            if (!dr.IsDBNull(dr.GetOrdinal("date_reponse")))
             {
                 DateReponse = (DateTime)dr["date_reponse"];
             }
-            if (!dr.IsDBNull(4))
+            if (!dr.IsDBNull(dr.GetOrdinal("date_selection")))
             {
                 DateSelection = (DateTime)dr["date_selection"];
             }
-            if (!dr.IsDBNull(5))
+            if (!dr.IsDBNull(dr.GetOrdinal("date_desistement")))
             {
                 dateDesistement = (DateTime)dr["date_desistement"];
             }
-            if (!dr.IsDBNull(6))
+            if (!dr.IsDBNull(dr.GetOrdinal("date_rejet")))
             {
                 dateRejet = (DateTime)dr["date_rejet"];
             }

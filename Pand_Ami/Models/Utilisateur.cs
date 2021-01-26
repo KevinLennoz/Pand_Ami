@@ -80,59 +80,59 @@ namespace Pand_Ami.Models
             IdVille = (int?)dr["id_ville"]; //2
             //test d'abord sur la nullité en BDD : si  null, on instancie l'objet avec null en attribut
 
-            if (!dr.IsDBNull(1))
+            if (!dr.IsDBNull(dr.GetOrdinal("id_genre")))
             {
                 IdGenre = (int)dr["id_genre"];
             }
-            if (!dr.IsDBNull(3))
+            if (!dr.IsDBNull(dr.GetOrdinal("id_desinscription")))
             {
                 IdDesinscription = (int)dr["id_desinscription"];
             }
-            if (!dr.IsDBNull(4))
+            if (!dr.IsDBNull(dr.GetOrdinal("nom_util")))
             {
                 NomUtil = (string)dr["nom_util"];
             }
-            if (!dr.IsDBNull(5))
+            if (!dr.IsDBNull(dr.GetOrdinal("prenom_util")))
             {
                 PrenomUtil = (string)dr["prenom_util"];
             }
-            if (!dr.IsDBNull(6))
+            if (!dr.IsDBNull(dr.GetOrdinal("date_naissance")))
             {
                 DateNaissance = (DateTime)dr["date_naissance"];
             }
-            if (!dr.IsDBNull(7))
+            if (!dr.IsDBNull(dr.GetOrdinal("email_util")))
             {
                 EmailUtil = (string)dr["email_util"];
             }
-            if (!dr.IsDBNull(8))
+            if (!dr.IsDBNull(dr.GetOrdinal("tel_util")))
             {
                 TelUtil = (string)dr["tel_util"];
             }
-            if (!dr.IsDBNull(9))
+            if (!dr.IsDBNull(dr.GetOrdinal("voie_util")))
             {
                 VoieUtil = (string)dr["voie_util"];
             }
-            if (!dr.IsDBNull(10))
+            if (!dr.IsDBNull(dr.GetOrdinal("mdp_util")))
             {
                 MdpUtil = (string)dr["mdp_util"];
             }
-            if (!dr.IsDBNull(11))
+            if (!dr.IsDBNull(dr.GetOrdinal("date_inscri_util")))
             {
                 DateInscription = (DateTime)dr["date_inscri_util"];
             }
-            if (!dr.IsDBNull(12))
+            if (!dr.IsDBNull(dr.GetOrdinal("nom_contact_urg")))
             {
                 NomContactUrgence = (string)dr["nom_contact_urg"];
             }
-            if (!dr.IsDBNull(13))
+            if (!dr.IsDBNull(dr.GetOrdinal("prenom_contact_urg")))
             {
                 PrenomContactUrgence = (string)dr["prenom_contact_urg"];
             }
-            if (!dr.IsDBNull(14))
+            if (!dr.IsDBNull(dr.GetOrdinal("tel_contact_urg")))
             {
                 TelContactUrgence = (string)dr["tel_contact_urg"];
             }
-            if (!dr.IsDBNull(15))
+            if (!dr.IsDBNull(dr.GetOrdinal("date_desinscription")))
             {
                 DateDesinscription = (DateTime)dr["date_desinscription"];
             }

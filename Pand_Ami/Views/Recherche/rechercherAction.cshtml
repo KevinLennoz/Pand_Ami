@@ -7,33 +7,29 @@
             <div class="catRecherche">
                 <label>Types de Services :</label>
                 <div class="services">
-                    <input type="checkbox" /> Livraison de biens</br>
-                    <input type="checkbox" /> Transport de personne</br>
-                    <input type="checkbox" /> Entretien</br>
-                    <input type="checkbox" /> Divertissement</br>
+                    @foreach (var activite in ViewBag.listeActivites)
+                    {
+                        <input type="checkbox" />@activite.Nom_activite<br />
+                    }
                 </div>
             </div>
             <div class="catRecherche">
                 <label>A partir du :</label>
-                <input type="date" id="from" name="from" />
+                <input type="date" id="from" name="dateFrom" />
             </div>
 
             <div class="catRecherche">
                 <label>Jusqu'au :</label>
-                <input type="date" id="to" name="to" />
+                <input type="date" id="to" name="dateTo" />
             </div>
 
             <div class="catRecherche">
-                <label>Départements :</label>
+                <label> Villes :</label>
                 <div class="departements">
-                    <input type="checkbox" /> 75 - Paris</br>
-                    <input type="checkbox" /> 77 - Seine-et-Marne</br>
-                    <input type="checkbox" /> 78 - Yvelines</br>
-                    <input type="checkbox" /> 91 - Essonne</br>
-                    <input type="checkbox" /> 92 - Hauts-de-Seine</br>
-                    <input type="checkbox" /> 93 - Seine-Saint-Denis</br>
-                    <input type="checkbox" /> 94 - Val-de-Marne</br>
-                    <input type="checkbox" /> 95 - Val-d'Oise</br>
+                    @foreach (var ville in ViewBag.villes)
+                    {
+                        <input type="checkbox" name="cbVille"/> @ville.CodePostal @ville.NomVille<br />
+                    }
                 </div>
             </div>
 
@@ -47,33 +43,33 @@
             <input type="button" class="actualiser" value="Actualiser" />
         </form>
     </div>
-            <div class="actions">
-                <div class="titreActions">
-                    <label>Actions</label>
-                    <label>Compatibilité</label>
-                    <label>Choix</label>
-                </div>
-                <div class="listeActions">
+    <div class="actions">
+        <div class="titreActions">
+            <label>Actions</label>
+            <label>Compatibilité</label>
+            <label>Choix</label>
+        </div>
+        <div class="listeActions">
 
-                    @foreach (var actionAffichage in ViewBag.lesActionsAffichages)
-                    {
-                        <div class="demande">
-                            <div class="description friend">
-                                <!-- ajouter les images avec un if -->
-                                <p>@actionAffichage.NomUtilisateur</p>
-                                <p>@actionAffichage.NomActivite</p>
-                                <p>@actionAffichage.DateAction.ToString("MM/dd/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
-                                <p>@actionAffichage.NomVille</p>
-                            </div>
-                            <div class="compatibilite">
-                                <progress class="" max="100" value="98"></progress>
-                            </div>
-                            <div class="choix">
-                                <input class="postuler" type="button" value="Postuler" />
-                            </div>
-                        </div>
-                    }
-                    
+            @foreach (var actionAffichage in ViewBag.lesActionsAffichages)
+            {
+                <div class="demande">
+                    <div class="description friend">
+                        <!-- ajouter les images avec un if -->
+                        <p>@actionAffichage.NomUtilisateur</p>
+                        <p>@actionAffichage.NomActivite</p>
+                        <p>@actionAffichage.DateAction.ToString("MM/dd/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
+                        <p>@actionAffichage.NomVille</p>
+                    </div>
+                    <div class="compatibilite">
+                        <progress class="" max="100" value="98"></progress>
+                    </div>
+                    <div class="choix">
+                        <input class="postuler" type="button" value="Postuler" />
+                    </div>
                 </div>
-            </div>
+            }
+
+        </div>
+    </div>
 </div>
