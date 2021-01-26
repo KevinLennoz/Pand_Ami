@@ -151,5 +151,24 @@ namespace Pand_Ami.Models
             return prochainID;
         }
 
+        //methodes pour hydrater les objets ActionAffichage : 
+
+        public List<ActionAffichage> ActionAffichagesFromBdd()
+        {
+            List<ActionAffichage> lesActionsAffichages = new List<ActionAffichage>();
+            AccesBDD bdd = new AccesBDD();
+            bdd.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.recupererToutesActionsPourRecherche", bdd.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ActionAffichage actionAff = new ActionAffichage(dr);
+                lesActionsAffichages.Add(actionAff);
+            }
+            bdd.FermetureBDD();
+            return lesActionsAffichages;
+        }
+
     }
 }

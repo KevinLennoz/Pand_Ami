@@ -4,11 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Pand_Ami.Models;
+using Action = Pand_Ami.Models.Action;
+using Utilisateur = Pand_Ami.Models.Utilisateur;
+using Reponse = Pand_Ami.Models.Reponse;
 
 namespace Pand_Ami.Controllers
 {
     public class RechercheController : Controller
     {
+
+        public ActionResult afficherActions()
+        {
+            ActionDAO dao = new ActionDAO();
+            ViewBag.lesActionsAffichages = dao.ActionAffichagesFromBdd();
+            return View("rechercherAction");
+        }
         public ActionResult RechercherAction()
         {
             return View();

@@ -1,342 +1,79 @@
-﻿<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rechercher Action</title>
-    <link rel="stylesheet" href="~/css/rechercherAction.css">
-</head>
-<body>
-    <div id="rechAction">
-        <div class="titre">RECHERCHE D'UNE ACTION</div>
-        <div class="menu">
-            <div id="titreRecherche">Recherche Avancée</div>
-            <form class="formRecherche">
-
-                <div class="catRecherche">
-                    <label>Types de Services :</label>
-                    <div class="services">
-                        <input type="checkbox" /> Livraison de biens</br>
-                        <input type="checkbox" /> Transport de personne</br>
-                        <input type="checkbox" /> Entretien</br>
-                        <input type="checkbox" /> Divertissement</br>
-                    </div>
-                </div>
-
-                <div class="catRecherche">
-                    <label>A partir du :</label>
-                    <input type="date" id="from" name="from" />
-                </div>
-
-                <div class="catRecherche">
-                    <label>Jusqu'au :</label>
-                    <input type="date" id="to" name="to" />
-                </div>
-
-                <div class="catRecherche">
-                    <label>Départements :</label>
-                    <div class="departements">
-                        <input type="checkbox" /> 75 - Paris</br>
-                        <input type="checkbox" /> 77 - Seine-et-Marne</br>
-                        <input type="checkbox" /> 78 - Yvelines</br>
-                        <input type="checkbox" /> 91 - Essonne</br>
-                        <input type="checkbox" /> 92 - Hauts-de-Seine</br>
-                        <input type="checkbox" /> 93 - Seine-Saint-Denis</br>
-                        <input type="checkbox" /> 94 - Val-de-Marne</br>
-                        <input type="checkbox" /> 95 - Val-d'Oise</br>
-                    </div>
-                </div>
-
-                <div class="catRecherche">
-                    <label>Compatibilité minimale :</label>
-                    <input type="range" id="rangeComp" name="rangeComp" value="50" min="0" max="100"
-                           onchange="compValue.value=parseInt(rangeComp.value)" />
-                    <output name="compValue" for="rangeComp"></output>
-                </div>
-
-                <input type="button" class="actualiser" value="Actualiser" />
-
-            </form>
-        </div>
-        <div class="actions">
-            <div class="titreActions">
-                <label>Actions</label>
-                <label>Compatibilité</label>
-                <label>Choix</label>
-            </div>
-            <div class="listeActions">
-                <div class="demande">
-                    <div class="description friend">
-                        <img src="~/img/~/img/favoris.svg">
-                        <img src="~/img/courses.svg" class="courses">
-                        <p>Linda</p>
-                        <p>Livraison de courses</p>
-                        <p>02/02/2020 de 16h30 à 17h30</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="98"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="annuler" type="button" value="Annuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description friend">
-                        <img src="~/img/favoris.svg">
-                        <img src="~/img/voiture.svg" class="voitures">
-                        <p>Roch</p>
-                        <p>Rendez-vous médical</p>
-                        <p>08/02/2020 de 10h00 à 12h00</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="95"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Raphaël</p>
-                        <p>Jeux-vidéo</p>
-                        <p>10/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="90"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Floriane</p>
-                        <p>Promenade</p>
-                        <p>06/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="85"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="annuler" type="button" value="Annuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/courses.svg" class="courses">
-                        <p>Linda</p>
-                        <p>Livraison de courses</p>
-                        <p>02/02/2020 de 16h30 à 17h30</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="84"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/voiture.svg" class="voitures">
-                        <p>Roch</p>
-                        <p>Rendez-vous médical</p>
-                        <p>08/02/2020 de 10h00 à 12h00</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="80"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/outils.svg" class="outils">
-                        <p>Jean-edmon</p>
-                        <p>Entretien ménager</p>
-                        <p>04/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="75"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Floriane</p>
-                        <p>Promenade</p>
-                        <p>06/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="70"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/courses.svg" class="courses">
-                        <p>Linda</p>
-                        <p>Livraison de courses</p>
-                        <p>02/02/2020 de 16h30 à 17h30</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="65"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Raphaël</p>
-                        <p>Jeux-vidéo</p>
-                        <p>10/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="60"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/outils.svg" class="outils">
-                        <p>Jean-edmon</p>
-                        <p>Entretien ménager</p>
-                        <p>04/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="50"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Floriane</p>
-                        <p>Promenade</p>
-                        <p>06/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="40"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/voiture.svg" class="voitures">
-                        <p>Roch</p>
-                        <p>Rendez-vous médical</p>
-                        <p>08/02/2020 de 10h00 à 12h00</p>
-                        <p>Arcueil (94)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="30"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/jeux.svg" class="jeux">
-                        <p>Floriane</p>
-                        <p>Promenade</p>
-                        <p>06/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="20"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
-                </div>
-                <div class="demande">
-
-                    <div class="description">
-                        <img src="~/img/outils.svg" class="outils">
-                        <p>Jean-edmon</p>
-                        <p>Entretien ménager</p>
-                        <p>04/02/2020 de 10h00 à 12h00</p>
-                        <p>Montrouge (92)</p>
-                    </div>
-
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="10"></progress>
-                    </div>
-
-                    <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
-                    </div>
+﻿
+<div id="rechAction">
+    <div class="titre">RECHERCHE D'UNE ACTION</div>
+    <div class="menu">
+        <div id="titreRecherche">Recherche Avancée</div>
+        <form class="formRecherche">
+            <div class="catRecherche">
+                <label>Types de Services :</label>
+                <div class="services">
+                    <input type="checkbox" /> Livraison de biens</br>
+                    <input type="checkbox" /> Transport de personne</br>
+                    <input type="checkbox" /> Entretien</br>
+                    <input type="checkbox" /> Divertissement</br>
                 </div>
             </div>
-        </div>
+            <div class="catRecherche">
+                <label>A partir du :</label>
+                <input type="date" id="from" name="from" />
+            </div>
+
+            <div class="catRecherche">
+                <label>Jusqu'au :</label>
+                <input type="date" id="to" name="to" />
+            </div>
+
+            <div class="catRecherche">
+                <label>Départements :</label>
+                <div class="departements">
+                    <input type="checkbox" /> 75 - Paris</br>
+                    <input type="checkbox" /> 77 - Seine-et-Marne</br>
+                    <input type="checkbox" /> 78 - Yvelines</br>
+                    <input type="checkbox" /> 91 - Essonne</br>
+                    <input type="checkbox" /> 92 - Hauts-de-Seine</br>
+                    <input type="checkbox" /> 93 - Seine-Saint-Denis</br>
+                    <input type="checkbox" /> 94 - Val-de-Marne</br>
+                    <input type="checkbox" /> 95 - Val-d'Oise</br>
+                </div>
+            </div>
+
+            <div class="catRecherche">
+                <label>Compatibilité minimale :</label>
+                <input type="range" id="rangeComp" name="rangeComp" value="50" min="0" max="100"
+                       onchange="compValue.value=parseInt(rangeComp.value)" />
+                <output name="compValue" for="rangeComp"></output>
+            </div>
+
+            <input type="button" class="actualiser" value="Actualiser" />
+        </form>
     </div>
-</body>
-</html>
+            <div class="actions">
+                <div class="titreActions">
+                    <label>Actions</label>
+                    <label>Compatibilité</label>
+                    <label>Choix</label>
+                </div>
+                <div class="listeActions">
+
+                    @foreach (var actionAffichage in ViewBag.lesActionsAffichages)
+                    {
+                        <div class="demande">
+                            <div class="description friend">
+                                <!-- ajouter les images avec un if -->
+                                <p>@actionAffichage.NomUtilisateur</p>
+                                <p>@actionAffichage.NomActivite</p>
+                                <p>@actionAffichage.DateAction.ToString("MM/dd/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
+                                <p>@actionAffichage.NomVille</p>
+                            </div>
+                            <div class="compatibilite">
+                                <progress class="" max="100" value="98"></progress>
+                            </div>
+                            <div class="choix">
+                                <input class="postuler" type="button" value="Postuler" />
+                            </div>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+</div>

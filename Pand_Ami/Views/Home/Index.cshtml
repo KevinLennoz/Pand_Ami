@@ -2,15 +2,10 @@
     ViewData["Title"] = "Page d'accueil";
 }
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Accueil</title>
     <meta name="description" content="page d'accueil de l'application Pand'Ami">
     <meta name="keywords" content="association, entraide, pand'ami, pandémie, local">
     <meta name="author" content="Floriane Ahadi, Roch Jacquot, Kevin Lennoz, Raphael Louvet">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/accueilPandAmi.css"/>
 </head>
 <body>
     <div class="bienvenue">
@@ -18,8 +13,8 @@
         <h3> Choisissez une action : </h3>
     </div>
     <div class="boutons">
-        <a class="lesBoutons" asp-area="" asp-controller="Action" asp-action="Action">POSTER UNE DEMANDE</a>
-        <a class="lesBoutons" asp-area="" asp-controller="Recherche" asp-action="Recherche">RECHERCHER UNE ACTION</a>
+        <a class="lesBoutons" asp-area="" asp-controller="Action" asp-action="posterDemande">POSTER UNE DEMANDE</a>
+        <a class="lesBoutons" asp-area="" asp-controller="Recherche" asp-action="afficherActions">RECHERCHER UNE ACTION</a>
         <a class="lesBoutons" asp-area="" asp-controller="Profil" asp-action="Profil">GERER MON PROFIL</a>
     </div>
 </body>
