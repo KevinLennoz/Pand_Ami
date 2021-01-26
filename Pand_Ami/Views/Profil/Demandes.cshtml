@@ -63,116 +63,13 @@
                 <div id="sousColonne">
                     <table id="table2">
                         <tr class>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="description">
-                                <p>02/03</p>
-                                <p>Toto</p>
-                                <p>Mont-Rouge</p>
-                            </div>
+                            @foreach (var reponse in ViewBag.lesReponses)
+                            {
+                                <div class="description">
+                                    <p>Date Reponse : @reponse.DateReponse.ToString("dd-MM-yyyy")</p>
+                                    <p>Volontaire : @reponse.PrenomVolontaire @reponse.NomVolontaire ( @reponse.Age ) </p>
+                                </div>
+                            }
                         </tr>
                     </table>
                 </div>
