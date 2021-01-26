@@ -84,6 +84,31 @@ namespace Pand_Ami.Models
 
         }
 
+        //Méthode pour la liste des dates et activités d'un utilisateur (pour l'afficher sur son profil)
+        public List<ActionsBenef> RecupererListeActivitesEtDatesParUtil(int idUtil)
+        {
+            List<ActionsBenef> listeSortante = new List<ActionsBenef>();
+            AccesBDD accesBDD = new AccesBDD();
+            accesBDD.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.recupererDateActivitePourProfil", accesBDD.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_util", idUtil));
+
+            SqlDataReader resultat = cmd.ExecuteReader();
+            
+            if (!resultat.HasRows)
+            {
+
+            }
+            while (resultat.Read())
+            {
+                ActionsBenef actTemp = new ActionsBenef(resultat);
+                listeSortante.Add(actTemp);
+            }
+            resultat.Close();
+            accesBDD.FermetureBDD();
+            return listeSortante;
+        }
         public string GetPremierString()
         {
             string voie;

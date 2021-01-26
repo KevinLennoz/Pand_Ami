@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Pand_Ami.Models;
+using Action = Pand_Ami.Models.Action;
 
 namespace Pand_Ami.Controllers
 {
@@ -17,6 +19,10 @@ namespace Pand_Ami.Controllers
         }
         public IActionResult Demandes()
         {
+            ActionDAO dao = new ActionDAO();
+            List<Action> actionUtilisateur = new List<Action>();
+
+            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
             return View("Demandes");
         }
 

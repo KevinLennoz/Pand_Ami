@@ -12,10 +12,10 @@
         <div>
             <h3>Choisissez une action</h3>
             <select name="demandes" id="demandes">
-                <option value="id_action1">22/03: Courses</option>
-                <option value="id_action2">23/03: Jardinage</option>
-                <option value="id_action3">24/03: Courses</option>
-                <option value="id_action4">25/03: Transport</option>
+                @foreach (var actionBenef in ViewBag.listeActions)
+                {
+                    <option value=test>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy") </option>
+                }
             </select>
         </div>
         <br />
