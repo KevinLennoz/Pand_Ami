@@ -57,43 +57,43 @@ namespace Pand_Ami.Models
 
         public ActionAffichage(SqlDataReader dr)
         {
-            if (!dr.IsDBNull(0))
+            if (!dr.IsDBNull(dr.GetOrdinal("id_action")))
             {
                 IdAction = (int)dr["id_action"];
             }
-            if (!dr.IsDBNull(1))
+            if (!dr.IsDBNull(dr.GetOrdinal("nom_ville")))
             {
                 NomVille = (string)dr["nom_ville"];
             }
-            if (!dr.IsDBNull(2))
+            if (!dr.IsDBNull(dr.GetOrdinal("nom_util")))
             {
                 NomUtilisateur = (string)dr["nom_util"];
             }
-            if (!dr.IsDBNull(3))
+            if (!dr.IsDBNull(dr.GetOrdinal("nom_activite")))
             {
                 NomActivite = (string)dr["nom_activite"];
             }
-            if (!dr.IsDBNull(4))
+            if (!dr.IsDBNull(dr.GetOrdinal("date_action")))
             {
                 DateAction = (DateTime?)dr["date_action"];
             }
-            if (!dr.IsDBNull(5))
+            if (!dr.IsDBNull(dr.GetOrdinal("date_soumission")))
             {
                 DateSoumission = (DateTime?)dr["date_soumission"];
             }
-            if (!dr.IsDBNull(6))
+            if (!dr.IsDBNull(dr.GetOrdinal("heure_debut")))
             {
                 HeureDebut = (int?)dr["heure_debut"];
             }
-            if (!dr.IsDBNull(7))
+            if (!dr.IsDBNull(dr.GetOrdinal("minute_debut")))
             {
                 MinuteDebut = (int?)dr["minute_debut"];
             }
-            if (!dr.IsDBNull(8))
+            if (!dr.IsDBNull(dr.GetOrdinal("heure_fin")))
             {
                 HeureFin = (int?)dr["heure_fin"];
             }
-            if (!dr.IsDBNull(9))
+            if (!dr.IsDBNull(dr.GetOrdinal("minute_fin")))
             {
                 MinuteFin = (int?)dr["minute_fin"];
             }
