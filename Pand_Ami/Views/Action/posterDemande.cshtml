@@ -4,72 +4,74 @@
 @{
 }
 
-<h1> Nouvelle demande d'action </h1>
+<div id="bodyPosterDemande">
+    <h1> Nouvelle demande d'action </h1>
 
-<article>
-    <form method="POST">
-        <p>Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
-        <table>
-            <tr>
-                <td><label>Type de service :</label></td>
-                <td>
-                    <select id="lstService" name="lstService" asp-items="ViewBag.Activite">
-                        <option value="">Service demandé</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Matériel requis :</label></td>
-                <td>
-                    <select id="idMateriel" name="idMateriel">
-                        <option value="">Matériel requis</option>
-                        <option>Pas de matériel possible pour le moment</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Date de réalisation :</label></td>
-                <td><input type="date" name="dateRealisation" /></td>
-            </tr>
+    <article>
+        <form method="POST">
+            <p>Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
+            <table>
+                <tr>
+                    <td><label>Type de service :</label></td>
+                    <td>
+                        <select id="lstService" name="lstService" asp-items="ViewBag.Activite">
+                            <option value="">Service demandé</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Matériel requis :</label></td>
+                    <td>
+                        <select id="idMateriel" name="idMateriel">
+                            <option value="">Matériel requis</option>
+                            <option>Pas de matériel possible pour le moment</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Date de réalisation :</label></td>
+                    <td><input type="date" name="dateRealisation" /></td>
+                </tr>
 
-            <tr>
-                <td><label>Horaire de réalisation :</label></td>
-                <td>
-                    <select id="lstHeureDebut" name="lstHeureDebut" , asp-items="ViewBag.heures">
-                        <option value="">hh</option>
-                    </select>
-                    <label>:</label>
-                    <select id="lstMinuteDebut" name="lstMinuteDebut" , asp-items="ViewBag.minutes">
-                        <option value="">mm</option>
-                    </select>
-                    <label>à</label>
-                    <select id="lstHeureFin" name="lstHeureFin" , asp-items="ViewBag.heures">
-                        <option value="">hh</option>
-                    </select>
-                    <label>:</label>
-                    <select id="lstMinuteFin" name="lstMinuteFin" , asp-items="ViewBag.minutes">
-                        <option value="">mm</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Ville et code postal :</label></td>
-                <td>
-                    <select id="lstVille" name="lstVille" , asp-items="ViewBag.Ville">
-                        <option value="">Ville</option>
-                    </select>
-                </td>
-            <tr />
-            <tr>
-                <td><label>Adresse de réalisation :</label></td>
-                <td><input id="txtAdresse" name="txtAdresse" type="text" /></td>
-            </tr>
-        </table>
+                <tr>
+                    <td><label>Horaire de réalisation :</label></td>
+                    <td>
+                        <select id="lstHeureDebut" name="lstHeureDebut" , asp-items="ViewBag.heures">
+                            <option value="">hh</option>
+                        </select>
+                        <label>:</label>
+                        <select id="lstMinuteDebut" name="lstMinuteDebut" , asp-items="ViewBag.minutes">
+                            <option value="">mm</option>
+                        </select>
+                        <label>à</label>
+                        <select id="lstHeureFin" name="lstHeureFin" , asp-items="ViewBag.heures">
+                            <option value="">hh</option>
+                        </select>
+                        <label>:</label>
+                        <select id="lstMinuteFin" name="lstMinuteFin" , asp-items="ViewBag.minutes">
+                            <option value="">mm</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Ville et code postal :</label></td>
+                    <td>
+                        <select id="lstVille" name="lstVille" , asp-items="ViewBag.Ville">
+                            <option value="">Ville</option>
+                        </select>
+                    </td>
+                <tr />
+                <tr>
+                    <td><label>Adresse de réalisation :</label></td>
+                    <td><input id="txtAdresse" name="txtAdresse" type="text" /></td>
+                </tr>
+            </table>
 
-        <label>Cochez si la demande est récurrente :</label>
-        @Html.CheckBox("ckbRecurrence", false)
+            <label>Cochez si la demande est récurrente :</label>
+            @Html.CheckBox("ckbRecurrence", false)
 
-        <br />
-        <input type="submit" value="valider" />
-    </form>
-</article>
+            <br />
+            <input type="submit" value="valider" />
+        </form>
+    </article>
+</div>
