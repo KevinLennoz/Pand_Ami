@@ -12,42 +12,83 @@ namespace Pand_Ami.Models
 
         /*
         * Methode qui prend en paramètre un id utilisateur ainsi qu'un id d'action et qui ecrit en base de données, les arguments non nullables d'une nouvelle réponse à une action
-        * Cette méthode renvoie un int : "1" si l'écriture a été effectuée, "0" dans le cas contraire.
+        * (Avant d'écrire en base, la méthode vérifie qu'un utilisateur n'est pas déjà été selectionné à cette action)
         */
-        public int EnregistrerNouvelleReponse(int? idUtilisateur, int idAction)
+        public void EnregistrerNouvelleReponse(int? idUtilisateur, int idAction)
         {
-            int nbTuple = 0;
-            List<Reponse> reponses = RecupererReponses(idAction);
 
-            foreach (Reponse rep in reponses)
+            //Recupere l'utilisateur ayant été selectionne pour une action ou bien null
+            Utilisateur user = RecupererUtilisateurSelectionne(idAction);
+
+            if (user.IdUtil == null) //Si un utilisateur non selectionné alors user.idUtil = null
             {
-                if ((rep.IdUtil != idUtilisateur) && (rep.DateSelection != null))
+                try
                 {
+                    AccesBDD BDDPandami = new AccesBDD();
+                    BDDPandami.OuvertureBDD();
+                    SqlCommand cmd = new SqlCommand("dbo.EnregistrerNouvelleReponse", BDDPandami.Cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    try
-                    {
-                        AccesBDD BDDPandami = new AccesBDD();
-                        BDDPandami.OuvertureBDD();
-                        SqlCommand cmd = new SqlCommand("dbo.EnregistrerNouvelleReponse", BDDPandami.Cnx);
-                        cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@id_utilisateur", idUtilisateur));
+                    cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
+                    cmd.Parameters.Add(new SqlParameter("@date_reponse", DateTime.Now));
 
-                        cmd.Parameters.Add(new SqlParameter("@id_utilisateur", idUtilisateur));
-                        cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
-                        cmd.Parameters.Add(new SqlParameter("@date_reponse", DateTime.Now));
-
-                        nbTuple = cmd.ExecuteNonQuery();
-                        BDDPandami.FermetureBDD();
-                    }
-                    catch (SqlException e)
-                    {
-                        nbTuple = 0;
-                        Console.WriteLine("Erreur : " + e.Message);
-                    }
+                    cmd.ExecuteNonQuery();
+                    BDDPandami.FermetureBDD();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Erreur : " + e.Message);
                 }
             }
-            return nbTuple;
+
         }
 
+        /*
+         * Méthode permettant d'instancier un utilisateur qui a été selectionné pour une action
+         * Cette méthode renvoie un utilisateur si attribué à une action, null dans le cas contraire
+         */
+        public Utilisateur RecupererUtilisateurSelectionne(int idAction)
+        {
+
+            int? idUtil;
+            Utilisateur user;
+
+            AccesBDD BDDPandami = new AccesBDD();
+            BDDPandami.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.RecupererVolontaireSelectionne", BDDPandami.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            reader.Read();
+
+            try
+            {
+                idUtil = reader.GetInt32(reader.GetOrdinal("id_utilisateur"));
+            }
+            catch (InvalidOperationException){
+                idUtil = null;
+            }
+
+            if (idUtil != null)
+            {
+                UtilisateurDAO utilDao = new UtilisateurDAO();
+                user = utilDao.UtilisateurFromBdd(idUtil);
+            }
+            else
+            {
+                user = new Utilisateur();
+            }
+            
+            BDDPandami.FermetureBDD();
+
+            return user;
+        }
+
+        /*
+        * Methode qui prend en paramètre un id d'action et qui renvoie la liste de toutes les réponses émises
+        */
         public List<Reponse> RecupererReponses(int idAction)
         {
             List<Reponse> listeSortante = new List<Reponse>();
@@ -61,7 +102,7 @@ namespace Pand_Ami.Models
 
             while (dr.Read())
             {
-                listeSortante.Add(new Reponse((int)dr["id_utilisateur"], (int)dr["id_action"], (DateTime)dr["date_reponse"]));
+                listeSortante.Add(new Reponse(dr));
             }
 
             dr.Close();
