@@ -48,6 +48,15 @@ namespace Pand_Ami.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Postuler(int idAction, int idUtilisateur = 3) //Indication de l'id utilisateur avec la valeur 3 à modifier une fois l'interface creation de profil implémentée
+        {
+            ReponseDao repDAO = new ReponseDao();
+            repDAO.EnregistrerNouvelleReponse(idUtilisateur, idAction);
+
+            return RedirectToAction("afficherActions");
+        }
+
         // POST: HomeController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -25,7 +25,6 @@ body {
 
 #idTable {
     border-spacing: 10px;
-    background-color: red;
     border: 1px solid black;
     height: 40vh;
     width: 40vw;
@@ -35,7 +34,6 @@ body {
 
 
 #idForm {
-    background-color: cornflowerblue;
     height: 60vh;
     align-items: stretch;
     justify-content: center;

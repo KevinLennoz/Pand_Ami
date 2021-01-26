@@ -128,7 +128,7 @@ namespace Pand_Ami.Controllers
             try
             {
                 myActionDao.EnregistrerNouvelleAction(action);
-            } catch(Exception e)
+            } catch(Exception)
             {
                 return View();
             }

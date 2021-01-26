@@ -170,5 +170,39 @@ namespace Pand_Ami.Models
             return lesActionsAffichages;
         }
 
+        public string RecupererStatutAction(int idAction, int idUtilisateur)
+        {
+            string statut = "";
+
+            AccesBDD BDDPandami = new AccesBDD();
+            BDDPandami.OuvertureBDD();
+
+            SqlCommand cmd = new SqlCommand("dbo.RecuperDatesPourDefinitionStatut", BDDPandami.Cnx);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                //SI id_utilisateur == idUtilisateur
+                    //SI date_selection != NULL  et (date_desistement == NULL) et (date_rejet == NULL)
+                        //ALORS Statut = Attribué
+                    //SINON SI date_rejet != NULL
+                        //ALORS Statut = Refusé
+                    //SINON SI date_selection != NULL et date_desistement != NULL
+                        //AlORS Statut = Désisté
+
+
+  
+
+            }
+
+
+
+
+            BDDPandami.FermetureBDD();
+            return statut;
+        }
+
     }
 }

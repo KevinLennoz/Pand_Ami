@@ -28,7 +28,7 @@
                 <div class="departements">
                     @foreach (var ville in ViewBag.villes)
                     {
-                        <input type="checkbox" name="cbVille"/> @ville.CodePostal @ville.NomVille<br />
+                        <input type="checkbox" name="cbVille" /> @ville.CodePostal @ville.NomVille<br />
                     }
                 </div>
             </div>
@@ -46,28 +46,29 @@
     <div class="actions">
         <div class="titreActions">
             <label>Actions</label>
-            <label>Compatibilité</label>
+            <label>Statut</label>
             <label>Choix</label>
         </div>
         <div class="listeActions">
 
             @foreach (var actionAffichage in ViewBag.lesActionsAffichages)
             {
-                <div class="demande">
-                    <div class="description friend">
+                <form method="post" class="demande">
+                    <div class="description">
                         <!-- ajouter les images avec un if -->
                         <p>@actionAffichage.NomUtilisateur</p>
                         <p>@actionAffichage.NomActivite</p>
                         <p>@actionAffichage.DateAction.ToString("MM/dd/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
                         <p>@actionAffichage.NomVille</p>
+                        <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
                     </div>
-                    <div class="compatibilite">
-                        <progress class="" max="100" value="98"></progress>
+                    <div class="statut">
+                        <label>En cours</label>
                     </div>
                     <div class="choix">
-                        <input class="postuler" type="button" value="Postuler" />
+                        <input class="postuler" type="submit" value="Postuler" asp-controller="Recherche" asp-action="Postuler" />
                     </div>
-                </div>
+                </form>
             }
 
         </div>
