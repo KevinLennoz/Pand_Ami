@@ -125,8 +125,13 @@ namespace Pand_Ami.Controllers
             Voie_action = txtAdresse,
             Date_soumission = DateTime.Now
         };
-
-            myActionDao.EnregistrerNouvelleAction(action);
+            try
+            {
+                myActionDao.EnregistrerNouvelleAction(action);
+            } catch(Exception e)
+            {
+                return View();
+            }
 
 
             return View();
