@@ -15,12 +15,12 @@
             </div>
             <div class="catRecherche">
                 <label>A partir du :</label>
-                <input type="date" id="from" name="from" />
+                <input type="date" id="from" name="dateFrom" />
             </div>
 
             <div class="catRecherche">
                 <label>Jusqu'au :</label>
-                <input type="date" id="to" name="to" />
+                <input type="date" id="to" name="dateTo" />
             </div>
 
             <div class="catRecherche">
@@ -28,7 +28,7 @@
                 <div class="departements">
                     @foreach (var ville in ViewBag.villes)
                     {
-                        <input type="checkbox" /> @ville.CodePostal @ville.NomVille<br />
+                        <input type="checkbox" name="cbVille"/> @ville.CodePostal @ville.NomVille<br />
                     }
                 </div>
             </div>
