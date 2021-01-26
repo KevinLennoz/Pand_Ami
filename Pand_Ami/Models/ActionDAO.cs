@@ -84,6 +84,31 @@ namespace Pand_Ami.Models
 
         }
 
+        //Méthode pour la liste des dates et activités d'un utilisateur (pour l'afficher sur son profil)
+        public List<ActionsBenef> RecupererListeActivitesEtDatesParUtil(int idUtil)
+        {
+            List<ActionsBenef> listeSortante = new List<ActionsBenef>();
+            AccesBDD accesBDD = new AccesBDD();
+            accesBDD.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.recupererDateActivitePourProfil", accesBDD.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_util", idUtil));
+
+            SqlDataReader resultat = cmd.ExecuteReader();
+            
+            if (!resultat.HasRows)
+            {
+
+            }
+            while (resultat.Read())
+            {
+                ActionsBenef actTemp = new ActionsBenef(resultat);
+                listeSortante.Add(actTemp);
+            }
+            resultat.Close();
+            accesBDD.FermetureBDD();
+            return listeSortante;
+        }
         public string GetPremierString()
         {
             string voie;
@@ -160,6 +185,29 @@ namespace Pand_Ami.Models
             bdd.OuvertureBDD();
             SqlCommand cmd = new SqlCommand("dbo.recupererToutesActionsPourRecherche", bdd.Cnx);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ActionAffichage actionAff = new ActionAffichage(dr);
+                lesActionsAffichages.Add(actionAff);
+            }
+            bdd.FermetureBDD();
+            return lesActionsAffichages;
+        }
+
+
+
+        public List<ActionAffichage> ActionAffichagesRechercheFromBdd(int id_activite, int id_ville, DateTime dateFrom, DateTime dateTo)
+        {
+            List<ActionAffichage> lesActionsAffichages = new List<ActionAffichage>();
+            AccesBDD bdd = new AccesBDD();
+            bdd.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.RecuperationActionsRecherche", bdd.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_activite", id_activite));
+            cmd.Parameters.Add(new SqlParameter("@id_ville", id_ville));
+            cmd.Parameters.Add(new SqlParameter("@dateFrom", dateFrom));
+            cmd.Parameters.Add(new SqlParameter("@dateTo", dateTo));
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {

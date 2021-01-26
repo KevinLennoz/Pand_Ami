@@ -11,7 +11,7 @@ namespace Pand_Ami.Models
     {
         //recuperer un utilisateur depuis son Id_Util :
         // méthode qui hydrate un objet utilisateur avec les données de la BDD, prend en paramètre l'id_utilisateur
-        public Utilisateur UtilisateurFromBdd(int idUtil)
+        public Utilisateur UtilisateurFromBdd(int? idUtil)
         {
             AccesBDD bdd = new AccesBDD();
             bdd.OuvertureBDD();
