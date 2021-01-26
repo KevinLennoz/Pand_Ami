@@ -159,11 +159,6 @@ body {
     overflow: hidden;
 }
 
-#rechAction .description:hover {
-    box-shadow: 0 0 10px blue;
-    cursor: pointer;
-}
-
 #rechAction .description p {
     border-right: 1px solid lightblue;
     padding: 0 10px;
@@ -179,11 +174,6 @@ body {
 
 #rechAction .description img:nth-last-child(1) {
     align-items: flex-end;
-}
-
-#rechAction .friend {
-    border: 2px solid #00ff00;
-    box-shadow: 0px 0px 10px #00ff00;
 }
 
 #rechAction .demande img {
