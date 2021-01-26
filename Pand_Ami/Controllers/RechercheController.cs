@@ -9,6 +9,7 @@ using Action = Pand_Ami.Models.Action;
 using Utilisateur = Pand_Ami.Models.Utilisateur;
 using Reponse = Pand_Ami.Models.Reponse;
 using Ville = Pand_Ami.Models.Referentiels.Ville;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Pand_Ami.Controllers
 {
@@ -22,11 +23,43 @@ namespace Pand_Ami.Controllers
             ActiviteDAO daoActivite = new ActiviteDAO();
             ViewBag.listeActivites = daoActivite.RecupererListeActivites();
             Ville ville = new Ville();
-            ViewBag.villes = ville.recupererVilles();
+            List<Ville> listeVilles = ville.recupererVilles();
+            
+
+            List<SelectListItem> listeVilleSelect = new List<SelectListItem>();
+            foreach (var item in listeVilles)
+            {
+                listeVilleSelect.Add(new SelectListItem(item.NomVille.ToString() + "  " + item.CodePostal.ToString()
+                , item.IdVille.ToString()));
+            }
+            ViewBag.villes = listeVilleSelect;
+
+            return View("rechercherAction");
+        }
+        [HttpPost]
+        public ActionResult afficherActions(int radioActivite, int lstVille, DateTime dateFrom, DateTime dateTo)
+        {
+            ActionDAO daoAction = new ActionDAO();
+            List<ActionAffichage>  maListeRecherchee = daoAction.ActionAffichagesRechercheFromBdd(radioActivite, lstVille, dateFrom, dateTo);
+
+            ViewBag.lesActionsAffichages = maListeRecherchee;
+            ActiviteDAO daoActivite = new ActiviteDAO();
+            ViewBag.listeActivites = daoActivite.RecupererListeActivites();
+            Ville ville = new Ville();
+            List<Ville> listeVilles = ville.recupererVilles();
+
+            List<SelectListItem> listeVilleSelect = new List<SelectListItem>();
+            foreach (var item in listeVilles)
+            {
+                listeVilleSelect.Add(new SelectListItem(item.NomVille.ToString() + "  " + item.CodePostal.ToString()
+                , item.IdVille.ToString()));
+            }
+            ViewBag.villes = listeVilleSelect;
+
             return View("rechercherAction");
         }
 
-        public ActionResult RechercherAction()
+            public ActionResult RechercherAction()
         {
             return View();
         }
