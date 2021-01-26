@@ -68,8 +68,7 @@ namespace Pand_Ami.Models
             }
             while (resultat.Read())
             {
-                Activite actTemp = new Activite((int)resultat["id_activite"], (int)resultat["Id_domaine_activite"],
-                    (string)resultat["Nom_activite"]);
+                Activite actTemp = new Activite(resultat);
                 listeSortante.Add(actTemp);
             }
             resultat.Close();
