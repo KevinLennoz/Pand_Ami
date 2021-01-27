@@ -20,5 +20,13 @@
         <li>@action.ToString()</li>
     }
 </ul>
-
-<h3> Mon beneficiaire 4 regarde si mon utilisateur trois a déja fait @ViewBag.test2 pour lui le @ViewBag.test1.ToString("dd/MM/yyyy")</h3>
+@{
+    if (@ViewBag.test2 == "")
+    {
+        <h3>Ce volontaire est inconnu</h3>
+    }
+    else
+    {
+        <h3> Mon beneficiaire 4 regarde si mon utilisateur trois a déja fait @ViewBag.test2 pour lui le @ViewBag.test1.ToString("dd/MM/yyyy")</h3>
+    }
+}

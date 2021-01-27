@@ -11,33 +11,36 @@
     <main id="boxes">
         <div>
             <h3>Choisissez une action</h3>
-            <select name="demandes" id="demandes">
-                @foreach (var actionBenef in ViewBag.listeActions)
-                {
-                    <option value=test>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy") </option>
-                }
-            </select>
+            <form method="POST" id="idSelection">
+                <select name="actionChoisie" id="actionChoisie">
+                    @foreach (var actionBenef in ViewBag.listeActions)
+                    {
+                        <option value=@actionBenef.IdAction>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy") et @actionBenef.IdAction</option>
+                    }
+                </select>
+                <input id="idSubmit" type="submit" value="valider" />
+            </form>
         </div>
         <br />
         <div id="maLigne">
             <div id="colonne">
-                <h2 id="h2">Demande 1 infos </h2>
+                <h2 id="h2">Detail </h2>
                 <br />
                 <br />
                 <table id="table1">
-                    <tr onclick="myFunction(this)">
+                    <tr>
                         <td>Type :</td>
                         <td>Courses</td>
                     </tr>
-                    <tr onclick="myFunction(this)">
+                    <tr>
                         <td>Date et heure :</td>
                         <td>05/03 à 16H00</td>
                     </tr>
-                    <tr onclick="myFunction(this)">
+                    <tr>
                         <td>Postée le :</td>
                         <td>28/02</td>
                     </tr>
-                    <tr onclick="myFunction(this)">
+                    <tr>
                         <td>Matériel demandé :</td>
                         <td>voiture</td>
                     </tr>
@@ -49,9 +52,6 @@
                 <br />
                 <input class="btnSelect" type="button" value="annuler" />
                 <script>
-                    function myFunction(x) {
-                        alert("Row index is: " + x.rowIndex);
-                    }
                 </script>
             </div>
 
@@ -63,12 +63,15 @@
                 <div id="sousColonne">
                     <table id="table2">
                         <tr class>
-                            @foreach (var reponse in ViewBag.lesReponses)
+                            @if (ViewBag.lesReponses != null)
                             {
-                                <div class="description">
-                                    <p>Date Reponse : @reponse.DateReponse.ToString("dd-MM-yyyy")</p>
-                                    <p>Volontaire : @reponse.PrenomVolontaire @reponse.NomVolontaire ( @reponse.Age ) </p>
-                                </div>
+                                @foreach (var reponse in ViewBag.lesReponses)
+                                {
+                                    <div class="description">
+                                        <p>Date Reponse : @reponse.DateReponse.ToString("dd-MM-yyyy")</p>
+                                        <p>Volontaire : @reponse.PrenomVolontaire @reponse.NomVolontaire ( @reponse.Age ) </p>
+                                    </div>
+                                }
                             }
                         </tr>
                     </table>
