@@ -26,8 +26,8 @@ namespace Pand_Ami.Models
 
         public ActionsBenef(SqlDataReader reader)
         {
+            IdAction = (int)reader["id_action"];
             DateAction = (DateTime)reader["Date_action"];
-
             NomActivite = (string)reader["nomActivite"];
         }
     }
