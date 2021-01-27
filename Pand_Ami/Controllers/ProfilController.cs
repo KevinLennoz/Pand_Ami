@@ -31,6 +31,20 @@ namespace Pand_Ami.Controllers
             ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
             ReponseDao daoReponse = new ReponseDao();
             ViewBag.lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
+            List<ReponseAffichage> lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
+            
+            List<DateTime> dateContact = new List<DateTime>();
+            List<string> activiteContact = new List<string>();
+            for(int i = 0; i < lesReponses.Count; i++)
+            {
+                int id_volontaire = (int)lesReponses[i].IdUtilisateur;
+                var monTuple = dao.DernierService(1, id_volontaire);
+                dateContact.Add(monTuple.Item1);
+                activiteContact.Add(monTuple.Item2);
+            }
+
+            ViewBag.effectueDate = dateContact;
+            ViewBag.effectueActivite = activiteContact;
             return View("Demandes");
         }
 
