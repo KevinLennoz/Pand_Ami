@@ -17,7 +17,7 @@ namespace Pand_Ami.Models
         public void EnregistrerNouvelleReponse(int? idUtilisateur, int idAction)
         {
 
-            //Recupere l'utilisateur ayant été selectionne pour une action ou bien null
+            //Recupere l'utilisateur ayant été selectionné par un beneficiaire pour une action (sinon user = null)
             Utilisateur user = RecupererUtilisateurSelectionne(idAction);
 
             if (user.IdUtil == null) //Si un utilisateur non selectionné alors user.idUtil = null
@@ -60,8 +60,6 @@ namespace Pand_Ami.Models
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
             SqlDataReader reader = cmd.ExecuteReader();
-
-            reader.Read();
 
             try
             {

@@ -157,6 +157,11 @@
     height: 100%;
 }
 
+    #rechAction .selectionne {
+        box-shadow: 0 .25rem .75rem rgba(29, 34, 56, 1);
+        border: 2px solid red;
+    }
+
 #rechAction .description p {
     border-right: 1px solid lightblue;
     display: flex;
