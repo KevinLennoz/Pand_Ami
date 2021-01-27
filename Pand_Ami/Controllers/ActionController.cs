@@ -29,8 +29,9 @@ namespace Pand_Ami.Controllers
             //List<Action> maListe = myDAO.RecupererListeActions();
             //ViewBag.data = maListe;
             ViewBag.data = myDAO.RecupererListeActionsParUtil(1);
-
-
+            var test = myDAO.DernierService(4, 3);
+            ViewBag.test1 = test.Item1;
+            ViewBag.test2 = test.Item2;
 
             return View();
         }

@@ -254,5 +254,24 @@ namespace Pand_Ami.Models
             return statut;
         }
 
+        public Tuple<DateTime,string> DernierService(int id_benev, int id_util)
+        {
+            string nomActivite = "";
+            DateTime dateAction = new DateTime();
+            AccesBDD bdd = new AccesBDD();
+            bdd.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.DernierServiceEffectue", bdd.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_utilBenef", id_benev));
+            cmd.Parameters.Add(new SqlParameter("@id_utilVol", id_util));
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            reader.Read();
+            nomActivite = (string)reader["nom_activite"];
+            dateAction = (DateTime)reader["date_action"];
+
+            return Tuple.Create(dateAction, nomActivite);
+        }
+
     }
 }
