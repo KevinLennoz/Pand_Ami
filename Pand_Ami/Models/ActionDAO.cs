@@ -198,7 +198,8 @@ namespace Pand_Ami.Models
 
 
 
-        public List<ActionAffichage> ActionAffichagesRechercheFromBdd(int id_activite, int id_ville, DateTime dateFrom, DateTime dateTo)
+        public List<ActionAffichage> ActionAffichagesRechercheFromBdd(int id_activite, int id_ville, DateTime dateFrom, DateTime dateTo,
+            int id_util)
         {
             List<ActionAffichage> lesActionsAffichages = new List<ActionAffichage>();
             AccesBDD bdd = new AccesBDD();
@@ -209,6 +210,7 @@ namespace Pand_Ami.Models
             cmd.Parameters.Add(new SqlParameter("@id_ville", id_ville));
             cmd.Parameters.Add(new SqlParameter("@dateFrom", dateFrom));
             cmd.Parameters.Add(new SqlParameter("@dateTo", dateTo));
+            cmd.Parameters.Add(new SqlParameter("@id_util", id_util));
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -274,6 +276,25 @@ namespace Pand_Ami.Models
 
             BDDPandami.FermetureBDD();
             return statut;
+        }
+
+        public Tuple<DateTime,string> DernierService(int id_benev, int id_util)
+        {
+            string nomActivite = "";
+            DateTime dateAction = new DateTime();
+            AccesBDD bdd = new AccesBDD();
+            bdd.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.DernierServiceEffectue", bdd.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_utilBenef", id_benev));
+            cmd.Parameters.Add(new SqlParameter("@id_utilVol", id_util));
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            reader.Read();
+            nomActivite = (string)reader["nom_activite"];
+            dateAction = (DateTime)reader["date_action"];
+
+            return Tuple.Create(dateAction, nomActivite);
         }
 
     }
