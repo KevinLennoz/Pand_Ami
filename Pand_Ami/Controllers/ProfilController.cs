@@ -6,6 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Pand_Ami.Models;
 using Action = Pand_Ami.Models.Action;
+using Ville = Pand_Ami.Models.Referentiels.Ville;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 namespace Pand_Ami.Controllers
 {
@@ -15,6 +18,19 @@ namespace Pand_Ami.Controllers
 
         public IActionResult Profil()
         {
+            UtilisateurDAO daoUtil = new UtilisateurDAO();
+            ViewBag.utilAffichage = daoUtil.UtilisateurVilleFromBdd(1);
+
+            Ville uneVille= new Ville();
+            List<Ville> listeVilles = uneVille.recupererVilles();
+
+            List<SelectListItem> listeVilleSelect = new List<SelectListItem>();
+            foreach (var item in listeVilles)
+            {
+                listeVilleSelect.Add(new SelectListItem(item.NomVille.ToString() + "  " + item.CodePostal.ToString()
+                , item.IdVille.ToString()));
+            }
+            ViewBag.villes = listeVilleSelect;
             return View("gererProfil");
         }
         public IActionResult Demandes()

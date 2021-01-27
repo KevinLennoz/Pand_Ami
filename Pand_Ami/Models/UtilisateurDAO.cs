@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Collections;
+using Ville = Pand_Ami.Models.Referentiels.Ville;
 
 namespace Pand_Ami.Models
 {
@@ -56,6 +57,20 @@ namespace Pand_Ami.Models
             }
             bdd.FermetureBDD();
             return utilisateurs;
+        }
+
+        public UtilisateurAffichage UtilisateurVilleFromBdd(int idUtil)
+        {
+            AccesBDD bdd = new AccesBDD();
+            bdd.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.RecupererUtilisateurVilleViaId", bdd.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("id_util", idUtil));
+            SqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+            UtilisateurAffichage util = new UtilisateurAffichage(dr);
+            bdd.FermetureBDD();
+            return util;
         }
 
         //recuperer un utilisateur via un champ
