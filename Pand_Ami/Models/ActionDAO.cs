@@ -224,7 +224,7 @@ namespace Pand_Ami.Models
         /*
           * Methode qui renvoie le statut d'une action selon l'utilisateur connecté (Non attribuée, Attribuée ou en cours d'attribution)
           */
-        public string RecupererStatutAction(int idAction, int idUtilisateur)
+        public string RecupererStatutAction(int idAction, int idUtilisateur = 4) // Par défaut util 4
         {
             string statut = "";
             List<Reponse> reponses = new List<Reponse>();
@@ -248,27 +248,27 @@ namespace Pand_Ami.Models
                 {
                     if ((rep.DateSelection != null) && (rep.DateDesistement == null) && (rep.DateRejet == null))
                     {
-                        statut = "Non Attribuée";
+                        statut = "Attribuée à un autre Volontaire";
                         break;
                     }
                     else
                     {
-                        statut = "En cours d'attribution";
+                        statut = "En recherche d'un Volontaire";
                     }
                 }
                 if (rep.IdUtil == idUtilisateur)
                 {
                     if((rep.DateSelection != null) && (rep.DateDesistement == null) && (rep.DateRejet== null))
                     {
-                        statut = "Attribuée";
+                        statut = "Vous a été attribuée";
                     }
                     else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet != null))
                     {
-                        statut = "Non Attribuée";
+                        statut = "Attribuée à un autre Volontaire";
                     }
                     else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet == null))
                     {
-                        statut = "En cours d'attribution";
+                        statut = "Demande envoyée - En attente de validation";
                     }
                 }
 
@@ -278,7 +278,7 @@ namespace Pand_Ami.Models
             return statut;
         }
 
-        public Tuple<DateTime,string> DernierService(int id_benev, int id_util)
+        public Tuple<DateTime,string> DernierService(int id_benef, int id_util)
         {
             string nomActivite = "";
             DateTime dateAction = new DateTime();
@@ -286,13 +286,17 @@ namespace Pand_Ami.Models
             bdd.OuvertureBDD();
             SqlCommand cmd = new SqlCommand("dbo.DernierServiceEffectue", bdd.Cnx);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@id_utilBenef", id_benev));
+            cmd.Parameters.Add(new SqlParameter("@id_utilBenef", id_benef));
             cmd.Parameters.Add(new SqlParameter("@id_utilVol", id_util));
             SqlDataReader reader = cmd.ExecuteReader();
 
             reader.Read();
-            nomActivite = (string)reader["nom_activite"];
-            dateAction = (DateTime)reader["date_action"];
+            if (reader.HasRows) 
+            {
+                nomActivite = (string)reader["nom_activite"];
+                dateAction = (DateTime)reader["date_action"];
+            }
+
 
             return Tuple.Create(dateAction, nomActivite);
         }

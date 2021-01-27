@@ -36,13 +36,31 @@ namespace Pand_Ami.Controllers
         public IActionResult Demandes()
         {
             ActionDAO dao = new ActionDAO();
-            List<Action> actionUtilisateur = new List<Action>();
+            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
+            return View("Demandes");
+        }
 
+        [HttpPost]
+        public ActionResult Demandes(int actionChoisie)
+        {
+            ActionDAO dao = new ActionDAO();
             ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
             ReponseDao daoReponse = new ReponseDao();
-            ViewBag.lesReponses = daoReponse.RecupererReponsesAffichage(1);
-            //j'ai mis en dur l'int de l'action, il faudra mettre en dynamique pour avoir l'Id
+            ViewBag.lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
+            List<ReponseAffichage> lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
+            
+            List<DateTime> dateContact = new List<DateTime>();
+            List<string> activiteContact = new List<string>();
+            for(int i = 0; i < lesReponses.Count; i++)
+            {
+                int id_volontaire = (int)lesReponses[i].IdUtilisateur;
+                var monTuple = dao.DernierService(1, id_volontaire);
+                dateContact.Add(monTuple.Item1);
+                activiteContact.Add(monTuple.Item2);
+            }
 
+            ViewBag.effectueDate = dateContact;
+            ViewBag.effectueActivite = activiteContact;
             return View("Demandes");
         }
 
