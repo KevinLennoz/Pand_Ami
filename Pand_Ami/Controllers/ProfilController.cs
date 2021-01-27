@@ -20,13 +20,17 @@ namespace Pand_Ami.Controllers
         public IActionResult Demandes()
         {
             ActionDAO dao = new ActionDAO();
-            List<Action> actionUtilisateur = new List<Action>();
+            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
+            return View("Demandes");
+        }
 
+        [HttpPost]
+        public ActionResult Demandes(int actionChoisie)
+        {
+            ActionDAO dao = new ActionDAO();
             ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
             ReponseDao daoReponse = new ReponseDao();
-            ViewBag.lesReponses = daoReponse.RecupererReponsesAffichage(1);
-            //j'ai mis en dur l'int de l'action, il faudra mettre en dynamique pour avoir l'Id
-
+            ViewBag.lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
             return View("Demandes");
         }
 
