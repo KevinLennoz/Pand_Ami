@@ -224,7 +224,7 @@ namespace Pand_Ami.Models
         /*
           * Methode qui renvoie le statut d'une action selon l'utilisateur connecté (Non attribuée, Attribuée ou en cours d'attribution)
           */
-        public string RecupererStatutAction(int idAction, int idUtilisateur)
+        public string RecupererStatutAction(int idAction, int idUtilisateur = 4) // Par défaut util 4
         {
             string statut = "";
             List<Reponse> reponses = new List<Reponse>();
@@ -248,27 +248,27 @@ namespace Pand_Ami.Models
                 {
                     if ((rep.DateSelection != null) && (rep.DateDesistement == null) && (rep.DateRejet == null))
                     {
-                        statut = "Non Attribuée";
+                        statut = "Attribuée à un autre Volontaire";
                         break;
                     }
                     else
                     {
-                        statut = "En cours d'attribution";
+                        statut = "En recherche d'un Volontaire";
                     }
                 }
                 if (rep.IdUtil == idUtilisateur)
                 {
                     if((rep.DateSelection != null) && (rep.DateDesistement == null) && (rep.DateRejet== null))
                     {
-                        statut = "Attribuée";
+                        statut = "Vous a été attribuée";
                     }
                     else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet != null))
                     {
-                        statut = "Non Attribuée";
+                        statut = "Attribuée à un autre Volontaire";
                     }
                     else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet == null))
                     {
-                        statut = "En cours d'attribution";
+                        statut = "Demande envoyée - En attente de validation";
                     }
                 }
 

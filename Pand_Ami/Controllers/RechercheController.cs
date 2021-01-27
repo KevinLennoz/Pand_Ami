@@ -19,7 +19,7 @@ namespace Pand_Ami.Controllers
         public ActionResult afficherActions()
         {
             ActionDAO daoAction = new ActionDAO();
-            ViewBag.lesActionsAffichages = daoAction.ActionAffichagesFromBdd(2); //Par défaut utilisateur 3
+            ViewBag.lesActionsAffichages = daoAction.ActionAffichagesFromBdd(4); //Par défaut utilisateur 4
             ActiviteDAO daoActivite = new ActiviteDAO();
             ViewBag.listeActivites = daoActivite.RecupererListeActivites();
             Ville ville = new Ville();
@@ -84,7 +84,7 @@ namespace Pand_Ami.Controllers
         }
 
         [HttpPost]
-        public ActionResult Postuler(int idAction, int idUtilisateur = 3) //Indication de l'id utilisateur avec la valeur 3 à modifier une fois l'interface creation de profil implémentée
+        public ActionResult Postuler(int idAction, int idUtilisateur = 4) //Indication de l'id utilisateur avec la valeur 4 à modifier une fois l'interface creation de profil implémentée
         {
             ReponseDao repDAO = new ReponseDao();
             repDAO.EnregistrerNouvelleReponse(idUtilisateur, idAction);

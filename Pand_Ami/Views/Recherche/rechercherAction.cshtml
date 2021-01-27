@@ -46,37 +46,41 @@
             @foreach (var actionAffichage in ViewBag.lesActionsAffichages)
             {
                 <form method="post" class="demande">
-                    <div class="description">
-                        <!-- ajouter les images avec un if -->
-                        <p>@actionAffichage.NomUtilisateur</p>
-                        <p>@actionAffichage.NomActivite</p>
-                        <p>@actionAffichage.DateAction.ToString("MM/dd/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
-                        <p>@actionAffichage.NomVille</p>
-                        <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
-                    </div>
-                    <div class="statut">
-                        @{
-                            ActionDAO actDAO = new ActionDAO();
-                            string statut = actDAO.RecupererStatutAction(actionAffichage.IdAction, 3); /*Par défaut l'utilisateur est defini à l'id 3*/
-                            if (statut == "")
-                            {
-                                <label>Finalisée à faire disparaitre pour cet utilisateur</label>
-                            }
-                            else
-                            {
-                                <label>@statut</label>
-                            }
+                    @{
+                        ActionDAO actDAO = new ActionDAO();
+                        string statut = actDAO.RecupererStatutAction(actionAffichage.IdAction);
+                        if (statut == "Vous a été attribuée")
+                        {
+                            <div class="description selectionne" >
+                                <p>@actionAffichage.NomUtilisateur</p>
+                                <p>@actionAffichage.NomActivite</p>
+                                <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
+                                <p>@actionAffichage.NomVille</p>
+                                <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
+                            </div>
                         }
-
+                        else
+                        {
+                            <div class="description">
+                                <p>@actionAffichage.NomUtilisateur</p>
+                                <p>@actionAffichage.NomActivite</p>
+                                <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
+                                <p>@actionAffichage.NomVille</p>
+                                <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
+                            </div>
+                        }
+                    }
+                    <div class="statut">
+                        <label>@statut</label>
                     </div>
                     <div class="choix">
-                        @if (statut == "En cours d'attribution")
-                        {
-                            <input class="postuler" type="submit" value="Postuler" asp-controller="Recherche" asp-action="Postuler" />
-                        }
-                        else if (statut == "Non attribué")
+                        @if (statut != "En recherche d'un Volontaire")
                         {
                             <div class="empty"></div>
+                        }
+                        else
+                        {
+                            <input class="postuler" type="submit" value="Postuler" asp-controller="Recherche" asp-action="Postuler" />
                         }
                     </div>
                 </form>
