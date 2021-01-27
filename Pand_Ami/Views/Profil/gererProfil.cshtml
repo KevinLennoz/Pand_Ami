@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<body class="bodyGererProfil">
+<div class="bodyGererProfil">
     <div class="headerGererProfil">
-        <h1>Bienvenue Prenom nom !</h1>
+        <h2>Bienvenue @ViewBag.utilAffichage.PrenomUtil @ViewBag.utilAffichage.NomUtil !</h2>
     </div>
     <div class="contenuGererProfil">
         <nav class="navGererProfil">
@@ -10,7 +10,7 @@
                 <input type="button" value="modifier mon profil" class="boutonsGererProfil" />
             </div>
             <div class="modifierProfil">
-                <input type="button" value="desinstaller mon compte" class="boutonsGererProfil" />
+                <input type="button" value="se desinscrire" class="boutonsGererProfil" />
             </div>
         </nav>
         <form class="infosGererProfil">
@@ -45,7 +45,7 @@
                             <h6>Email : </h6>
                         </td>
                         <td>
-                            <input type="texte" name="txtEmail" value="@ViewBag.utilAffichage.EmailUtil">
+                            <input type="text" name="txtEmail" value="@ViewBag.utilAffichage.EmailUtil">
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +53,7 @@
                             <h6>N° de téléphone : </h6>
                         </td>
                         <td>
-                            <input type="texte" name="txtTelephone" value="@ViewBag.utilAffichage.TelUtil">
+                            <input type="text" name="txtTelephone" value="@ViewBag.utilAffichage.TelUtil">
                         </td>
                     </tr>
                     <tr>
@@ -61,10 +61,10 @@
                             <h6>Adresse </h6>
                         </td>
                         <td>
-                            <input type="texte" name="txtVoie" value="@ViewBag.utilAffichage.VoieUtil">
+                            <input type="text" name="txtVoie" value="@ViewBag.utilAffichage.VoieUtil">
                         </td>
                         <td>
-                            <select name="lstVille" name="lstVille" , asp-items="ViewBag.villes">
+                            <select name="lstVille" , asp-items="ViewBag.villes">
                                 <option value="">@ViewBag.utilAffichage.NomVille" "@ViewBag.utilAffichage.CodePostal</option>
                             </select>
                         </td>
@@ -86,7 +86,7 @@
                             <h6>Nom du contact d'urgence : </h6>
                         </td>
                         <td>
-                            <input type="text" name="txtNomContactUrg" value="@ViewBag.utilAffichage..NomContactUrgence" />
+                            <input type="text" name="txtNomContactUrg" value="@ViewBag.utilAffichage.NomContactUrgence" />
                         </td>
                     </tr>
                     <tr>
@@ -102,7 +102,7 @@
                             <h6>N° de téléphone du contact d'urgence : </h6>
                         </td>
                         <td>
-                            <input type="texte" name="txtTelephoneContactUrg" value="@ViewBag.utilAffichage.TelContactUrgence">
+                            <input type="text" name="txtTelephoneContactUrg" value="@ViewBag.utilAffichage.TelContactUrgence">
                         </td>
                     </tr>
                 </table>
@@ -112,4 +112,5 @@
             </article>
         </form>
     </div>
-</body>
+</div>
+</html>
