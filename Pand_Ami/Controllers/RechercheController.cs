@@ -19,7 +19,7 @@ namespace Pand_Ami.Controllers
         public ActionResult afficherActions()
         {
             ActionDAO daoAction = new ActionDAO();
-            ViewBag.lesActionsAffichages = daoAction.ActionAffichagesFromBdd();
+            ViewBag.lesActionsAffichages = daoAction.ActionAffichagesFromBdd(2); //Par défaut utilisateur 3
             ActiviteDAO daoActivite = new ActiviteDAO();
             ViewBag.listeActivites = daoActivite.RecupererListeActivites();
             Ville ville = new Ville();

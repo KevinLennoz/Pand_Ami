@@ -178,13 +178,14 @@ namespace Pand_Ami.Models
 
         //methodes pour hydrater les objets ActionAffichage : 
 
-        public List<ActionAffichage> ActionAffichagesFromBdd()
+        public List<ActionAffichage> ActionAffichagesFromBdd(int idUtilisateur)
         {
             List<ActionAffichage> lesActionsAffichages = new List<ActionAffichage>();
             AccesBDD bdd = new AccesBDD();
             bdd.OuvertureBDD();
             SqlCommand cmd = new SqlCommand("dbo.recupererToutesActionsPourRecherche", bdd.Cnx);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_utilisateur", idUtilisateur));
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -218,35 +219,58 @@ namespace Pand_Ami.Models
             return lesActionsAffichages;
         }
 
+        /*
+          * Methode qui renvoie le statut d'une action selon l'utilisateur connecté (Non attribuée, Attribuée ou en cours d'attribution)
+          */
         public string RecupererStatutAction(int idAction, int idUtilisateur)
         {
             string statut = "";
+            List<Reponse> reponses = new List<Reponse>();
 
             AccesBDD BDDPandami = new AccesBDD();
             BDDPandami.OuvertureBDD();
 
             SqlCommand cmd = new SqlCommand("dbo.RecuperDatesPourDefinitionStatut", BDDPandami.Cnx);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-
-                //SI id_utilisateur == idUtilisateur
-                    //SI date_selection != NULL  et (date_desistement == NULL) et (date_rejet == NULL)
-                        //ALORS Statut = Attribué
-                    //SINON SI date_rejet != NULL
-                        //ALORS Statut = Refusé
-                    //SINON SI date_selection != NULL et date_desistement != NULL
-                        //AlORS Statut = Désisté
-
-
-  
-
+                reponses.Add(new Reponse(reader));
             }
 
+            foreach(Reponse rep in reponses)
+            {
+                if (rep.IdUtil != idUtilisateur)
+                {
+                    if ((rep.DateSelection != null) && (rep.DateDesistement == null) && (rep.DateRejet == null))
+                    {
+                        statut = "Non Attribuée";
+                        break;
+                    }
+                    else
+                    {
+                        statut = "En cours d'attribution";
+                    }
+                }
+                if (rep.IdUtil == idUtilisateur)
+                {
+                    if((rep.DateSelection != null) && (rep.DateDesistement == null) && (rep.DateRejet== null))
+                    {
+                        statut = "Attribuée";
+                    }
+                    else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet != null))
+                    {
+                        statut = "Non Attribuée";
+                    }
+                    else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet == null))
+                    {
+                        statut = "En cours d'attribution";
+                    }
+                }
 
-
+            }
 
             BDDPandami.FermetureBDD();
             return statut;

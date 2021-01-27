@@ -55,10 +55,29 @@
                         <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
                     </div>
                     <div class="statut">
-                        <label>En cours</label>
+                        @{
+                            ActionDAO actDAO = new ActionDAO();
+                            string statut = actDAO.RecupererStatutAction(actionAffichage.IdAction, 3); /*Par défaut l'utilisateur est defini à l'id 3*/
+                            if (statut == "")
+                            {
+                                <label>Finalisée à faire disparaitre pour cet utilisateur</label>
+                            }
+                            else
+                            {
+                                <label>@statut</label>
+                            }
+                        }
+
                     </div>
                     <div class="choix">
-                        <input class="postuler" type="submit" value="Postuler" asp-controller="Recherche" asp-action="Postuler" />
+                        @if (statut == "En cours d'attribution")
+                        {
+                            <input class="postuler" type="submit" value="Postuler" asp-controller="Recherche" asp-action="Postuler" />
+                        }
+                        else if (statut == "Non attribué")
+                        {
+                            <div class="empty"></div>
+                        }
                     </div>
                 </form>
             }
