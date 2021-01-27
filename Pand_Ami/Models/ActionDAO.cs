@@ -197,7 +197,8 @@ namespace Pand_Ami.Models
 
 
 
-        public List<ActionAffichage> ActionAffichagesRechercheFromBdd(int id_activite, int id_ville, DateTime dateFrom, DateTime dateTo)
+        public List<ActionAffichage> ActionAffichagesRechercheFromBdd(int id_activite, int id_ville, DateTime dateFrom, DateTime dateTo,
+            int id_util)
         {
             List<ActionAffichage> lesActionsAffichages = new List<ActionAffichage>();
             AccesBDD bdd = new AccesBDD();
@@ -208,6 +209,7 @@ namespace Pand_Ami.Models
             cmd.Parameters.Add(new SqlParameter("@id_ville", id_ville));
             cmd.Parameters.Add(new SqlParameter("@dateFrom", dateFrom));
             cmd.Parameters.Add(new SqlParameter("@dateTo", dateTo));
+            cmd.Parameters.Add(new SqlParameter("@id_util", id_util));
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {

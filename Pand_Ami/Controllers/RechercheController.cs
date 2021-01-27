@@ -39,8 +39,10 @@ namespace Pand_Ami.Controllers
         [HttpPost]
         public ActionResult afficherActions(int radioActivite, int lstVille, DateTime dateFrom, DateTime dateTo)
         {
+
+            //l'id Utilisateur est codé en dur; c'est le numéro 4 dans la fonction ci-dessous
             ActionDAO daoAction = new ActionDAO();
-            List<ActionAffichage>  maListeRecherchee = daoAction.ActionAffichagesRechercheFromBdd(radioActivite, lstVille, dateFrom, dateTo);
+            List<ActionAffichage>  maListeRecherchee = daoAction.ActionAffichagesRechercheFromBdd(radioActivite, lstVille, dateFrom, dateTo, 4);
 
             ViewBag.lesActionsAffichages = maListeRecherchee;
             ActiviteDAO daoActivite = new ActiviteDAO();
