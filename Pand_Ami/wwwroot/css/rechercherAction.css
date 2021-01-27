@@ -54,7 +54,7 @@
 }
 
 #rechAction .menu #titreRecherche {
-    margin: 10px 0 30px 0;
+    margin: 10px 0 50px 0;
     font-size: 25px;
     font-weight: bold;
 }
@@ -76,8 +76,7 @@
     font-weight: bold;
 }
 
-#rechAction .services,
-#rechAction .departements {
+#rechAction .services {
     text-align: left;
     border: 1px solid lightgrey;
     height: 85px;
@@ -85,7 +84,7 @@
 }
 
 #rechAction .actualiser {
-    margin: -10px auto 34px auto;
+    margin: 50px auto 34px auto;
     width: 120px;
     background-color: #9daaf2;
     color: #1a2238;
@@ -190,33 +189,6 @@
     #rechAction .statut label {
         line-height: 60px; 
     }
-
-/*Personnalisation de la barre de progression*/
-#rechAction .compatibilite progress[value] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: none;
-    width: 10vw;
-    height: 30px;
-}
-
-#rechAction .compatibilite progress[value]::-webkit-progress-bar {
-    background-color: #eee;
-    border-radius: 2px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-}
-
-#rechAction .compatibilite progress[value]::-webkit-progress-value {
-    background-image: -webkit-linear-gradient(left, #9daaf2, #1a2238);
-    border-radius: 2px;
-}
-
-#rechAction .compatibilite progress[value]::-webkit-progress-value::before {
-    content: '80%';
-    position: absolute;
-    right: 0;
-    top: 0;
-}
 
     #rechAction .choix {
         margin-right: -15px;
