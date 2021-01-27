@@ -171,7 +171,8 @@ namespace Pand_Ami.Models
             dr.Read();
 
             prochainID = (int)dr["id_action"] + 1;
-            
+
+            dr.Close();
             BDDPandami.FermetureBDD();
             return prochainID;
         }
@@ -192,11 +193,10 @@ namespace Pand_Ami.Models
                 ActionAffichage actionAff = new ActionAffichage(dr);
                 lesActionsAffichages.Add(actionAff);
             }
+            dr.Close();
             bdd.FermetureBDD();
             return lesActionsAffichages;
         }
-
-
 
         public List<ActionAffichage> ActionAffichagesRechercheFromBdd(int id_activite, int id_ville, DateTime dateFrom, DateTime dateTo,
             int id_util)
@@ -217,6 +217,7 @@ namespace Pand_Ami.Models
                 ActionAffichage actionAff = new ActionAffichage(dr);
                 lesActionsAffichages.Add(actionAff);
             }
+            dr.Close();
             bdd.FermetureBDD();
             return lesActionsAffichages;
         }
@@ -271,9 +272,8 @@ namespace Pand_Ami.Models
                         statut = "Demande envoyée - En attente de validation";
                     }
                 }
-
             }
-
+            reader.Close();
             BDDPandami.FermetureBDD();
             return statut;
         }
@@ -297,8 +297,23 @@ namespace Pand_Ami.Models
                 dateAction = (DateTime)reader["date_action"];
             }
 
-
+            reader.Close();
             return Tuple.Create(dateAction, nomActivite);
+        }
+
+        public int RecupererGammeActivite(int idAction)
+        {
+            int gamme = 0;
+            
+            AccesBDD BDDPandami = new AccesBDD();
+            BDDPandami.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand("dbo.RecupererTypeActiviteParIdAction", BDDPandami.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
+            gamme = (int)cmd.ExecuteScalar();
+            BDDPandami.FermetureBDD();
+
+            return gamme;
         }
 
     }

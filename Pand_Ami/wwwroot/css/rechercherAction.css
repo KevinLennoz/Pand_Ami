@@ -134,15 +134,15 @@
     overflow-x: hidden;
 }
 
-#rechAction .demande {
-    display: flex;
-    flex-direction: row;
-    height: 60px;
-    padding-left: 10px;
-    margin: 15px 0 10px 0;
-    align-items: center;
-    justify-content: center;
-}
+    #rechAction .demande {
+        display: flex;
+        flex-direction: row;
+        height: 60px;
+        padding-left: 10px;
+        margin: 15px 0 10px 0;
+        align-items: center;
+        justify-content: center;
+    }
 
 #rechAction .description {
     display: flex;
@@ -157,10 +157,10 @@
     height: 100%;
 }
 
-    #rechAction .selectionne {
-        box-shadow: 0 .25rem .75rem rgba(29, 34, 56, 1);
-        border: 2px solid red;
-    }
+#rechAction .selectionne {
+    box-shadow: 0 .25rem .75rem rgba(29, 34, 56, 1);
+    border: 2px solid red;
+}
 
 #rechAction .description p {
     border-right: 1px solid lightblue;
@@ -183,7 +183,7 @@
 }
 
 #rechAction .demande img {
-    width: 47px;
+    padding-left: 10px;
 }
 
 #rechAction .statut {
@@ -192,7 +192,9 @@
 }
 
     #rechAction .statut label {
-        line-height: 60px; 
+        width: 180px;
+        height: 100%;
+        padding-top: 15px;
     }
 
     #rechAction .choix {

@@ -49,9 +49,27 @@
                     @{
                         ActionDAO actDAO = new ActionDAO();
                         string statut = actDAO.RecupererStatutAction(actionAffichage.IdAction);
+                        int gamme = actDAO.RecupererGammeActivite(actionAffichage.IdAction);
                         if (statut == "Vous a été attribuée")
                         {
-                            <div class="description selectionne" >
+                            <div class="description selectionne">
+                                @{
+                                    switch (gamme)
+                                    {
+                                        case 1:
+                                            <img src="~/img/courses.svg" />
+                                            break;
+                                        case 2:
+                                            <img src="~/img/voiture.svg" />
+                                            break;
+                                        case 3:
+                                            <img src="~/img/outils.svg" />
+                                            break;
+                                        case 4:
+                                            <img src="~/img/jeux.svg" />
+                                            break;
+                                    }
+                                }
                                 <p>@actionAffichage.NomUtilisateur</p>
                                 <p>@actionAffichage.NomActivite</p>
                                 <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
@@ -62,6 +80,23 @@
                         else
                         {
                             <div class="description">
+                                @{
+                                    switch (gamme)
+                                    {
+                                        case 1:
+                                            <img src="~/img/courses.svg" />
+                                            break;
+                                        case 2:
+                                            <img src="~/img/voiture.svg" />
+                                            break;
+                                        case 3:
+                                            <img src="~/img/outils.svg" />
+                                            break;
+                                        case 4:
+                                            <img src="~/img/jeux.svg" />
+                                            break;
+                                    }
+                                }
                                 <p>@actionAffichage.NomUtilisateur</p>
                                 <p>@actionAffichage.NomActivite</p>
                                 <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
