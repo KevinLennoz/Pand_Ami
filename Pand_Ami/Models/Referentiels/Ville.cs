@@ -115,5 +115,13 @@ namespace Pand_Ami.Models.Referentiels
             bdd.FermetureBDD();
             return codesPostaux;
         }
+
+        public override string ToString()
+        {
+            string tot = this.nomVille + " " + this.codePostal;
+            return tot;
+        }
+
+
     }
 }

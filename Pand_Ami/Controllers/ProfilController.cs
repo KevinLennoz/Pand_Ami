@@ -6,6 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Pand_Ami.Models;
 using Action = Pand_Ami.Models.Action;
+using Ville = Pand_Ami.Models.Referentiels.Ville;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 namespace Pand_Ami.Controllers
 {
@@ -15,6 +18,19 @@ namespace Pand_Ami.Controllers
 
         public IActionResult Profil()
         {
+            UtilisateurDAO daoUtil = new UtilisateurDAO();
+            ViewBag.utilAffichage = daoUtil.UtilisateurVilleFromBdd(1);
+
+            Ville uneVille= new Ville();
+            List<Ville> listeVilles = uneVille.recupererVilles();
+
+            List<SelectListItem> listeVilleSelect = new List<SelectListItem>();
+            foreach (var item in listeVilles)
+            {
+                listeVilleSelect.Add(new SelectListItem(item.NomVille.ToString() + "  " + item.CodePostal.ToString()
+                , item.IdVille.ToString()));
+            }
+            ViewBag.villes = listeVilleSelect;
             return View("gererProfil");
         }
         public IActionResult Demandes()
@@ -31,6 +47,20 @@ namespace Pand_Ami.Controllers
             ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
             ReponseDao daoReponse = new ReponseDao();
             ViewBag.lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
+            List<ReponseAffichage> lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
+            
+            List<DateTime> dateContact = new List<DateTime>();
+            List<string> activiteContact = new List<string>();
+            for(int i = 0; i < lesReponses.Count; i++)
+            {
+                int id_volontaire = (int)lesReponses[i].IdUtilisateur;
+                var monTuple = dao.DernierService(1, id_volontaire);
+                dateContact.Add(monTuple.Item1);
+                activiteContact.Add(monTuple.Item2);
+            }
+
+            ViewBag.effectueDate = dateContact;
+            ViewBag.effectueActivite = activiteContact;
             return View("Demandes");
         }
 

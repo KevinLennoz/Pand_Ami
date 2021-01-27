@@ -76,10 +76,15 @@ namespace Pand_Ami.Models
         //constructeur surchargé BDD : 
         public Utilisateur(SqlDataReader dr)
         {
-            IdUtil = (int?)dr["id_Util"]; //0
-            IdVille = (int?)dr["id_ville"]; //2
-            //test d'abord sur la nullité en BDD : si  null, on instancie l'objet avec null en attribut
 
+            if (!dr.IsDBNull(dr.GetOrdinal("id_util")))
+            {
+                IdUtil = (int?)dr["id_util"];
+            }
+            if (!dr.IsDBNull(dr.GetOrdinal("id_ville")))
+            {
+                IdVille = (int?)dr["id_ville"];
+            }
             if (!dr.IsDBNull(dr.GetOrdinal("id_genre")))
             {
                 IdGenre = (int)dr["id_genre"];
@@ -170,7 +175,5 @@ namespace Pand_Ami.Models
             hash.Add(dateDesinscription);
             return hash.ToHashCode();
         }
-
-
     }
 }
