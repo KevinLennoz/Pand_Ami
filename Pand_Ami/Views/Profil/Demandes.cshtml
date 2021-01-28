@@ -15,7 +15,7 @@
                 <select name="actionChoisie" id="actionChoisie">
                     @foreach (var actionBenef in ViewBag.listeActions)
                     {
-                        <option value=@actionBenef.IdAction>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy") et @actionBenef.IdAction</option>
+                        <option value=@actionBenef.IdAction>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy")</option>
                     }
                 </select>
                 <input id="idSubmit" type="submit" value="valider" />
@@ -24,31 +24,61 @@
         <br />
         <div id="maLigne">
             <div id="colonne">
-                <h2 id="h2">Detail </h2>
+                <h2 id="h2">Détail </h2>
                 <br />
                 <br />
-                <table id="table1">
-                    <tr>
-                        <td>Type :</td>
-                        <td>Courses</td>
-                    </tr>
-                    <tr>
-                        <td>Date et heure :</td>
-                        <td>05/03 à 16H00</td>
-                    </tr>
-                    <tr>
-                        <td>Postée le :</td>
-                        <td>28/02</td>
-                    </tr>
-                    <tr>
-                        <td>Matériel demandé :</td>
-                        <td>voiture</td>
-                    </tr>
-                    <tr onclick="myFunction(this)">
-                        <td>Bénévole choisi</td>
-                        <td>Robert</td>
-                    </tr>
-                </table>
+                @if (ViewBag.detailAction != null)
+                {
+                    <table id="table1">
+                        <tr>
+                            <td>Activité :</td>
+                            <td>@ViewBag.detailAction.NomActivite</td>
+                        </tr>
+                        <tr>
+                            <td>Date :</td>
+                            @if (@ViewBag.detailAction.MinDebut == 0)
+                            {
+                                <td>le @ViewBag.detailAction.DateAction.ToString("dd/MM/yyyy") de @ViewBag.detailAction.HeureDebut H @ViewBag.detailAction.MinDebut à @ViewBag.detailAction.HeureFin H 00</td>
+                            }
+                            else
+                            {
+                                <td>le @ViewBag.detailAction.DateAction.ToString("dd/MM/yyyy") de @ViewBag.detailAction.HeureDebut H @ViewBag.detailAction.MinDebut à @ViewBag.detailAction.HeureFin H 00</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Matériel :</td>
+                            <td>@ViewBag.detailAction.Materiel</td>
+                        </tr>
+                    </table>
+                }
+                @if (ViewBag.detailBenevole != null)
+                {
+                    @if (ViewBag.detailBenevole.NomUtil != null)
+                    {
+                        <table id="table1">
+                            <tr>
+                                <td>Bénévole :</td>
+                                <td>@ViewBag.detailBenevole.NomUtil @ViewBag.detailBenevole.PrenomUtil</td>
+                            </tr>
+                            <tr>
+                                <td>E-mail :</td>
+                                <td>@ViewBag.detailBenevole.EmailUtil</td>
+                            </tr>
+                            <tr>
+                                <td>Tel :</td>
+                                <td>@ViewBag.detailBenevole.TelUtil</td>
+                            </tr>
+                            <tr>
+                                <td>Contact d'urgence :</td>
+                                <td>@ViewBag.detailBenevole.NomContactUrgence @ViewBag.detailBenevole.PrenomContactUrgence</td>
+                            </tr>
+                            <tr>
+                                <td>Tel contact d'urgence :</td>
+                                <td>@ViewBag.detailBenevole.TelContactUrgence</td>
+                            </tr>
+                        </table>
+                    }
+                }
                 <br />
                 <input class="btnSelect" type="button" value="annuler" />
                 <script>
@@ -93,6 +123,6 @@
                 </script>
             </div>
         </div>
-    </main> <!--A supprimer-->
+    </main> 
 </body>
 </html>

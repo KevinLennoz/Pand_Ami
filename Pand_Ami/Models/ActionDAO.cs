@@ -316,5 +316,22 @@ namespace Pand_Ami.Models
             return gamme;
         }
 
+        //Méthode pour afficher les détail de l'action que sélectionne un volontaire
+        public ActionBenefChoisie GetActionBenefChoisie(int idAction)
+        {
+            AccesBDD accesBDD = new AccesBDD();
+            SqlCommand cmd = new SqlCommand("dbo.recupererActionBenefChoisie", accesBDD.Cnx);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
+
+            accesBDD.OuvertureBDD();
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            ActionBenefChoisie a = new ActionBenefChoisie(reader);
+            reader.Close();
+            accesBDD.FermetureBDD();
+            return a;
+        }
+
     }
 }
