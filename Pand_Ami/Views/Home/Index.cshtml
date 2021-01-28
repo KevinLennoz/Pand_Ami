@@ -7,16 +7,19 @@
     <meta name="keywords" content="association, entraide, pand'ami, pandémie, local">
     <meta name="author" content="Floriane Ahadi, Roch Jacquot, Kevin Lennoz, Raphael Louvet">
 </head>
-<div class="bodyPageAc">
-    <div class="bienvenue">
-        <h1> BIENVENUE SUR PAND'AMI</h1>
-        <h3> Choisissez une action : </h3>
+<body class="bodyAppli">
+    <div class="bodyPageAc">
+        <div class="bienvenue">
+            <h1> BIENVENUE SUR PAND'AMI</h1>
+            <p  id="idParagraphe1">Que souhaitez vous faire aujourd'hui ? </p>
+        </div>
+        <div class="boutons">
+                <a class="lesBoutons" id="boutonAccueil" asp-controller="Action" asp-action="posterDemande">poster une demande</a>
+                <a class="lesBoutons" id="boutonAccueil" asp-controller="Recherche" asp-action="afficherActions">rechercher une action</a>
+                <a class="lesBoutons" id="boutonAccueil" asp-controller="Profil" asp-action="Profil">gerer mon profil</a>
+        </div>
     </div>
-    <div class="boutons">
-        <a class="lesBoutons" asp-area="" asp-controller="Action" asp-action="posterDemande">POSTER UNE DEMANDE</a>
-        <a class="lesBoutons" asp-area="" asp-controller="Recherche" asp-action="afficherActions">RECHERCHER UNE ACTION</a>
-        <a class="lesBoutons" asp-area="" asp-controller="Profil" asp-action="Profil">GERER MON PROFIL</a>
-    </div>
-</div>
+</body>
+
 
 

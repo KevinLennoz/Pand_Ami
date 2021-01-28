@@ -1,49 +1,63 @@
 ﻿.bodyPageAc {
-    justify-content: space-around;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    margin: 1vh;
-    padding: 1vh;
-    background-color: #ffffff;
+justify-content: space-around;
+align-items: center;
+display: flex;
+flex-direction: column;
+margin: 1vh;
+padding: 1vh;
 }
 .bienvenue {
-    font-family:'Segoe UI';
-    justify-content: space-around;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    margin: 1vh;
-    padding: 1vh;
+justify-content: space-around;
+align-items: center;
+display: flex;
+flex-direction: column;
+padding: 3vh;
+box-shadow: 1px 1px 5px rgb(126, 126, 126);
+background-color: rgba(255, 255, 255, 0.1);
+border-radius: 10px;
+text-align: center;
+width: 40vw;
 }
 
-h1 {
-    font-weight: 900;
-}
-
-h3 {
-    font-weight: 500;
-    font-style: italic;
+.bievenue h1 {
+font-weight: 900;
+text-transform:uppercase;
 }
 
 .boutons {
-    display: flex;
-    flex-direction: column;
-    padding: 1vh;
-    margin: 3vh;
+display: flex;
+flex-direction: column;
+padding: 1vh;
+margin: 3vh;
 }
 
 .lesBoutons {
-    border-radius: 10px;
-    font-size: x-large;
-    color: black;
-    font-weight: bold;
-    font-family: 'Segoe UI';
-    margin: 3vh auto;
-    width: 40vw;
-    padding: 3vh;
-    box-shadow: 1px 1px 5px rgb(126, 126, 126);
-    background-color: lightgrey;
+text-align: center;
+font-size: x-large;
+color: white;
+border: none;
+background: #404040;
+font-weight: 500;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+text-decoration: none;
+padding: 3vh;
+margin: 3vh auto;
+}
+
+#boutonAccueil {
+width: 40vw;
+}
+
+.lesBoutons:hover {
+text-decoration: none;
+color: black;
+background-color: white;
+font-weight: 700;
+letter-spacing: 3px;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
 }

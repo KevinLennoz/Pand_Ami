@@ -3,87 +3,80 @@
 *@
 @{
 }
-<div id="bodyPosterDemande">
-
-    <script type="text/javascript">
-
-        function verifHoraire() {
-            
-            var heureDebut = document.getElementById("lstHeureDebut").value;
-            var heureFin = document.getElementById("lstHeureFin").value;
-            
-            if (heureFin <= heureDebut) {
-                var heureFinInt = Number(heureDebut) + 1;
-                alert("Vous ne pouvez pas sélectionner une heure de fin plus petite ou égale à l'heure de commencement.")
-                document.getElementById("lstHeureFin").value = heureFinInt.toString();
-            }
-        }
-                
-    </script>
-    <h1 id="idH1"> Nouvelle demande d'action </h1>
-
-    <article id="idArticle">
-
-        <form method="POST" id="idForm">
+<body class="bodyAppli">
+    <div id="bodyPosterDemande">
+        <div id="divIntro">
+            <h1 id="idH1"> Nouvelle demande d'action </h1>
             <p id="idParagraphe1">Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
-            <table id="idTable">
-                <tr>
-                    <td><label>Type de service :</label></td>
-                    <td>
-                        <select id="lstService" name="lstService" asp-items="ViewBag.Activite">
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>Matériel requis :</label></td>
-                    <td>
-                        <select id="idMateriel" name="idMateriel">
-                            <option value="">Matériel requis</option>
-                            <option>Pas de matériel possible pour le moment</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>Date de réalisation :</label></td>
-                    <td><input type="date" name="dateRealisation" value="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" /></td>
-                </tr>
+        </div>
+        <div id="bodyPosterDemande">
 
-                <tr>
-                    <td><label>Horaire de réalisation :</label></td>
-                    <td>
-                        <select id="lstHeureDebut" name="lstHeureDebut" , asp-items="ViewBag.heuresDebut">
-                            <option value="">hh</option>
-                        </select>
-                        <label>:</label>
-                        <select id="lstMinuteDebut" name="lstMinuteDebut" , asp-items="ViewBag.minutes">
-                        </select>
-                        <label>à</label>
-                        <select id="lstHeureFin" name="lstHeureFin" , asp-items="ViewBag.heuresFin" onchange="verifHoraire()">
-                            <option value="">hh</option>
-                        </select>
-                        <label>:</label>
-                        <select id="lstMinuteFin" name="lstMinuteFin" , asp-items="ViewBag.minutes">
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>Ville et code postal :</label></td>
-                    <td>
-                        <select id="lstVille" name="lstVille" , asp-items="ViewBag.Ville">
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>Adresse de réalisation :</label></td>
-                    <td><input id="txtAdresse" name="txtAdresse" type="text" /></td>
-                </tr>
-            </table>
-            <div id="idRecur">
-                <label>Cochez si la demande est récurrente : </label>
-                @Html.CheckBox("ckbRecurrence", false)
-            </div>
-            <br />
-            <input id="idSubmit" type="submit" value="valider" />
-        </form>
-    </article>
-</div>
+            <script type="text/javascript">
+
+                function verifHoraire() {
+
+                    var heureDebut = document.getElementById("lstHeureDebut").value;
+                    var heureFin = document.getElementById("lstHeureFin").value;
+
+                    if (heureFin <= heureDebut) {
+                        var heureFinInt = Number(heureDebut) + 1;
+                        alert("Vous ne pouvez pas sélectionner une heure de fin plus petite ou égale à l'heure de commencement.")
+                        document.getElementById("lstHeureFin").value = heureFinInt.toString();
+                    }
+                }
+
+            </script>
+            <h1 id="idH1"> Nouvelle demande d'action </h1>
+
+            <article id="idArticle">
+                <form method="POST" id="idForm">
+                    <table id="idTable">
+                        <tr>
+                            <td><label>Type de service :</label></td>
+                            <td>
+                                <select id="lstService" name="lstService" asp-items="ViewBag.Activite">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Date de réalisation :</label></td>
+                            <td><input type="date" name="dateRealisation" value="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" /></td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Horaire de réalisation :</label></td>
+                            <td>
+                                <select id="lstHeureDebut" name="lstHeureDebut" , asp-items="ViewBag.heuresDebut">
+                                    <option value="">hh</option>
+                                </select>
+                                <label>:</label>
+                                <select id="lstMinuteDebut" name="lstMinuteDebut" , asp-items="ViewBag.minutes">
+                                </select>
+                                <label>à</label>
+                                <select id="lstHeureFin" name="lstHeureFin" , asp-items="ViewBag.heuresFin" onchange="verifHoraire()">
+                                    <option value="">hh</option>
+                                </select>
+                                <label>:</label>
+                                <select id="lstMinuteFin" name="lstMinuteFin" , asp-items="ViewBag.minutes">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Ville et code postal :</label></td>
+                            <td>
+                                <select id="lstVille" name="lstVille" , asp-items="ViewBag.Ville">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Adresse de réalisation :</label></td>
+                            <td><input id="txtAdresse" name="txtAdresse" type="text" /></td>
+                        </tr>
+
+                    </table>
+                    <input class="lesBoutons" id="idSubmit" type="submit" value="valider" />
+                </form>
+            </article>
+        </div>
+    </div>
+</body>

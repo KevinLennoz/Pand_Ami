@@ -1,17 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+<body class="bodyAppli">
 <div class="bodyGererProfil">
     <div class="headerGererProfil">
-        <h2>Bienvenue @ViewBag.utilAffichage.PrenomUtil @ViewBag.utilAffichage.NomUtil !</h2>
+        <h1>Bienvenue @ViewBag.utilAffichage.PrenomUtil @ViewBag.utilAffichage.NomUtil !</h1>
+        <p id="idParagraphe1">veuillez trouver ci-dessous les informations de votre compte :</p>
+
     </div>
     <div class="contenuGererProfil">
         <nav class="navGererProfil">
-            <div class="modifierProfil">
-                <input type="button" value="modifier mon profil" class="boutonsGererProfil" />
-            </div>
-            <div class="modifierProfil">
-                <input type="button" value="se desinscrire" class="boutonsGererProfil" />
-            </div>
+            <input class="lesBoutons" type="button" value="modifier mon profil" id="boutonsGererProfil" />
+            <input class="lesBoutons" type="button" value="se desinscrire" id="boutonsGererProfil" />
         </nav>
         <form class="infosGererProfil">
             <article class="articleGererProfil">
@@ -107,10 +106,11 @@
                     </tr>
                 </table>
                 <div id="boutonGererProfil">
-                    <input type="submit" value="valider" class="boutonsGererProfil" />
+                    <input class="lesBoutons" type="submit" value="valider" id="boutonsGererProfilValider" />
                 </div>
             </article>
         </form>
     </div>
 </div>
+</body>
 </html>
