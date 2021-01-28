@@ -45,7 +45,7 @@
                 </tr>
                 <tr>
                     <td><label>Date de réalisation :</label></td>
-                    <td><input type="date" name="dateRealisation" value="@DateTime.Now.ToString("yyyy-MM-dd")" min="@DateTime.Now.ToString("yyyy-MM-dd")" /></td>
+                    <td><input type="date" name="dateRealisation" value="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" /></td>
                 </tr>
 
                 <tr>
