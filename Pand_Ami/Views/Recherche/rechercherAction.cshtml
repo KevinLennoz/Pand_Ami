@@ -7,7 +7,6 @@
 
     function newDate() {
 
-<body class="bodyAppli">
         var dateFrom = document.getElementById("from").value;
 
         var dateTo = addDays(dateFrom, 14);
@@ -17,127 +16,128 @@
     }
 
 </script>
-<div id="rechAction">
-    <div class="titre">RECHERCHE D'UNE ACTION</div>
-    <div class="menu">
-        <div id="titreRecherche">Recherche Avancée</div>
-        <form class="formRecherche" method="post">
-            <div class="catRecherche">
-                <label>Types de Services :</label>
-                <div class="services">
-                    @foreach (var activite in ViewBag.listeActivites)
-                    {
-                        <input type="radio" name="radioActivite" value="@activite.Id_activite" checked="checked" />@activite.Nom_activite<br />
-                    }
-                </div>
-            </div>
-            <div class="catRecherche">
-                <label>A partir du :</label>
-                <input type="date" id="from" name="dateFrom" value="@DateTime.Now.ToString("yyyy-MM-dd")" min="@DateTime.Now.ToString("yyyy-MM-dd")" onchange="newDate()" />
-            </div>
-            <div class="catRecherche">
-                <label>Jusqu'au :</label>
-                <input type="date" id="to" name="dateTo" value="@DateTime.Now.AddDays(14).ToString("yyyy-MM-dd")" />
-
-            </div>
-
-            <div class="catRecherche">
-                <label> Villes :</label>
-                <div class="departements">
-                    <select id="lstVille" name="lstVille" , asp-items="ViewBag.villes"></select>
-                </div>
-            </div>
-
-            <input type="submit" class="actualiser" value="Actualiser" />
-        </form>
-    </div>
-    <div class="actions">
-        <div class="titreActions">
-            <label>Actions</label>
-            <label>Statut</label>
-            <label>Choix</label>
-        </div>
-        <div class="listeActions">
-
-            @foreach (var actionAffichage in ViewBag.lesActionsAffichages)
-            {
-                <form method="post" class="demande">
-                    @{
-                        ActionDAO actDAO = new ActionDAO();
-                        string statut = actDAO.RecupererStatutAction(actionAffichage.IdAction);
-                        int gamme = actDAO.RecupererGammeActivite(actionAffichage.IdAction);
-                        if (statut == "Vous a été attribuée")
+<body class="bodyAppli">
+    <div id="rechAction">
+        <div class="titre">RECHERCHE D'UNE ACTION</div>
+        <div class="menu">
+            <div id="titreRecherche">Recherche Avancée</div>
+            <form class="formRecherche" method="post">
+                <div class="catRecherche">
+                    <label>Types de Services :</label>
+                    <div class="services">
+                        @foreach (var activite in ViewBag.listeActivites)
                         {
-                            <div class="description selectionne">
-                                @{
-                                    switch (gamme)
-                                    {
-                                        case 1:
-                                            <img src="~/img/courses.svg" />
-                                            break;
-                                        case 2:
-                                            <img src="~/img/voiture.svg" />
-                                            break;
-                                        case 3:
-                                            <img src="~/img/outils.svg" />
-                                            break;
-                                        case 4:
-                                            <img src="~/img/jeux.svg" />
-                                            break;
-                                    }
-                                }
-                                <p>@actionAffichage.NomUtilisateur</p>
-                                <p>@actionAffichage.NomActivite</p>
-                                <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
-                                <p>@actionAffichage.NomVille</p>
-                                <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="description">
-                                @{
-                                    switch (gamme)
-                                    {
-                                        case 1:
-                                            <img src="~/img/courses.svg" />
-                                            break;
-                                        case 2:
-                                            <img src="~/img/voiture.svg" />
-                                            break;
-                                        case 3:
-                                            <img src="~/img/outils.svg" />
-                                            break;
-                                        case 4:
-                                            <img src="~/img/jeux.svg" />
-                                            break;
-                                    }
-                                }
-                                <p>@actionAffichage.NomUtilisateur</p>
-                                <p>@actionAffichage.NomActivite</p>
-                                <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
-                                <p>@actionAffichage.NomVille</p>
-                                <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
-                            </div>
-                        }
-                    }
-                    <div class="statut">
-                        <label>@statut</label>
-                    </div>
-                    <div class="choix">
-                        @if (statut != "En recherche d'un Volontaire")
-                        {
-                            <div class="empty"></div>
-                        }
-                        else
-                        {
-                            <input class="postuler" type="submit" value="Postuler" asp-controller="Recherche" asp-action="Postuler" />
+                            <input type="radio" name="radioActivite" value="@activite.Id_activite" checked="checked" />@activite.Nom_activite<br />
                         }
                     </div>
-                </form>
-            }
+                </div>
+                <div class="catRecherche">
+                    <label>A partir du :</label>
+                    <input type="date" id="from" name="dateFrom" value="@DateTime.Now.ToString("yyyy-MM-dd")" min="@DateTime.Now.ToString("yyyy-MM-dd")" onchange="newDate()" />
+                </div>
+                <div class="catRecherche">
+                    <label>Jusqu'au :</label>
+                    <input type="date" id="to" name="dateTo" value="@DateTime.Now.AddDays(14).ToString("yyyy-MM-dd")" />
 
+                </div>
+
+                <div class="catRecherche">
+                    <label> Villes :</label>
+                    <div class="departements">
+                        <select id="lstVille" name="lstVille" , asp-items="ViewBag.villes"></select>
+                    </div>
+                </div>
+
+                <input type="submit" class="actualiser" value="Actualiser" />
+            </form>
+        </div>
+        <div class="actions">
+            <div class="titreActions">
+                <label>Actions</label>
+                <label>Statut</label>
+                <label>Choix</label>
+            </div>
+            <div class="listeActions">
+
+                @foreach (var actionAffichage in ViewBag.lesActionsAffichages)
+                {
+                    <form method="post" class="demande">
+                        @{
+                            ActionDAO actDAO = new ActionDAO();
+                            string statut = actDAO.RecupererStatutAction(actionAffichage.IdAction);
+                            int gamme = actDAO.RecupererGammeActivite(actionAffichage.IdAction);
+                            if (statut == "Vous a été attribuée")
+                            {
+                                <div class="description selectionne">
+                                    @{
+                                        switch (gamme)
+                                        {
+                                            case 1:
+                                                <img src="~/img/courses.svg" />
+                                                break;
+                                            case 2:
+                                                <img src="~/img/voiture.svg" />
+                                                break;
+                                            case 3:
+                                                <img src="~/img/outils.svg" />
+                                                break;
+                                            case 4:
+                                                <img src="~/img/jeux.svg" />
+                                                break;
+                                        }
+                                    }
+                                    <p>@actionAffichage.NomUtilisateur</p>
+                                    <p>@actionAffichage.NomActivite</p>
+                                    <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
+                                    <p>@actionAffichage.NomVille</p>
+                                    <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="description">
+                                    @{
+                                        switch (gamme)
+                                        {
+                                            case 1:
+                                                <img src="~/img/courses.svg" />
+                                                break;
+                                            case 2:
+                                                <img src="~/img/voiture.svg" />
+                                                break;
+                                            case 3:
+                                                <img src="~/img/outils.svg" />
+                                                break;
+                                            case 4:
+                                                <img src="~/img/jeux.svg" />
+                                                break;
+                                        }
+                                    }
+                                    <p>@actionAffichage.NomUtilisateur</p>
+                                    <p>@actionAffichage.NomActivite</p>
+                                    <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
+                                    <p>@actionAffichage.NomVille</p>
+                                    <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
+                                </div>
+                            }
+                        }
+                        <div class="statut">
+                            <label>@statut</label>
+                        </div>
+                        <div class="choix">
+                            @if (statut != "En recherche d'un Volontaire")
+                            {
+                                <div class="empty"></div>
+                            }
+                            else
+                            {
+                                <input class="postuler" type="submit" value="Postuler" asp-controller="Recherche" asp-action="Postuler" />
+                            }
+                        </div>
+                    </form>
+                }
+
+            </div>
         </div>
     </div>
-</div>
 </body>

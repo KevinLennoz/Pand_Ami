@@ -3,6 +3,21 @@
 *@
 @{
 }
+<script type="text/javascript">
+
+    function verifHoraire() {
+
+        var heureDebut = document.getElementById("lstHeureDebut").value;
+        var heureFin = document.getElementById("lstHeureFin").value;
+
+        if (heureFin <= heureDebut) {
+            var heureFinInt = Number(heureDebut) + 1;
+            alert("Vous ne pouvez pas sélectionner une heure de fin plus petite ou égale à l'heure de commencement.")
+            document.getElementById("lstHeureFin").value = heureFinInt.toString();
+        }
+    }
+
+</script>
 <body class="bodyAppli">
     <div id="bodyPosterDemande">
         <div id="divIntro">
@@ -10,23 +25,6 @@
             <p id="idParagraphe1">Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
         </div>
         <div id="bodyPosterDemande">
-
-            <script type="text/javascript">
-
-                function verifHoraire() {
-
-                    var heureDebut = document.getElementById("lstHeureDebut").value;
-                    var heureFin = document.getElementById("lstHeureFin").value;
-
-                    if (heureFin <= heureDebut) {
-                        var heureFinInt = Number(heureDebut) + 1;
-                        alert("Vous ne pouvez pas sélectionner une heure de fin plus petite ou égale à l'heure de commencement.")
-                        document.getElementById("lstHeureFin").value = heureFinInt.toString();
-                    }
-                }
-
-            </script>
-            <h1 id="idH1"> Nouvelle demande d'action </h1>
 
             <article id="idArticle">
                 <form method="POST" id="idForm">
