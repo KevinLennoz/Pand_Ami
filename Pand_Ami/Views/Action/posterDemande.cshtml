@@ -3,8 +3,23 @@
 *@
 @{
 }
-
 <div id="bodyPosterDemande">
+
+    <script type="text/javascript">
+
+        function verifHoraire() {
+            
+            var heureDebut = document.getElementById("lstHeureDebut").value;
+            var heureFin = document.getElementById("lstHeureFin").value;
+            
+            if (heureFin <= heureDebut) {
+                var heureFinInt = Number(heureDebut) + 1;
+                alert("Vous ne pouvez pas sélectionner une heure de fin plus petite ou égale à l'heure de commencement.")
+                document.getElementById("lstHeureFin").value = heureFinInt.toString();
+            }
+        }
+                
+    </script>
     <h1 id="idH1"> Nouvelle demande d'action </h1>
 
     <article id="idArticle">
@@ -16,7 +31,6 @@
                     <td><label>Type de service :</label></td>
                     <td>
                         <select id="lstService" name="lstService" asp-items="ViewBag.Activite">
-                            <option value="">Service demandé</option>
                         </select>
                     </td>
                 </tr>
@@ -31,26 +45,24 @@
                 </tr>
                 <tr>
                     <td><label>Date de réalisation :</label></td>
-                    <td><input type="date" name="dateRealisation" /></td>
+                    <td><input type="date" name="dateRealisation" value="@DateTime.Now.ToString("yyyy-MM-dd")" min="@DateTime.Now.ToString("yyyy-MM-dd")" /></td>
                 </tr>
 
                 <tr>
                     <td><label>Horaire de réalisation :</label></td>
                     <td>
-                        <select id="lstHeureDebut" name="lstHeureDebut" , asp-items="ViewBag.heures">
+                        <select id="lstHeureDebut" name="lstHeureDebut" , asp-items="ViewBag.heuresDebut">
                             <option value="">hh</option>
                         </select>
                         <label>:</label>
                         <select id="lstMinuteDebut" name="lstMinuteDebut" , asp-items="ViewBag.minutes">
-                            <option value="">mm</option>
                         </select>
                         <label>à</label>
-                        <select id="lstHeureFin" name="lstHeureFin" , asp-items="ViewBag.heures">
+                        <select id="lstHeureFin" name="lstHeureFin" , asp-items="ViewBag.heuresFin" onchange="verifHoraire()">
                             <option value="">hh</option>
                         </select>
                         <label>:</label>
                         <select id="lstMinuteFin" name="lstMinuteFin" , asp-items="ViewBag.minutes">
-                            <option value="">mm</option>
                         </select>
                     </td>
                 </tr>
@@ -58,7 +70,6 @@
                     <td><label>Ville et code postal :</label></td>
                     <td>
                         <select id="lstVille" name="lstVille" , asp-items="ViewBag.Ville">
-                            <option value="">Ville</option>
                         </select>
                     </td>
                 <tr />
