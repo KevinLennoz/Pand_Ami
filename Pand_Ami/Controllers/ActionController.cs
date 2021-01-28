@@ -32,6 +32,9 @@ namespace Pand_Ami.Controllers
             var test = myDAO.DernierService(4, 3);
             ViewBag.test1 = test.Item1;
             ViewBag.test2 = test.Item2;
+
+            int x = 00;
+            ViewBag.X = x;
             
 
             return View();
@@ -54,19 +57,28 @@ namespace Pand_Ami.Controllers
 
             /*Chargement des minutes et heures*/
 
-            List<Heure> listeHeures = new List<Heure>();
-            List<SelectListItem> listeHeuresSelect = new List<SelectListItem>();
+            List<Heure> listeHeuresDebut = new List<Heure>();
+            List<SelectListItem> listeHeuresSelectDebut = new List<SelectListItem>();
 
-            for (int i = 1; i <= 24; i++)
+            for (int i = 7; i <= 20; i++)
             {
-                if(i > 6 && i < 22)
-                {
-                    listeHeures.Add(new Heure(i));
-                }
+                listeHeuresDebut.Add(new Heure(i));
             }
-            foreach (var item in listeHeures)
+            foreach (var item in listeHeuresDebut)
             {
-                listeHeuresSelect.Add(new SelectListItem(item.ValeurHeure.ToString(), item.IdHeure.ToString()));
+                listeHeuresSelectDebut.Add(new SelectListItem(item.ValeurHeure.ToString(), item.IdHeure.ToString()));
+            }
+
+            List<Heure> listeHeuresFin = new List<Heure>();
+            List<SelectListItem> listeHeuresSelectFin = new List<SelectListItem>();
+
+            for (int i = 8; i <= 21; i++)
+            {
+                listeHeuresFin.Add(new Heure(i));
+            }
+            foreach (var item in listeHeuresFin)
+            {
+                listeHeuresSelectFin.Add(new SelectListItem(item.ValeurHeure.ToString(), item.IdHeure.ToString()));
             }
 
             List<Minute> listeMinutes = new List<Minute>();
@@ -78,10 +90,18 @@ namespace Pand_Ami.Controllers
             }
             foreach (var item in listeMinutes)
             {
-                listeMinutesSelect.Add(new SelectListItem(item.ValeurMinute.ToString(), item.IdMinute.ToString()));
+                if(item.ValeurMinute == 0)
+                {
+                    listeMinutesSelect.Add(new SelectListItem((item.ValeurMinute.ToString() + "0"), item.IdMinute.ToString()));
+                } else
+                {
+                    listeMinutesSelect.Add(new SelectListItem(item.ValeurMinute.ToString(), item.IdMinute.ToString()));
+                } 
+                
             }
 
-            ViewBag.heures = listeHeuresSelect;
+            ViewBag.heuresDebut = listeHeuresSelectDebut;
+            ViewBag.heuresFin = listeHeuresSelectFin;
             ViewBag.minutes = listeMinutesSelect;
 
             //Chargement des villes et Adresses postales
