@@ -1,16 +1,17 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
-
+<body class="bodyAppli">
 <div id="bodyPosterDemande">
-    <h1 id="idH1"> Nouvelle demande d'action </h1>
+    <div id="divIntro">
+        <h1 id="idH1"> Nouvelle demande d'action </h1>
+        <p id="idParagraphe1">Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
+    </div>
 
     <article id="idArticle">
-
         <form method="POST" id="idForm">
-            <p id="idParagraphe1">Remplissez le formulaire ci-dessous afin de poster une nouvelle demande d'action</p>
             <table id="idTable">
                 <tr>
                     <td><label>Type de service :</label></td>
@@ -58,7 +59,7 @@
                     <td><label>Ville et code postal :</label></td>
                     <td>
                         <select id="lstVille" name="lstVille" , asp-items="ViewBag.Ville">
-                            <option value="">Ville</option>
+                            <osption value="">Ville</osption>
                         </select>
                     </td>
                 <tr />
@@ -66,13 +67,19 @@
                     <td><label>Adresse de réalisation :</label></td>
                     <td><input id="txtAdresse" name="txtAdresse" type="text" /></td>
                 </tr>
+                <tr>
+                    <td>
+                        <label>Cochez si la demande est récurrente : </label>
+                    </td>
+                    <td>
+                        @Html.CheckBox("ckbRecurrence", false)
+
+                    </td>
+                </tr>
             </table>
-            <div id="idRecur">
-                <label>Cochez si la demande est récurrente : </label>
-                @Html.CheckBox("ckbRecurrence", false)
-            </div>
-            <br />
-            <input id="idSubmit" type="submit" value="valider" />
+            <input class="lesBoutons" id="idSubmit" type="submit" value="valider" />
         </form>
     </article>
 </div>
+
+</body>
