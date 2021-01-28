@@ -5,42 +5,72 @@
             clear: both;*/
 }
 
-#colonne {
+#lesDemandes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vh;
+    justify-content: space-around;
+}
+
+#formDemandes {
+    padding: 1vh;
+    margin: 1vh;
+}
+
+    #formDemandes select {
+        height: 4vh;
+    }
+
+#colonne1 {
     display: flex;
     flex-direction: column;
     height: 550px;
-    width: 26vw;
     margin: 1vw;
-    padding: 0.8vw;
-    background-color: lightblue;
-    border-radius: 20px;
+    padding: 1vw;
     overflow-y: scroll;
+    font-size: large;
+    font-weight: 500;
+    box-shadow: 1px 1px 5px rgb(126, 126, 126);
+    background-color: rgba(255, 255, 255, 0.8);
+    width:25vw;
+}
+
+    #colonne1 #colonne2 h2 {
+        text-transform: uppercase;
+    }
+
+#colonne2 {
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    margin: 1vw;
+    padding: 1vw;
+    overflow-y: scroll;
+    font-size: large;
+    font-weight: 500;
+    box-shadow: 1px 1px 5px rgb(126, 126, 126);
+    background-color: rgba(255, 255, 255, 0.8);
+    width:45vw;
 }
 
 #maLigne {
     display: flex;
     flex-direction: row;
-}
-
-#sousColonne {
-    
-}
-
-#h2 {
-    font-family: Released;
-    color: black;
-    background-color: white;
-    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
 }
 
 #titre {
-    font-family: Released;
     color: black;
 }
 
 #table1 {
+    display: flex;
+    border-spacing: 10px;
     border-collapse: separate;
-    border-spacing: 1cm 0.1em;
+    border-spacing: 1vh;
 }
 
 #table2 {
@@ -48,36 +78,13 @@
     border-spacing: 1cm 2em;
     height: 0px;
 }
-/*tr:hover {
-            background-color: #f5f5f5;
-        }*/
+
 .description {
     display: flex;
     flex-direction: row;
-    flex: 3;
-    justify-content: flex-start;
-    color: #1a2238;
-    background: #9daaf2;
-    border-radius: 20px;
-    overflow: hidden;
-    border-right: 1px solid lightblue;
-    padding: 0 10px;
-    margin: 10px;
-}
-    .description p {
-        border-right: 1px solid lightblue;
-        padding: 0 20px;
-    }
-
-.description p:nth-child(2) {
-        padding-left: 20px;
-    }
-.description p:nth-last-child(1) {
-        border:0px;
-    }
-
-.btnSelect { /*Bouton à centrer*/
-    margin-left: auto;
-    margin-right: auto;
-    border: 3px solid black;
+    border-radius: 10px;
+    background-color: white;
+    align-items: center;
+    margin: 1vh;
+    padding: 1vh;
 }

@@ -1,16 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="~/css/demandes.css">
-</head>
 <body class="bodyAppli">
-    <div>
-        <h1 id="titre">Mes demandes d'action</h1>
-    </div>
-    <br />
-    <main id="boxes">
-        <div>
-            <h3>Choisissez une action</h3>
+    <div id="lesDemandes">
+        <div id="divIntro">
+            <h1 id="idH1">Mes demandes d'action</h1>
+            <br />
+            <p id="idParagraphe1">Veuillez selectionner une action : </p>
+        </div>
+        <div id="formDemandes">
             <form method="POST" id="idSelection">
                 <select name="actionChoisie" id="actionChoisie">
                     @foreach (var actionBenef in ViewBag.listeActions)
@@ -18,15 +15,16 @@
                         <option value=@actionBenef.IdAction>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy")</option>
                     }
                 </select>
-                <input id="idSubmit" type="submit" value="valider" />
+                <input class="lesBoutons" id="idSubmit" type="submit" value="valider" />
             </form>
         </div>
-        <br />
+
         <div id="maLigne">
-            <div id="colonne">
-                <h2 id="h2">Détail </h2>
+            <div id="colonne1">
+                <h2 id="h2">Détail</h2>
                 <br />
                 <br />
+
                 @if (ViewBag.detailAction != null)
                 {
                     <table id="table1">
@@ -49,72 +47,65 @@
                             <td>Matériel :</td>
                             <td>@ViewBag.detailAction.Materiel</td>
                         </tr>
+
+
+                        @if (ViewBag.detailBenevole != null)
+                        {
+                            @if (ViewBag.detailBenevole.NomUtil != null)
+                            {
+                                <tr>
+                                    <td>Bénévole :</td>
+                                    <td>@ViewBag.detailBenevole.NomUtil @ViewBag.detailBenevole.PrenomUtil</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail :</td>
+                                    <td>@ViewBag.detailBenevole.EmailUtil</td>
+                                </tr>
+                                <tr>
+                                    <td>Tel :</td>
+                                    <td>@ViewBag.detailBenevole.TelUtil</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact d'urgence :</td>
+                                    <td>@ViewBag.detailBenevole.NomContactUrgence @ViewBag.detailBenevole.PrenomContactUrgence</td>
+                                </tr>
+                                <tr>
+                                    <td>Tel contact d'urgence :</td>
+                                    <td>@ViewBag.detailBenevole.TelContactUrgence</td>
+                                </tr>
+                            }
+                        }
                     </table>
                 }
-                @if (ViewBag.detailBenevole != null)
-                {
-                    @if (ViewBag.detailBenevole.NomUtil != null)
-                    {
-                        <table id="table1">
-                            <tr>
-                                <td>Bénévole :</td>
-                                <td>@ViewBag.detailBenevole.NomUtil @ViewBag.detailBenevole.PrenomUtil</td>
-                            </tr>
-                            <tr>
-                                <td>E-mail :</td>
-                                <td>@ViewBag.detailBenevole.EmailUtil</td>
-                            </tr>
-                            <tr>
-                                <td>Tel :</td>
-                                <td>@ViewBag.detailBenevole.TelUtil</td>
-                            </tr>
-                            <tr>
-                                <td>Contact d'urgence :</td>
-                                <td>@ViewBag.detailBenevole.NomContactUrgence @ViewBag.detailBenevole.PrenomContactUrgence</td>
-                            </tr>
-                            <tr>
-                                <td>Tel contact d'urgence :</td>
-                                <td>@ViewBag.detailBenevole.TelContactUrgence</td>
-                            </tr>
-                        </table>
-                    }
-                }
-                <br />
-                <input class="btnSelect" type="button" value="annuler" />
+                <input class="lesBoutons" id="btnSelect" type="button" value="annuler" />
                 <script>
                 </script>
             </div>
 
-
-            <div id="colonne">
+            <div id="colonne2">
                 <h2 id="h2">Reponses</h2>
                 <br />
                 <br />
-                <div id="sousColonne">
-                    <table id="table2">
-                        <tr>
-                            @if (ViewBag.lesReponses != null)
+                @if (ViewBag.lesReponses != null)
+                {
+                    @for (int i = 0; i < ViewBag.lesReponses.Count; i++)
+                    {
+
+                        <div class="description">
+                            <p>Date Reponse : @ViewBag.lesReponses[i].DateReponse.ToString("dd-MM-yyyy") | </p>
+                            <p>| Volontaire : @ViewBag.lesReponses[i].PrenomVolontaire @ViewBag.lesReponses[i].NomVolontaire ( @ViewBag.lesReponses[i].Age ) | </p>
+                            @if ((string)ViewBag.effectueActivite[i] != "")
                             {
-                                @for (int i = 0; i < ViewBag.lesReponses.Count; i++)
-                                {
-                                    
-                                    <div class="description">
-                                        <p>Date Reponse : @ViewBag.lesReponses[i].DateReponse.ToString("dd-MM-yyyy")</p>
-                                        <p>Volontaire : @ViewBag.lesReponses[i].PrenomVolontaire @ViewBag.lesReponses[i].NomVolontaire ( @ViewBag.lesReponses[i].Age ) </p>
-                                        @if((string)ViewBag.effectueActivite[i] != "")
-                                        {
-                                            <p>Dernier service : @ViewBag.effectueActivite[i].ToString() le @ViewBag.effectueDate[i].ToString("dd/MM/yyyy")</p>
-                                        } else
-                                        {
-                                            <p>volontaire non rencontré</p>
-                                        }
-                                    </div>
-                                }
+                                <p>| Dernier service : @ViewBag.effectueActivite[i].ToString() le @ViewBag.effectueDate[i].ToString("dd/MM/yyyy") | </p>
                             }
-                        </tr>
-                    </table>
-                </div>
-                <input class="btnSelect" type="button" value="choisir bénévole" />
+                            else
+                            {
+                                <p>| volontaire non rencontré</p>
+                            }
+                            <input class="lesBoutons" id="btnSelect" type="button" value="choisir bénévole" />
+                        </div>
+                    }
+                }
                 <br />
                 <script>
                     function myFunction(x) {
@@ -123,6 +114,6 @@
                 </script>
             </div>
         </div>
-    </main> 
+    </div>
 </body>
 </html>
