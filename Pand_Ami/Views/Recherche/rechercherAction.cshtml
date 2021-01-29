@@ -18,16 +18,19 @@
 </script>
 <body class="bodyAppli">
     <div id="rechAction">
-        <div class="titre">RECHERCHE D'UNE ACTION</div>
+        <div class="titre">
+            <h1>RECHERCHE D'UNE ACTION</h1>
+            <p id="idParagraphe1">Pour quelle action voulez vous postuler aujourd'hui ? </p>
+        </div>
         <div class="menu">
             <div id="titreRecherche">Recherche Avancée</div>
             <form class="formRecherche" method="post">
                 <div class="catRecherche">
-                    <label>Types de Services :</label>
+                    <label>Type de Services :</label>
                     <div class="services">
                         @foreach (var activite in ViewBag.listeActivites)
                         {
-                            <input type="radio" name="radioActivite" value="@activite.Id_activite" checked="checked" />@activite.Nom_activite<br />
+                            <input type="radio" id="radioBtnServ" name="radioActivite" value="@activite.Id_activite" checked="checked" />    @activite.Nom_activite<br />
                         }
                     </div>
                 </div>
@@ -47,11 +50,15 @@
                         <select id="lstVille" name="lstVille" , asp-items="ViewBag.villes"></select>
                     </div>
                 </div>
-
-                <input type="submit" class="actualiser" value="Actualiser" />
+                <input class="lesBoutons" type="submit" id="btnActualiser" value="Actualiser" />
             </form>
         </div>
         <div class="actions">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <div class="titreActions">
                 <label>Actions</label>
                 <label>Statut</label>
@@ -89,7 +96,7 @@
                                     <p>@actionAffichage.NomUtilisateur</p>
                                     <p>@actionAffichage.NomActivite</p>
                                     <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
-                                    <p>@actionAffichage.NomVille</p>
+                                    <p id="lastP">@actionAffichage.NomVille</p>
                                     <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
                                 </div>
                             }
@@ -131,7 +138,7 @@
                             }
                             else
                             {
-                                <input class="postuler" type="submit" value="Postuler" asp-controller="Recherche" asp-action="Postuler" />
+                                <input class="lesBoutons" id="bntPostuler" type="submit" value="Postuler" asp-controller="Recherche" asp-action="Postuler" />
                             }
                         </div>
                     </form>
