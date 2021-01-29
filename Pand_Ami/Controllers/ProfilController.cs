@@ -64,7 +64,15 @@ namespace Pand_Ami.Controllers
             return View("Demandes");
         }
 
-        public ActionResult Index()
+        [HttpPost]
+        public ActionResult DemandesDeux(int idUtilisateur, int idAction)
+        {
+            int idDeLAction = idAction;
+            int idDeLUtilisateur = idUtilisateur;
+            return RedirectToAction("Demandes");
+        }
+
+            public ActionResult Index()
         {
             return View();
         }
