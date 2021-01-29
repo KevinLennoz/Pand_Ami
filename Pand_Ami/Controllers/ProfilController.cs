@@ -37,6 +37,7 @@ namespace Pand_Ami.Controllers
         {
             ActionDAO dao = new ActionDAO();
             ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(3);  //Par défaut utilisateur 3
+            ViewBag.IdActionChoisi = null;
             return View("Demandes");
         }
 
@@ -57,11 +58,11 @@ namespace Pand_Ami.Controllers
             for(int i = 0; i < lesReponses.Count; i++)
             {
                 int id_volontaire = (int)lesReponses[i].IdUtilisateur;
-                var monTuple = dao.DernierService(3, id_volontaire); //Bénéficiaire codé en dur 3
+                var monTuple = dao.DernierService(3, id_volontaire); //Par défaut utilisateur (bénéficiaire) 3
                 dateContact.Add(monTuple.Item1);
                 activiteContact.Add(monTuple.Item2);
             }
-
+            ViewBag.IdActionChoisi = actionChoisie;
             ViewBag.effectueDate = dateContact;
             ViewBag.effectueActivite = activiteContact;
             ViewBag.detailAction = dao.GetActionBenefChoisie(actionChoisie);
@@ -77,7 +78,8 @@ namespace Pand_Ami.Controllers
             
             ReponseDao daoReponse = new ReponseDao();
             daoReponse.ajouterDateSelection(idUtilisateur, idAction);
-            
+            daoReponse.AjoutDateRejet(idAction, idUtilisateur);
+
             return RedirectToAction("Demandes");
         }
 

@@ -238,10 +238,18 @@ namespace Pand_Ami.Models
             cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
             SqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
+            if (reader.HasRows)
             {
-                reponses.Add(new Reponse(reader));
+                while (reader.Read())
+                {
+                    reponses.Add(new Reponse(reader));
+                }
             }
+            else
+            {
+                statut = "En recherche d'un Volontaire";
+            }
+            
 
             foreach(Reponse rep in reponses)
             {
@@ -262,14 +270,17 @@ namespace Pand_Ami.Models
                     if((rep.DateSelection != null) && (rep.DateDesistement == null) && (rep.DateRejet== null))
                     {
                         statut = "Vous a été attribuée";
+                        break;
                     }
                     else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet != null))
                     {
                         statut = "Attribuée à un autre Volontaire";
+                        break;
                     }
                     else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet == null))
                     {
                         statut = "Demande envoyée - En attente de validation";
+                        break;
                     }
                 }
             }
