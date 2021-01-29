@@ -44,7 +44,10 @@ namespace Pand_Ami.Controllers
         public ActionResult Demandes(int actionChoisie)
         {
             ActionDAO dao = new ActionDAO();
+
+            //On considère que l'utilisateur 1 est connecté
             ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
+
             ReponseDao daoReponse = new ReponseDao();
             ViewBag.lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
             List<ReponseAffichage> lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
@@ -61,6 +64,8 @@ namespace Pand_Ami.Controllers
 
             ViewBag.effectueDate = dateContact;
             ViewBag.effectueActivite = activiteContact;
+            ViewBag.detailAction = dao.GetActionBenefChoisie(actionChoisie);
+            ViewBag.detailBenevole = daoReponse.RecupererUtilisateurSelectionne(actionChoisie);
             return View("Demandes");
         }
 

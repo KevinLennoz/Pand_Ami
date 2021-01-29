@@ -60,7 +60,7 @@ namespace Pand_Ami.Models
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
             SqlDataReader reader = cmd.ExecuteReader();
-
+            reader.Read();
             try
             {
                 idUtil = reader.GetInt32(reader.GetOrdinal("id_utilisateur"));
