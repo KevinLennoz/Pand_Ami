@@ -15,19 +15,23 @@ body {
     display: flex;
     flex-direction:column;
     align-items: center;
-    justify-content: center;
     margin-left: auto;
     margin-right: auto;
 }
 
 #idTable {
+    display: flex;
+    justify-content:center;
     border-spacing: 10px;
     border-collapse: separate;
     border-spacing: 2.5vh;
     box-shadow: 1px 1px 5px rgb(126, 126, 126);
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
+    width: 35vw;
+    font-size:large;
 }
+
 
 
 #idForm {
@@ -66,13 +70,12 @@ body {
 
 #divIntro {
     padding: 3vh;
-    box-shadow: 1px 1px 5px rgb(126, 126, 126);
-    background-color: rgba(255, 255, 255, 0.1);
+    color: #2F4F4F;
     border-radius: 10px;
     text-align: center;
-    width: 40vw;
-    display:flex;
-    justify-content:space-around;
-    flex-direction:column;
-    align-items:center;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
