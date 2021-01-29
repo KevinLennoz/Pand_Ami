@@ -29,7 +29,7 @@ namespace Pand_Ami.Controllers
             //List<Action> maListe = myDAO.RecupererListeActions();
             //ViewBag.data = maListe;
             ViewBag.data = myDAO.RecupererListeActionsParUtil(1);
-            var test = myDAO.DernierService(4, 3);
+            var test = myDAO.DernierService(3, 2);  //Par défaut utilisateur 3
             ViewBag.test1 = test.Item1;
             ViewBag.test2 = test.Item2;
 
@@ -135,7 +135,7 @@ namespace Pand_Ami.Controllers
             int idAction = myActionDao.ObtenirProchainIdAction();
             Action action = new Action() {
             Id_action = idAction,
-            Id_util = 4,
+            Id_util = 3, //Par défaut utilisateur 3
             Id_ville = lstVille,  
             Id_activite = lstService,
             Id_gamme_heure_debut = lstHeureDebut,

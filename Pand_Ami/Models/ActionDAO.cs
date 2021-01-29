@@ -225,7 +225,7 @@ namespace Pand_Ami.Models
         /*
           * Methode qui renvoie le statut d'une action selon l'utilisateur connecté (Non attribuée, Attribuée ou en cours d'attribution)
           */
-        public string RecupererStatutAction(int idAction, int idUtilisateur = 4) // Par défaut util 4
+        public string RecupererStatutAction(int idAction, int idUtilisateur = 3) // Par défaut util 3
         {
             string statut = "";
             List<Reponse> reponses = new List<Reponse>();

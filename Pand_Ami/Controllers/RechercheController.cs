@@ -19,7 +19,7 @@ namespace Pand_Ami.Controllers
         public ActionResult afficherActions()
         {
             ActionDAO daoAction = new ActionDAO();
-            ViewBag.lesActionsAffichages = daoAction.ActionAffichagesFromBdd(4); //Par défaut utilisateur 4
+            ViewBag.lesActionsAffichages = daoAction.ActionAffichagesFromBdd(3); //Par défaut utilisateur 3
             ActiviteDAO daoActivite = new ActiviteDAO();
             ViewBag.listeActivites = daoActivite.RecupererListeActivites();
             Ville ville = new Ville();
@@ -40,9 +40,9 @@ namespace Pand_Ami.Controllers
         public ActionResult afficherActions(int radioActivite, int lstVille, DateTime dateFrom, DateTime dateTo)
         {
 
-            //l'id Utilisateur est codé en dur; c'est le numéro 4 dans la fonction ci-dessous
+            //l'id Utilisateur est codé en dur; c'est le numéro 3 dans la fonction ci-dessous
             ActionDAO daoAction = new ActionDAO();
-            List<ActionAffichage>  maListeRecherchee = daoAction.ActionAffichagesRechercheFromBdd(radioActivite, lstVille, dateFrom, dateTo, 4);
+            List<ActionAffichage>  maListeRecherchee = daoAction.ActionAffichagesRechercheFromBdd(radioActivite, lstVille, dateFrom, dateTo, 3);
 
             ViewBag.lesActionsAffichages = maListeRecherchee;
             ActiviteDAO daoActivite = new ActiviteDAO();
@@ -84,7 +84,7 @@ namespace Pand_Ami.Controllers
         }
 
         [HttpPost]
-        public ActionResult Postuler(int idAction, int idUtilisateur = 4) //Indication de l'id utilisateur avec la valeur 4 à modifier une fois l'interface creation de profil implémentée
+        public ActionResult Postuler(int idAction, int idUtilisateur = 3) //Indication de l'id utilisateur avec la valeur 3 à modifier une fois l'interface creation de profil implémentée
         {
             ReponseDao repDAO = new ReponseDao();
             repDAO.EnregistrerNouvelleReponse(idUtilisateur, idAction);
