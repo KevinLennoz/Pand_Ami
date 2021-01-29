@@ -21,8 +21,7 @@
 
         <div id="maLigne">
             <div id="colonne1">
-                <h2 id="h2">Détail</h2>
-                <br />
+                <h2 id="h2">Details de l'action</h2>
                 <br />
 
                 @if (ViewBag.detailAction != null)
@@ -83,11 +82,13 @@
             </div>
 
             <div id="colonne2">
-                <h2 id="h2">Reponses</h2>
-                <br />
+                <h2 id="h2">Reponses : </h2>
+
                 <br />
                 @if (ViewBag.lesReponses != null)
                 {
+                    <p id="idParagraphe1">Veuillez choisir un bénévole </p>
+
                     @for (int i = 0; i < ViewBag.lesReponses.Count; i++)
                     {
                         <form id="form1" name="form1" asp-action="DemandeDeux" asp-controller="Profil">
@@ -96,14 +97,14 @@
                                 <p>| Volontaire : @ViewBag.lesReponses[i].PrenomVolontaire @ViewBag.lesReponses[i].NomVolontaire ( @ViewBag.lesReponses[i].Age ) | </p>
                                 @if ((string)ViewBag.effectueActivite[i] != "")
                                 {
-                                    <p>| Dernier service : @ViewBag.effectueActivite[i].ToString() le @ViewBag.effectueDate[i].ToString("dd/MM/yyyy") | </p>
+                                    <p>| Dernier service : @ViewBag.effectueActivite[i].ToString() le @ViewBag.effectueDate[i].ToString("dd/MM/yyyy")</p>
                                 }
                                 else
                                 {
                                     <p>| volontaire non rencontré</p>
                                 }
-                                <input type="hidden" id="idAction" name="idAction" value="@ViewBag.lesReponses[i].IdAction.ToString()"/>
-                                <input type="hidden" id="idUtilisateur" name="idUtilisateur" value="@ViewBag.lesReponses[i].IdUtilisateur.ToString()"/>
+                                <input type="hidden" id="idAction" name="idAction" value="@ViewBag.lesReponses[i].IdAction.ToString()" />
+                                <input type="hidden" id="idUtilisateur" name="idUtilisateur" value="@ViewBag.lesReponses[i].IdUtilisateur.ToString()" />
                                 <input class="lesBoutons" id="btnSelect" type="button" value="choisir" />
                             </div>
                         </form>
