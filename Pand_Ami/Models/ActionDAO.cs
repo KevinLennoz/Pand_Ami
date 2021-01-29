@@ -262,14 +262,17 @@ namespace Pand_Ami.Models
                     if((rep.DateSelection != null) && (rep.DateDesistement == null) && (rep.DateRejet== null))
                     {
                         statut = "Vous a été attribuée";
+                        break;
                     }
                     else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet != null))
                     {
                         statut = "Attribuée à un autre Volontaire";
+                        break;
                     }
                     else if ((rep.DateSelection == null) && (rep.DateDesistement == null) && (rep.DateRejet == null))
                     {
                         statut = "Demande envoyée - En attente de validation";
+                        break;
                     }
                 }
             }
