@@ -238,10 +238,18 @@ namespace Pand_Ami.Models
             cmd.Parameters.Add(new SqlParameter("@id_action", idAction));
             SqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
+            if (reader.HasRows)
             {
-                reponses.Add(new Reponse(reader));
+                while (reader.Read())
+                {
+                    reponses.Add(new Reponse(reader));
+                }
             }
+            else
+            {
+                statut = "En recherche d'un Volontaire";
+            }
+            
 
             foreach(Reponse rep in reponses)
             {
