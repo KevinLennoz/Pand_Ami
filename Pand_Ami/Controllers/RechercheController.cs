@@ -20,36 +20,31 @@ namespace Pand_Ami.Controllers
         {
             ActionDAO daoAction = new ActionDAO();
             ViewBag.lesActionsAffichages = daoAction.ActionAffichagesFromBdd(3); //Par défaut utilisateur 3
-            ActiviteDAO daoActivite = new ActiviteDAO();
-            ViewBag.listeActivites = daoActivite.RecupererListeActivites();
-            Ville ville = new Ville();
-            List<Ville> listeVilles = ville.recupererVilles();
-            
 
-            List<SelectListItem> listeVilleSelect = new List<SelectListItem>();
-            foreach (var item in listeVilles)
-            {
-                listeVilleSelect.Add(new SelectListItem(item.NomVille.ToString() + "  " + item.CodePostal.ToString()
-                , item.IdVille.ToString()));
-            }
-            ViewBag.villes = listeVilleSelect;
+            GenererContenuInput();
 
             return View("rechercherAction");
         }
+
         [HttpPost]
         public ActionResult afficherActions(int radioActivite, int lstVille, DateTime dateFrom, DateTime dateTo)
         {
-
             //l'id Utilisateur est codé en dur; c'est le numéro 3 dans la fonction ci-dessous
             ActionDAO daoAction = new ActionDAO();
             List<ActionAffichage>  maListeRecherchee = daoAction.ActionAffichagesRechercheFromBdd(radioActivite, lstVille, dateFrom, dateTo, 3);
-
             ViewBag.lesActionsAffichages = maListeRecherchee;
+
+            GenererContenuInput();
+
+            return View("rechercherAction");
+        }
+        private void GenererContenuInput()
+        {
             ActiviteDAO daoActivite = new ActiviteDAO();
             ViewBag.listeActivites = daoActivite.RecupererListeActivites();
+
             Ville ville = new Ville();
             List<Ville> listeVilles = ville.recupererVilles();
-
             List<SelectListItem> listeVilleSelect = new List<SelectListItem>();
             foreach (var item in listeVilles)
             {
@@ -57,11 +52,9 @@ namespace Pand_Ami.Controllers
                 , item.IdVille.ToString()));
             }
             ViewBag.villes = listeVilleSelect;
-
-            return View("rechercherAction");
         }
 
-            public ActionResult RechercherAction()
+        public ActionResult RechercherAction()
         {
             return View();
         }
