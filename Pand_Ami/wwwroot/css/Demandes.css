@@ -27,7 +27,6 @@
     flex-direction: column;
     margin: 1vw;
     padding: 1vw;
-    overflow-y: scroll;
     font-weight: 500;
     box-shadow: 1px 1px 5px rgb(126, 126, 126);
     background-color: rgba(255, 255, 255, 0.8);

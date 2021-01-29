@@ -25,23 +25,24 @@ body {
     border-spacing: 10px;
     border-collapse: separate;
     border-spacing: 2.5vh;
-    box-shadow: 1px 1px 5px rgb(126, 126, 126);
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    width: 35vw;
+
     font-size:large;
 }
 
 
 
 #idForm {
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    padding:2vh;
+    padding: 2vh;
+    box-shadow: 1px 1px 5px rgb(126, 126, 126);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    width: 35vw;
 }
 
 
