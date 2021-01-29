@@ -1,116 +1,121 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <body class="bodyAppli">
-<div class="bodyGererProfil">
-    <div class="headerGererProfil">
-        <h1>Bienvenue @ViewBag.utilAffichage.PrenomUtil @ViewBag.utilAffichage.NomUtil !</h1>
-        <p id="idParagraphe1">veuillez trouver ci-dessous les informations de votre compte :</p>
+    <div class="bodyGererProfil">
+        <div class="headerGererProfil">
+            <h1>Bienvenue @ViewBag.utilAffichage.PrenomUtil @ViewBag.utilAffichage.NomUtil !</h1>
+            <p id="idParagraphe1">veuillez trouver ci-dessous les informations de votre compte :</p>
 
+        </div>
+        <div class="contenuGererProfil">
+            <!-- si on implémente les fonctionnalitées de modification profil et desinscription
+                       <nav class="navGererProfil">
+                <input class="lesBoutons" type="button" value="modifier mon profil" id="boutonsGererProfil" />
+                <input class="lesBoutons" type="button" value="se desinscrire" id="boutonsGererProfil" />
+            </nav>
+            -->
+            <form class="infosGererProfil">
+                <article class="articleGererProfil">
+                    <table class="tableGererProfil">
+                        <tr>
+                            <td>
+                                <h6>Nom : </h6>
+                            </td>
+                            <td>
+                                <input type="text" name="txtNom" value="@ViewBag.utilAffichage.NomUtil" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>Prenom : </h6>
+                            </td>
+                            <td>
+                                <input type="text" name="txtPrenom" value="@ViewBag.utilAffichage.PrenomUtil" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>Date de naissance : </h6>
+                            </td>
+                            <td>
+                                <input type="date" value="@ViewBag.utilAffichage.DateNaissance.ToString("yyyy-MM-dd")">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>Email : </h6>
+                            </td>
+                            <td>
+                                <input type="text" name="txtEmail" value="@ViewBag.utilAffichage.EmailUtil">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>N° de téléphone : </h6>
+                            </td>
+                            <td>
+                                <input type="text" name="txtTelephone" value="@ViewBag.utilAffichage.TelUtil">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>Adresse </h6>
+                            </td>
+                            <td>
+                                <input type="text" name="txtVoie" value="@ViewBag.utilAffichage.VoieUtil">
+                            </td>
+                            <td>
+                                <select name="lstVille" , asp-items="ViewBag.villes">
+                                    <option value="">@ViewBag.utilAffichage.NomVille" "@ViewBag.utilAffichage.CodePostal</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </article>
+                <article class="articleGererProfil">
+                    <table class="tableGererProfil">
+                        <tr>
+                            <td>
+                                <h6>Date d'inscription : </h6>
+                            </td>
+                            <td>
+                                <h6>@ViewBag.utilAffichage.DateInscription.ToString("dd-MM-yyyy")</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>Nom du contact d'urgence : </h6>
+                            </td>
+                            <td>
+                                <input type="text" name="txtNomContactUrg" value="@ViewBag.utilAffichage.NomContactUrgence" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>Prenom du contact d'urgence : </h6>
+                            </td>
+                            <td>
+                                <input type="text" name="txtPrenomContactUrg" value="@ViewBag.utilAffichage.PrenomContactUrgence" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>N° de téléphone du contact d'urgence : </h6>
+                            </td>
+                            <td>
+                                <input type="text" name="txtTelephoneContactUrg" value="@ViewBag.utilAffichage.TelContactUrgence">
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- si on implémente la modification du profil :
+                                            <div id="boutonGererProfil">
+                        <input class="lesBoutons" type="submit" value="valider" id="boutonsGererProfilValider" />
+                    </div>
+                    -->
+
+                </article>
+            </form>
+        </div>
     </div>
-    <div class="contenuGererProfil">
-        <nav class="navGererProfil">
-            <input class="lesBoutons" type="button" value="modifier mon profil" id="boutonsGererProfil" />
-            <input class="lesBoutons" type="button" value="se desinscrire" id="boutonsGererProfil" />
-        </nav>
-        <form class="infosGererProfil">
-            <article class="articleGererProfil">
-                <table class="tableGererProfil">
-                    <tr>
-                        <td>
-                            <h6>Nom : </h6>
-                        </td>
-                        <td>
-                            <input type="text" name="txtNom" value="@ViewBag.utilAffichage.NomUtil" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6>Prenom : </h6>
-                        </td>
-                        <td>
-                            <input type="text" name="txtPrenom" value="@ViewBag.utilAffichage.PrenomUtil" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6>Date de naissance : </h6>
-                        </td>
-                        <td>
-                            <input type="date" value="@ViewBag.utilAffichage.DateNaissance.ToString("yyyy-MM-dd")">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6>Email : </h6>
-                        </td>
-                        <td>
-                            <input type="text" name="txtEmail" value="@ViewBag.utilAffichage.EmailUtil">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6>N° de téléphone : </h6>
-                        </td>
-                        <td>
-                            <input type="text" name="txtTelephone" value="@ViewBag.utilAffichage.TelUtil">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6>Adresse </h6>
-                        </td>
-                        <td>
-                            <input type="text" name="txtVoie" value="@ViewBag.utilAffichage.VoieUtil">
-                        </td>
-                        <td>
-                            <select name="lstVille" , asp-items="ViewBag.villes">
-                                <option value="">@ViewBag.utilAffichage.NomVille" "@ViewBag.utilAffichage.CodePostal</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </article>
-            <article class="articleGererProfil">
-                <table class="tableGererProfil">
-                    <tr>
-                        <td>
-                            <h6>Date d'inscription : </h6>
-                        </td>
-                        <td>
-                            <h6>@ViewBag.utilAffichage.DateInscription.ToString("dd-MM-yyyy")</h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6>Nom du contact d'urgence : </h6>
-                        </td>
-                        <td>
-                            <input type="text" name="txtNomContactUrg" value="@ViewBag.utilAffichage.NomContactUrgence" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6>Prenom du contact d'urgence : </h6>
-                        </td>
-                        <td>
-                            <input type="text" name="txtPrenomContactUrg" value="@ViewBag.utilAffichage.PrenomContactUrgence" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6>N° de téléphone du contact d'urgence : </h6>
-                        </td>
-                        <td>
-                            <input type="text" name="txtTelephoneContactUrg" value="@ViewBag.utilAffichage.TelContactUrgence">
-                        </td>
-                    </tr>
-                </table>
-                <div id="boutonGererProfil">
-                    <input class="lesBoutons" type="submit" value="valider" id="boutonsGererProfilValider" />
-                </div>
-            </article>
-        </form>
-    </div>
-</div>
 </body>
 </html>

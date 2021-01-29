@@ -1,9 +1,8 @@
 ﻿.lesBoutons {
     text-align: center;
     font-size: x-large;
-    color: white;
+    color: black;
     border: none;
-    background: #404040;
     font-weight: 500;
     text-transform: uppercase;
     border-radius: 6px;
@@ -12,6 +11,8 @@
     text-decoration: none;
     padding: 3vh;
     margin: 3vh auto;
+    background-color:rgba(255,255,255,0.7);
+    box-shadow: 1px 1px 5px rgb(126, 126, 126);
 }
 
 #boutonAccueil {
@@ -20,8 +21,8 @@
 
 .lesBoutons:hover {
     text-decoration: none;
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: #2F4F4F;
     font-weight: 700;
     letter-spacing: 3px;
     -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
@@ -37,6 +38,6 @@
 }
 
 #btnSelect {
-    padding:0.5vh;
+    padding: 0.5vh 0.8vw 0.5vh 0.8vw;
+    background-color: rgba(255,255,255,1);
 }
-
