@@ -19,7 +19,7 @@ namespace Pand_Ami.Controllers
         public IActionResult Profil()
         {
             UtilisateurDAO daoUtil = new UtilisateurDAO();
-            ViewBag.utilAffichage = daoUtil.UtilisateurVilleFromBdd(1);
+            ViewBag.utilAffichage = daoUtil.UtilisateurVilleFromBdd(3);  //Par défaut utilisateur 3
 
             Ville uneVille= new Ville();
             List<Ville> listeVilles = uneVille.recupererVilles();
@@ -36,8 +36,7 @@ namespace Pand_Ami.Controllers
         public IActionResult Demandes()
         {
             ActionDAO dao = new ActionDAO();
-            //On considère que l'utilisateur 3 est connecté
-            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(3);
+            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(3);  //Par défaut utilisateur 3
             return View("Demandes");
         }
 
@@ -47,7 +46,7 @@ namespace Pand_Ami.Controllers
             ActionDAO dao = new ActionDAO();
 
             //On considère que l'utilisateur 3 est connecté
-            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(3);
+            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(3); //Par défaut utilisateur 3
 
             ReponseDao daoReponse = new ReponseDao();
             ViewBag.lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
