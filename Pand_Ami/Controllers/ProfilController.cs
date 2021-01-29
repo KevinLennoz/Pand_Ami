@@ -77,7 +77,8 @@ namespace Pand_Ami.Controllers
             
             ReponseDao daoReponse = new ReponseDao();
             daoReponse.ajouterDateSelection(idUtilisateur, idAction);
-            
+            daoReponse.AjoutDateRejet(idAction, idUtilisateur);
+
             return RedirectToAction("Demandes");
         }
 

@@ -128,6 +128,7 @@ namespace Pand_Ami.Models
             return reponsesAffichages;
         }
 
+        //Methodes pour mettre à jour les dates une fois le bénévole sélectionné
         public void ajouterDateSelection(int id_volontaire, int id_action)
         {
             //DateTime date = DateTime;
@@ -140,6 +141,22 @@ namespace Pand_Ami.Models
             bdd.OuvertureBDD();
             cmd.Connection = bdd.Cnx;
             cmd.CommandText = maRequete;
+            cmd.ExecuteNonQuery();
+        }
+
+        public void AjoutDateRejet(int idAction, int idUtilChoisi)
+        {
+            AccesBDD bdd = new AccesBDD();
+            bdd.OuvertureBDD();
+            SqlCommand cmd = new SqlCommand();
+
+            string requete = String.Format("UPDATE Reponse " +
+                                "SET date_rejet = GetDate()" +
+                                " WHERE id_utilisateur != " + idUtilChoisi +
+                                " AND id_action = " + idAction);
+
+            cmd.Connection = bdd.Cnx;
+            cmd.CommandText = requete;
             cmd.ExecuteNonQuery();
         }
     }
