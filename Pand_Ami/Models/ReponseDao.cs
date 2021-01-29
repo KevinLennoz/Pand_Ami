@@ -127,5 +127,20 @@ namespace Pand_Ami.Models
             bdd.FermetureBDD();
             return reponsesAffichages;
         }
+
+        public void ajouterDateSelection(int id_volontaire, int id_action)
+        {
+            //DateTime date = DateTime;
+            string maRequete = "UPDATE Reponse " +
+                                "SET date_selection = GetDate()" + 
+                                " WHERE id_utilisateur = " + id_volontaire +
+                                " AND id_action = " + id_action;
+            SqlCommand cmd = new SqlCommand();
+            AccesBDD bdd = new AccesBDD();
+            bdd.OuvertureBDD();
+            cmd.Connection = bdd.Cnx;
+            cmd.CommandText = maRequete;
+            cmd.ExecuteNonQuery();
+        }
     }
 }

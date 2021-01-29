@@ -36,7 +36,8 @@ namespace Pand_Ami.Controllers
         public IActionResult Demandes()
         {
             ActionDAO dao = new ActionDAO();
-            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
+            //On considère que l'utilisateur 3 est connecté
+            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(3);
             return View("Demandes");
         }
 
@@ -45,8 +46,8 @@ namespace Pand_Ami.Controllers
         {
             ActionDAO dao = new ActionDAO();
 
-            //On considère que l'utilisateur 1 est connecté
-            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(1);
+            //On considère que l'utilisateur 3 est connecté
+            ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(3);
 
             ReponseDao daoReponse = new ReponseDao();
             ViewBag.lesReponses = daoReponse.RecupererReponsesAffichage(actionChoisie);
@@ -57,7 +58,7 @@ namespace Pand_Ami.Controllers
             for(int i = 0; i < lesReponses.Count; i++)
             {
                 int id_volontaire = (int)lesReponses[i].IdUtilisateur;
-                var monTuple = dao.DernierService(1, id_volontaire);
+                var monTuple = dao.DernierService(3, id_volontaire); //Bénéficiaire codé en dur 3
                 dateContact.Add(monTuple.Item1);
                 activiteContact.Add(monTuple.Item2);
             }
@@ -74,6 +75,10 @@ namespace Pand_Ami.Controllers
         {
             int idDeLAction = idAction;
             int idDeLUtilisateur = idUtilisateur;
+            
+            ReponseDao daoReponse = new ReponseDao();
+            daoReponse.ajouterDateSelection(idUtilisateur, idAction);
+            
             return RedirectToAction("Demandes");
         }
 

@@ -75,7 +75,6 @@
                         }
                     </table>
                 }
-                <input class="lesBoutons" id="btnSelect" type="button" value="annuler" />
                 <script>
                 </script>
             </div>
@@ -90,7 +89,7 @@
 
                     @for (int i = 0; i < ViewBag.lesReponses.Count; i++)
                     {
-                        <form id="form1" name="form1" asp-action="DemandeDeux" asp-controller="Profil">
+                        <form id="form1" name="form1" asp-action="DemandesDeux" asp-controller="Profil">
                             <div class="description">
                                 <p>Date Reponse : @ViewBag.lesReponses[i].DateReponse.ToString("dd-MM-yyyy") | </p>
                                 <p>| Volontaire : @ViewBag.lesReponses[i].PrenomVolontaire @ViewBag.lesReponses[i].NomVolontaire ( @ViewBag.lesReponses[i].Age ) | </p>
@@ -104,7 +103,7 @@
                                 }
                                 <input type="hidden" id="idAction" name="idAction" value="@ViewBag.lesReponses[i].IdAction.ToString()" />
                                 <input type="hidden" id="idUtilisateur" name="idUtilisateur" value="@ViewBag.lesReponses[i].IdUtilisateur.ToString()" />
-                                <input class="lesBoutons" id="btnSelect" type="button" value="choisir" />
+                                <input class="lesBoutons" id="btnSelect" type="submit" value="choisir" />
                             </div>
                         </form>
                     }
