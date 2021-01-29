@@ -37,6 +37,7 @@ namespace Pand_Ami.Controllers
         {
             ActionDAO dao = new ActionDAO();
             ViewBag.listeActions = dao.RecupererListeActivitesEtDatesParUtil(3);  //Par défaut utilisateur 3
+            ViewBag.IdActionChoisi = null;
             return View("Demandes");
         }
 
@@ -61,7 +62,7 @@ namespace Pand_Ami.Controllers
                 dateContact.Add(monTuple.Item1);
                 activiteContact.Add(monTuple.Item2);
             }
-
+            ViewBag.IdActionChoisi = actionChoisie;
             ViewBag.effectueDate = dateContact;
             ViewBag.effectueActivite = activiteContact;
             ViewBag.detailAction = dao.GetActionBenefChoisie(actionChoisie);

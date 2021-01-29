@@ -7,22 +7,46 @@
             <p id="idParagraphe1">Veuillez selectionner une action : </p>
         </div>
         <div id="formDemandes">
-            <form method="POST" id="idSelection">
-                <select name="actionChoisie" id="actionChoisie">
-                    @foreach (var actionBenef in ViewBag.listeActions)
-                    {
-                        <option value=@actionBenef.IdAction>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy")</option>
-                    }
-                </select>
-                <input class="lesBoutons" id="idSubmit" type="submit" value="valider" />
-            </form>
-        </div>
+            @if (ViewBag.IdActionChoisi == null)
+            {
+                <form method="POST" id="idSelection">
+                    <select name="actionChoisie" id="actionChoisie">
+                        @foreach (var actionBenef in ViewBag.listeActions)
+                        {
+                            <option value=@actionBenef.IdAction>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy")</option>
+                        }
+                    </select>
+                    <input class="lesBoutons" id="idSubmit" type="submit" value="valider" />
+                </form>
+            }
+            else
+            {
+                <form method="POST" id="idSelection">
+                    <select name="actionChoisie" id="actionChoisie">
 
+                        @foreach (var actionBenef in ViewBag.listeActions)
+                        {
+                            if (actionBenef.IdAction == ViewBag.IdActionChoisi)
+                            {
+                                <option value=@actionBenef.IdAction>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy")</option>
+                            }
+                        }
+                        @foreach (var actionBenef in ViewBag.listeActions)
+                        {
+                            if (actionBenef.IdAction != ViewBag.IdActionChoisi)
+                            {
+                                <option value=@actionBenef.IdAction>@actionBenef.NomActivite du @actionBenef.DateAction.ToString("dd/MM/yyyy")</option>
+                            }
+                        }
+                    </select>
+                    <input class="lesBoutons" id="idSubmit" type="submit" value="valider" />
+                </form>
+            }
+        </div>
         <div id="maLigne">
             <div id="colonne1">
                 <h2 id="h2">Details de l'action</h2>
                 <br />
-
                 @if (ViewBag.detailAction != null)
                 {
                     <table id="table1">
