@@ -57,7 +57,7 @@ namespace Pand_Ami.Controllers
             for(int i = 0; i < lesReponses.Count; i++)
             {
                 int id_volontaire = (int)lesReponses[i].IdUtilisateur;
-                var monTuple = dao.DernierService(3, id_volontaire); //Bénéficiaire codé en dur 3
+                var monTuple = dao.DernierService(3, id_volontaire); //Par défaut utilisateur (bénéficiaire) 3
                 dateContact.Add(monTuple.Item1);
                 activiteContact.Add(monTuple.Item2);
             }
