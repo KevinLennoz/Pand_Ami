@@ -23,6 +23,13 @@ namespace Pand_Ami.Controllers
 
             GenererContenuInput();
 
+            ViewBag.dateFrom = DateTime.Now.ToString("yyyy-MM-dd");
+            ViewBag.dateFromMini = DateTime.Now.ToString("yyyy-MM-dd");
+            ViewBag.dateTo = DateTime.Now.AddDays(14).ToString("yyyy-MM-dd");
+            ViewBag.dateToMini = DateTime.Now.ToString("yyyy-MM-dd");
+            ViewBag.villeSelect = 0;
+            ViewBag.activSelect = 9;
+
             return View("rechercherAction");
         }
 
@@ -30,11 +37,18 @@ namespace Pand_Ami.Controllers
         public ActionResult afficherActions(int radioActivite, int lstVille, DateTime dateFrom, DateTime dateTo)
         {
             //l'id Utilisateur est codé en dur; c'est le numéro 3 dans la fonction ci-dessous
-            ActionDAO daoAction = new ActionDAO();
-            List<ActionAffichage>  maListeRecherchee = daoAction.ActionAffichagesRechercheFromBdd(radioActivite, lstVille, dateFrom, dateTo, 3);
-            ViewBag.lesActionsAffichages = maListeRecherchee;
+           ActionDAO daoAction = new ActionDAO();
+           List<ActionAffichage>  maListeRecherchee = daoAction.ActionAffichagesRechercheFromBdd(radioActivite, lstVille, dateFrom, dateTo, 3);
+           ViewBag.lesActionsAffichages = maListeRecherchee;
 
             GenererContenuInput();
+
+            ViewBag.dateFrom = dateFrom.ToString("yyyy-MM-dd");
+            ViewBag.dateFromMini = DateTime.Now.ToString("yyyy-MM-dd");
+            ViewBag.dateTo = dateTo.ToString("yyyy-MM-dd");
+            ViewBag.dateToMini = DateTime.Now.ToString("yyyy-MM-dd");
+            ViewBag.villeSelect = lstVille;
+            ViewBag.activSelect = radioActivite - 1; // Décalage lié au fait que l'indice commence à 1 en BDD dans la table Activité
 
             return View("rechercherAction");
         }
@@ -45,13 +59,8 @@ namespace Pand_Ami.Controllers
 
             Ville ville = new Ville();
             List<Ville> listeVilles = ville.recupererVilles();
-            List<SelectListItem> listeVilleSelect = new List<SelectListItem>();
-            foreach (var item in listeVilles)
-            {
-                listeVilleSelect.Add(new SelectListItem(item.NomVille.ToString() + "  " + item.CodePostal.ToString()
-                , item.IdVille.ToString()));
-            }
-            ViewBag.villes = listeVilleSelect;
+
+            ViewBag.villes = listeVilles;
         }
 
         public ActionResult RechercherAction()

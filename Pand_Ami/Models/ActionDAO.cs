@@ -208,8 +208,8 @@ namespace Pand_Ami.Models
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@id_activite", id_activite));
             cmd.Parameters.Add(new SqlParameter("@id_ville", id_ville));
-            cmd.Parameters.Add(new SqlParameter("@dateFrom", dateFrom));
-            cmd.Parameters.Add(new SqlParameter("@dateTo", dateTo));
+            cmd.Parameters.Add(new SqlParameter("@dateFrom", dateFrom.ToString("yyyy-MM-dd")));
+            cmd.Parameters.Add(new SqlParameter("@dateTo", dateTo.ToString("yyyy-MM-dd")));
             cmd.Parameters.Add(new SqlParameter("@id_util", id_util));
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())

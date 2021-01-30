@@ -1,22 +1,4 @@
-﻿<script type="text/javascript">
-    function addDays(date, days) {
-        var result = new Date(date);
-        result.setDate(result.getDate() + days);
-        return result;
-    }
-
-    function newDate() {
-
-        var dateFrom = document.getElementById("from").value;
-
-        var dateTo = addDays(dateFrom, 14);
-
-        document.getElementById("to").value = dateTo.toISOString().slice(0, 10);
-        document.getElementById("to").setAttribute("min", document.getElementById("from").value);
-    }
-
-</script>
-<body class="bodyAppli">
+﻿<body class="bodyAppli">
     <div id="rechAction">
         <div class="titre">
             <h1>RECHERCHE D'UNE ACTION</h1>
@@ -29,30 +11,53 @@
                     <div class="catRecherche">
                         <label>Type de Services :</label>
                         <div class="services">
-                            @foreach (var activite in ViewBag.listeActivites)
-                            {
-                                <input type="radio" id="radioBtnServ" name="radioActivite" value="@activite.Id_activite" checked="checked" /> @activite.Nom_activite<br />
+                            @{var activites = ViewBag.listeActivites as List<Pand_Ami.Models.Activite>;
+                                @for (int i = 0; i < activites.Count; i++)
+                                {
+                                    if (i.Equals(ViewBag.activSelect))
+                                    {
+                                        <input type="radio" id="radioBtnServ" name="radioActivite" value="@activites[i].Id_activite" checked="checked" /> @activites[i].Nom_activite<br />
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" id="radioBtnServ" name="radioActivite" value="@activites[i].Id_activite" /> @activites[i].Nom_activite<br />
+                                    }
+                                }
                             }
                         </div>
                     </div>
                     <div class="catRecherche">
                         <label>A partir du :</label>
-                        <input type="date" id="from" name="dateFrom" value="@DateTime.Now.ToString("yyyy-MM-dd")" min="@DateTime.Now.ToString("yyyy-MM-dd")" onchange="newDate()" />
+                        <input type="date" id="from" name="dateFrom" value=@ViewBag.dateFrom min=@ViewBag.dateFromMini />
                     </div>
                     <div class="catRecherche">
                         <label>Jusqu'au :</label>
-                        <input type="date" id="to" name="dateTo" value="@DateTime.Now.AddDays(14).ToString("yyyy-MM-dd")" />
-
+                        <input type="date" id="to" name="dateTo" value=@ViewBag.dateTo min=@ViewBag.dateToMini />
                     </div>
-
                     <div class="catRecherche">
                         <label> Villes :</label>
                         <div class="departements">
-                            <select id="lstVille" name="lstVille" , asp-items="ViewBag.villes"></select>
+                            <select id="lstVille" name="lstVille">
+                                @{var villes = ViewBag.villes as List<Pand_Ami.Models.Referentiels.Ville>;
+
+                                    for (int i = 1; i < villes.Count + 1; i++)
+                                    {
+                                        if (i.Equals(ViewBag.villeSelect))
+                                        {
+                                            <option value="@i" selected>@villes[i - 1].CodePostal - @villes[i - 1].NomVille</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@i">@villes[i - 1].CodePostal - @villes[i - 1].NomVille</option>
+                                        }
+                                    }
+                                }
+                            </select>
                         </div>
                     </div>
                     <input class="lesBoutons" type="submit" id="btnActualiser" value="Actualiser" />
                 </form>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Recherche" asp-action="afficherActions">Annuler</a>
             </div>
 
 
@@ -95,7 +100,11 @@
                                             }
                                             <p>@actionAffichage.NomUtilisateur</p>
                                             <p>@actionAffichage.NomActivite</p>
-                                            <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
+                                            <p>
+                                                @(actionAffichage.DateAction.ToString("dd/MM/yyyy"))<br/>
+                                                @("de " + @actionAffichage.HeureDebut+ " h " +  @actionAffichage.MinuteDebut + " à " + @actionAffichage.HeureFin + " h " + @actionAffichage.MinuteFin)
+                                            </p>
+
                                             <p id="lastP">@actionAffichage.NomVille</p>
                                             <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
                                         </div>
@@ -122,7 +131,10 @@
                                             }
                                             <p>@actionAffichage.NomUtilisateur</p>
                                             <p>@actionAffichage.NomActivite</p>
-                                            <p>@actionAffichage.DateAction.ToString("dd/MM/yyyy") de @actionAffichage.HeureDebut h @actionAffichage.MinuteDebut à @actionAffichage.HeureFin h @actionAffichage.MinuteFin</p>
+                                            <p>
+                                                @(actionAffichage.DateAction.ToString("dd/MM/yyyy"))<br />
+                                                @("de " + @actionAffichage.HeureDebut+ " h " +  @actionAffichage.MinuteDebut + " à " + @actionAffichage.HeureFin + " h " + @actionAffichage.MinuteFin)
+                                            </p>
                                             <p id="lastP">@actionAffichage.NomVille</p>
                                             <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
                                         </div>
