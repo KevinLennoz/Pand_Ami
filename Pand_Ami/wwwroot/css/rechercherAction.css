@@ -1,21 +1,10 @@
 ﻿/*----------------------------------------------------------PARAMETRES GENERALISES----------------------------------------------------------*/
-* {
-    box-sizing: border-box;
-}
-
-.bodyContainer {
-    width: 100%;
-}
 
 #rechAction {
-    margin: 0;
-    padding: 0;
-    display: grid;
+    display: flex;
     text-align: center;
-    line-height: 1.1;
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: 50px auto;
-    grid-template-areas: "titre titre" "menu actions";
+    flex-direction: column;
+    margin-bottom:4vh;
 }
 
     /*----------------------------------------------------------PARAMETRES GENERALISES----------------------------------------------------------*/
@@ -25,7 +14,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        grid-area: titre;
         color: #2F4F4F;
         width: 100%;
         padding: 1vh;
@@ -35,44 +23,62 @@
 
     /*----------------------------------------------------------MENU RECHERCHE----------------------------------------------------------*/
     #rechAction .menu {
-        box-shadow: 1px 1px 5px rgb(126, 126, 126);
-        background-color: rgba(255, 255, 255, 0.8);
-        grid-area: menu;
-        height: 75vh;
-        margin: 0.5vh;
-    }
-
-        #rechAction .menu #titreRecherche {
-            margin: 2vh 0vw 4vh 0vw;
-            font-size: 25px;
-            font-weight: bold;
-        }
-
-    #rechAction .formRecherche {
         display: flex;
-        flex-direction: column;
-        margin: 0 1vw;
+        flex-direction: row;
+        width:100%;
+        justify-content:space-around;
     }
 
-    #rechAction .catRecherche {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 40px;
+.menuGauche {
+    box-shadow: 1px 1px 5px rgb(126, 126, 126);
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 0.5vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width:25vw;
+    height:65vh;
+}
+
+.menuDroit {
+    box-shadow: 1px 1px 5px rgb(126, 126, 126);
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 0.5vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 65vh;
+}
+
+
+#rechAction .menu #titreRecherche {
+    margin: 2vh 0vw 2vh 0vw;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#rechAction .formRecherche {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1vw;
+}
+
+#rechAction .catRecherche {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh;
+}
+
+    #rechAction .catRecherche label {
+        margin-bottom: 1vh;
+        font-weight: bold;
     }
 
-        #rechAction .catRecherche label {
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-    #rechAction .services {
-        text-align: left;
-        border: 1px solid lightgrey;
-        height: 85px;
-        overflow-y: scroll;
-        padding: 0.5vh;
-        width:
-    }
+#rechAction .services {
+    text-align: left;
+    border: 1px solid lightgrey;
+    height: 85px;
+    overflow-y: scroll;
+    padding: 0.5vh;
+}
 
 
 
@@ -82,6 +88,7 @@
 #rechAction .actions {
     display: flex;
     flex-direction: column;
+    height: auto;
 }
 
 #rechAction .titreActions {
@@ -109,11 +116,6 @@
             flex: 1;
         }
 
-#rechAction .listeActions {
-    height: 642px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
 
 #rechAction .demande {
     display: flex;
@@ -125,46 +127,63 @@
     justify-content: center;
 }
 
-    #rechAction .description {
+#rechAction .description {
+    display: flex;
+    flex-direction: row;
+    flex: 3;
+    padding: 1vh;
+    margin: 1vh;
+    box-shadow: 1px 1px 5px rgb(126, 126, 126);
+    overflow: hidden;
+    height: 100%;
+}
+
+    #rechAction .description p {
+        border-right: 0.1vw solid white;
         display: flex;
-        flex-direction: row;
-        flex: 3;
-        justify-content: space-evenly;
-        padding: 1vh;
+        align-items: center;
+        height: 60px;
+        padding: 1vh 2vw;
         margin: 1vh;
-        box-shadow: 1px 1px 5px rgb(126, 126, 126);
-        overflow: hidden;
-        height: 100%;
+        text-align: center;
     }
 
 #rechAction .selectionne {
-    box-shadow: 0 .25rem .75rem rgba(29, 34, 56, 1);
-    border: 2px solid red;
+    box-shadow: 1px 1px 5px rgb(126, 126, 126);
+    background-color: #4f2f2f;
+    color: white;
 }
 
-#rechAction .description p {
-    border-right: 0.1vw solid white;
-    display: flex;
-    align-items: center;
-    height: 60px;
-    padding: 1vh 2vw;
-    margin:1vh;
-    text-align:center;
+    #rechAction .selectionne:hover {
+        background-color: #4f2f2f;
+        -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+        transition: all 0.3s ease 0s;
+    }
+
+
+    #rechAction .selectionne p {
+        border-right: 0.1vw solid black;
+    }
+
+#rechAction .description #lastP {
+    border-right: 0px;
+    text-align: center;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-    #rechAction .description #lastP {
-        border-right: 0.1vw solid #2F4F4F;
-    }
-
-    #rechAction .description p:nth-last-child(1) {
-        border-right: none;
-    }
+#rechAction .description p:nth-last-child(1) {
+    border-right: none;
+}
 
 
 #rechAction .demande img {
     padding-left: 0.8vw;
     width: 60px;
 }
+
 
 #rechAction .statut {
     height: 100%;
