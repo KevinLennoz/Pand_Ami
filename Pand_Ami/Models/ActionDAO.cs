@@ -81,7 +81,7 @@ namespace Pand_Ami.Models
             accesBDD.FermetureBDD();
 
             return listeSortante;
-
+            
         }
 
         //Méthode pour la liste des dates et activités d'un utilisateur (pour l'afficher sur son profil)
@@ -96,10 +96,6 @@ namespace Pand_Ami.Models
 
             SqlDataReader resultat = cmd.ExecuteReader();
             
-            if (!resultat.HasRows)
-            {
-
-            }
             while (resultat.Read())
             {
                 ActionsBenef actTemp = new ActionsBenef(resultat);
