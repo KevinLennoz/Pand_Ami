@@ -66,7 +66,7 @@
                             </td>
                             <td>
                                 <select name="lstVille" , asp-items="ViewBag.villes">
-                                    <option value="">@ViewBag.utilAffichage.NomVille" "@ViewBag.utilAffichage.CodePostal</option>
+                                    <option value="">@(ViewBag.utilAffichage.NomVille + " " + ViewBag.utilAffichage.CodePostal)</option>
                                 </select>
                             </td>
                         </tr>
