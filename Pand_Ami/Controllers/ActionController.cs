@@ -152,11 +152,11 @@ namespace Pand_Ami.Controllers
                 myActionDao.EnregistrerNouvelleAction(action);
             } catch(Exception)
             {
-                return View();
+                return RedirectToAction("posterDemande");
             }
 
 
-            return View();
+            return RedirectToAction("posterDemande");
         }
 
             // GET: HomeController2/Details/5
