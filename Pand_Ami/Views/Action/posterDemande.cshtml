@@ -7,8 +7,8 @@
 
     function verifHoraire() {
 
-        var heureDebut = document.getElementById("lstHeureDebut").value;
-        var heureFin = document.getElementById("lstHeureFin").value;
+        var heureDebut = Number(document.getElementById("lstHeureDebut").value);
+        var heureFin = Number(document.getElementById("lstHeureFin").value);
 
         if (heureFin <= heureDebut) {
             var heureFinInt = Number(heureDebut) + 1;

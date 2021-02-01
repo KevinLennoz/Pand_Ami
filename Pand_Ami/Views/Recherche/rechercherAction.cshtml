@@ -101,8 +101,27 @@
                                             <p>@actionAffichage.NomUtilisateur</p>
                                             <p>@actionAffichage.NomActivite</p>
                                             <p>
-                                                @(actionAffichage.DateAction.ToString("dd/MM/yyyy"))<br/>
-                                                @("de " + @actionAffichage.HeureDebut+ " h " +  @actionAffichage.MinuteDebut + " à " + @actionAffichage.HeureFin + " h " + @actionAffichage.MinuteFin)
+                                                @(actionAffichage.DateAction.ToString("dd/MM/yyyy"))<br />
+                                                @("de " + @actionAffichage.HeureDebut + " h")
+                                                @if (actionAffichage.MinuteDebut == 0)
+                                                {
+                                                    @("00")
+                                                }
+                                                else
+                                                {
+                                                    @actionAffichage.MinuteDebut
+                                                }
+
+                                                @(" à " + @actionAffichage.HeureFin + " h")
+
+                                                @if (actionAffichage.MinuteFin == 0)
+                                                {
+                                                    @("00")
+                                                }
+                                                else
+                                                {
+                                                    @actionAffichage.MinuteFin
+                                                }
                                             </p>
 
                                             <p id="lastP">@actionAffichage.NomVille</p>
@@ -133,7 +152,27 @@
                                             <p>@actionAffichage.NomActivite</p>
                                             <p>
                                                 @(actionAffichage.DateAction.ToString("dd/MM/yyyy"))<br />
-                                                @("de " + @actionAffichage.HeureDebut+ " h " +  @actionAffichage.MinuteDebut + " à " + @actionAffichage.HeureFin + " h " + @actionAffichage.MinuteFin)
+                                                @("de " + @actionAffichage.HeureDebut+ " h")
+
+                                                @if (actionAffichage.MinuteDebut == 0)
+                                                {
+                                                    @("00")
+                                                }
+                                                else
+                                                {
+                                                    @actionAffichage.MinuteDebut
+                                                }
+
+                                                @(" à " + @actionAffichage.HeureFin + " h")
+
+                                                @if (actionAffichage.MinuteFin == 0)
+                                                {
+                                                    @("00")
+                                                }
+                                                else
+                                                {
+                                                    @actionAffichage.MinuteFin
+                                                }
                                             </p>
                                             <p id="lastP">@actionAffichage.NomVille</p>
                                             <input type="hidden" name="idAction" value="@actionAffichage.IdAction" />
